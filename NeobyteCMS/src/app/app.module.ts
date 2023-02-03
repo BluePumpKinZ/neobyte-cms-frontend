@@ -17,6 +17,7 @@ import {AuthService} from "./core/services/AuthService";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
+import { LostpasswordComponent } from './core/components/authentication/lostpassword/lostpassword.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AppRoutingModule} from "./app-routing.module";
     LogoutComponent,
     RegisterComponent,
     SidebarComponent,
-    MainComponent
+    MainComponent,
+    LostpasswordComponent
   ],
   imports: [
     BrowserModule,

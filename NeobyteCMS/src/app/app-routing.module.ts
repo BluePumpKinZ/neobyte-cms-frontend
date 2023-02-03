@@ -4,14 +4,15 @@ import {LoginComponent} from "./core/components/authentication/login/login.compo
 import {LogoutComponent} from "./core/components/authentication/logout/logout.component";
 import {MainComponent} from "./core/components/main/main.component";
 import {AuthGuard} from "./core/guards/auth.guard";
+import {LostpasswordComponent} from "./core/components/authentication/lostpassword/lostpassword.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'home', component: MainComponent, canActivate: [AuthGuard]},
-  { path: 'home', component: MainComponent, canActivate: [AuthGuard]},
-  { path: 'home', component: MainComponent, canActivate: [AuthGuard]},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'lost-password', component: LostpasswordComponent},
+  { path: '', component: MainComponent, canActivate: [AuthGuard]},
+  { path: '', component: MainComponent, canActivate: [AuthGuard]},
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
