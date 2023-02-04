@@ -10,6 +10,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'lost-password', component: LostpasswordComponent},
+  { path: 'sites', component: LostpasswordComponent},
+  { path: 'users', component: LostpasswordComponent},
+  { path: 'settings', component: LostpasswordComponent},
+  { path: 'users/new', component: LostpasswordComponent},
+  { path: 'sites/new', component: LostpasswordComponent},
   { path: '', component: MainComponent, canActivate: [AuthGuard]},
   { path: '', component: MainComponent, canActivate: [AuthGuard]},
   { path: '', redirectTo: '', pathMatch: 'full' }

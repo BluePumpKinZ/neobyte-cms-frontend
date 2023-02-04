@@ -1,11 +1,12 @@
-<div class="container">
-  <div class="row">
-    <!--      <div class="col-md-9 pull-md-right">-->
-    <!--        <app-pageheader [props]=""></app-pageheader>-->
-    <!--      </div>-->
-    <div class="col-md-3 pull-md-left sidebar">
-      <app-sidebar></app-sidebar>
-    </div>
-    <div class="clearfix"></div>
+<div class="container-fluid g-0">
+  <div class="row g-0">
+    <app-sidebar class="col-md-1 col-lg-2"></app-sidebar>
+    <main class="col-md-11 col-lg-10">
+      <div class="breadcrumb">
+        <app-breadcrumb class="w-100"></app-breadcrumb>
+      </div>
+      <div class="content ms-sm-auto px-md-4">
+      </div>
+    </main>
   </div>
 </div>
