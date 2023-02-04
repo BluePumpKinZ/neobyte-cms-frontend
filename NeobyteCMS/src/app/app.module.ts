@@ -18,6 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import { LostpasswordComponent } from './core/components/authentication/lostpassword/lostpassword.component';
+import { SitesComponent } from './core/pages/sites/sites.component';
+import { UsersComponent } from './core/pages/users/users.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { LostpasswordComponent } from './core/components/authentication/lostpass
     RegisterComponent,
     SidebarComponent,
     MainComponent,
-    LostpasswordComponent
+    LostpasswordComponent,
+    SitesComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
