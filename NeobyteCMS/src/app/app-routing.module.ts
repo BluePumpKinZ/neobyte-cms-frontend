@@ -7,19 +7,24 @@ import {AuthGuard} from "./core/guards/auth.guard";
 import {LostpasswordComponent} from "./core/components/authentication/lostpassword/lostpassword.component";
 import {SitesComponent} from "./core/pages/sites/sites.component";
 import {UsersComponent} from "./core/pages/users/users.component";
+import {NewUserComponent} from "./core/pages/new-user/new-user.component";
+import {NewSiteComponent} from "./core/pages/new-site/new-site.component";
+import {SettingsComponent} from "./core/pages/settings/settings.component";
 
 const routes: Routes = [
+  //layout routes
+  { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
+      { path: '', pathMatch: 'full', redirectTo: 'sites' },
+      { path: 'sites', component: SitesComponent },
+      { path: 'sites/new', component: NewSiteComponent },
+      { path: 'users', component: UsersComponent },
+      { path: 'users/new', component: NewUserComponent },
+      { path: 'settings', component: SettingsComponent },
+    ]},
+  //not layout routes
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'lost-password', component: LostpasswordComponent},
-  { path: 'sites', component: SitesComponent},
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
-  { path: 'settings', component: MainComponent, canActivate: [AuthGuard]},
-  { path: 'users/new', component: MainComponent, canActivate: [AuthGuard]},
-  { path: 'sites/new', component: MainComponent, canActivate: [AuthGuard]},
-  { path: '', component: SitesComponent, canActivate: [AuthGuard]},
-  { path: '', component: SitesComponent, canActivate: [AuthGuard]},
-  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({

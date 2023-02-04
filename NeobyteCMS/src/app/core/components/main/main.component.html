@@ -1,0 +1,80 @@
+<div id="content" class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark d-flex">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="index.html">
+      <img src="https://neobyte.net/billing/assets/img/logo.png" alt="logo" width="auto"
+           height="30" class="d-inline-block align-text-top">
+    </a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
+      <i class="fa fa-bars"></i>
+    </button>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto me-3 me-lg-4 ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false"><i class="fa fa-user fa-fw"></i> Username </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" href="#!">Edit Profile</a></li>
+          <li>
+            <hr class="dropdown-divider"/>
+          </li>
+          <li><a class="dropdown-item" href="#!">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+          <div class="nav">
+            <div class="sb-sidenav-menu-heading">Main</div>
+            <a [routerLinkActive]="['active']" [routerLink]="['sites']" class="nav-link " href="/">
+              <div class="sb-nav-link-icon"><i class="fa fa-window-maximize"></i></div>
+              Sites
+            </a>
+            <a [routerLinkActive]="['active']" [routerLink]="['settings']" class="nav-link" href="/settings">
+              <div class="sb-nav-link-icon"><i class="fa fa-cog"></i></div>
+              Settings
+            </a>
+            <a [routerLinkActive]="['active']" [routerLink]="['users']" class="nav-link" href="/users">
+              <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
+              Users
+            </a>
+            <a [routerLinkActive]="['active']" [routerLink]="['profile']" class="nav-link" href="/profile">
+              <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+              Profile
+            </a>
+            <a [routerLinkActive]="['active']" [routerLink]="['help']" class="nav-link" href="/help">
+              <div class="sb-nav-link-icon"><i class="fa fa-question-circle"></i></div>
+              Help
+            </a>
+            <div class="sb-sidenav-menu-heading">Admin</div>
+            <a class="nav-link" href="/admin">
+              <div class="sb-nav-link-icon"><i class="fa fa-tachometer"></i></div>
+              Dashboard
+            </a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div id="layoutSidenav_content">
+      <main class="p-3">
+        <router-outlet></router-outlet>
+      </main>
+      <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+          <div class="d-flex align-items-center justify-content-between small">
+            <div class="text-muted">Copyright &copy; Neobyte</div>
+            <div>
+              <a href="#">Privacy Policy</a>
+              &middot;
+              <a href="#">Terms &amp; Conditions</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>

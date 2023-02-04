@@ -20,6 +20,9 @@ import {AppRoutingModule} from "./app-routing.module";
 import { LostpasswordComponent } from './core/components/authentication/lostpassword/lostpassword.component';
 import { SitesComponent } from './core/pages/sites/sites.component';
 import { UsersComponent } from './core/pages/users/users.component';
+import { NewUserComponent } from './core/pages/new-user/new-user.component';
+import { NewSiteComponent } from './core/pages/new-site/new-site.component';
+import { SettingsComponent } from './core/pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { UsersComponent } from './core/pages/users/users.component';
     MainComponent,
     LostpasswordComponent,
     SitesComponent,
-    UsersComponent
+    UsersComponent,
+    NewUserComponent,
+    NewSiteComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
