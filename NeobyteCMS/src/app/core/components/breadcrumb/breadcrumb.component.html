@@ -1,15 +1,13 @@
 <!-- Breadcumb Area Start -->
-<div class="bg-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="breadcumb-area bg-img" style="background-image: url(assets/img/bg-img/breadcumb.jpg);">
-          <div class="bradcumbContent">
-            <h2>Blog</h2>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="breadcrumbs">
+  <div class="breadcrumb">
+    <span class="breadcrumb_item" *ngFor="let breadcrumb of breadcrumbs;let last = last;">
+      <a *ngIf="!last" [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
+        {{ breadcrumb.label }}
+      </a>
+        <span *ngIf="last">{{ breadcrumb.label }}</span>
+      <i *ngIf="!last" class="breadcrumb_separator fa fa-chevron-right"></i>
+    </span>
   </div>
 </div>
 <!-- Breadcumb Area End -->

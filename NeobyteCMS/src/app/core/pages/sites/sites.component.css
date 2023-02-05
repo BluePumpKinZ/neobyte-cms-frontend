@@ -1,6 +1,6 @@
 .has-search .form-control {
   padding-left: 2.375rem;
-  width: 50vw;
+  width: 30vw;
 }
 
 .has-search .form-control-feedback {
@@ -12,5 +12,9 @@
   line-height: 2.375rem;
   text-align: center;
   pointer-events: none;
-  color: #aaa;
+  color: #c0c4cc;
+}
+
+.has-search .form-control::placeholder {
+  color: #c0c4cc;
 }

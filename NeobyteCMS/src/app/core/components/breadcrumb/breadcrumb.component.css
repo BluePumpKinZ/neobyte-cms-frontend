@@ -1,0 +1,32 @@
+.breadcrumbs {
+  padding: 0.75rem 2rem;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #e3e6e7;
+  font-weight: 300;
+}
+.breadcrumb {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+.breadcrumb_separator {
+  font-size: 80%;
+  margin: 0 6px;
+  color: #c0c4cc;
+}
+
+@media (max-width: 992px) {
+  .breadcrumbs {
+    padding: 0.5rem 1rem;
+  }
+  .breadcrumb {
+    font-size: 1rem;
+  }
+}

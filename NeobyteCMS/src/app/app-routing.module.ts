@@ -15,11 +15,11 @@ const routes: Routes = [
   //layout routes
   { path: '', component: MainComponent, canActivate: [AuthGuard], children: [
       { path: '', pathMatch: 'full', redirectTo: 'sites' },
-      { path: 'sites', component: SitesComponent },
-      { path: 'sites/new', component: NewSiteComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'users/new', component: NewUserComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'sites', component: SitesComponent, data: {breadcrumb:'Sites'}, children: [
+          { path: 'new', data: {breadcrumb:'New'}, component: NewSiteComponent }]},
+      { path: 'users', data: {breadcrumb:'Users'}, component: UsersComponent, children: [
+          { path: 'new', data: {breadcrumb:'New'}, component: NewUserComponent }]},
+      { path: 'settings', data: {breadcrumb:'Settings'}, component: SettingsComponent },
     ]},
   //not layout routes
   { path: 'login', component: LoginComponent },
