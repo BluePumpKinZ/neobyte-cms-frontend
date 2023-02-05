@@ -25,6 +25,7 @@ import { NewSiteComponent } from './core/pages/new-site/new-site.component';
 import { SettingsComponent } from './core/pages/settings/settings.component';
 import { UnsavedChangesModalComponent } from './core/components/unsaved-changes-modal/unsaved-changes-modal.component';
 import { ProfileComponent } from './core/pages/profile/profile.component';
+import { EditSiteComponent } from './core/pages/edit-site/edit-site.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProfileComponent } from './core/pages/profile/profile.component';
     NewSiteComponent,
     SettingsComponent,
     UnsavedChangesModalComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditSiteComponent
   ],
   imports: [
     BrowserModule,
