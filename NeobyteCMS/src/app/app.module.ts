@@ -23,6 +23,7 @@ import { UsersComponent } from './core/pages/users/users.component';
 import { NewUserComponent } from './core/pages/new-user/new-user.component';
 import { NewSiteComponent } from './core/pages/new-site/new-site.component';
 import { SettingsComponent } from './core/pages/settings/settings.component';
+import { UnsavedChangesModalComponent } from './core/components/unsaved-changes-modal/unsaved-changes-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SettingsComponent } from './core/pages/settings/settings.component';
     UsersComponent,
     NewUserComponent,
     NewSiteComponent,
-    SettingsComponent
+    SettingsComponent,
+    UnsavedChangesModalComponent
   ],
   imports: [
     BrowserModule,

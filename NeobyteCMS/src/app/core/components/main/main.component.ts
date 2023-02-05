@@ -1,4 +1,5 @@
 import {AfterViewInit, Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main',
@@ -6,6 +7,10 @@ import {AfterViewInit, Component} from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements AfterViewInit {
+
+  constructor(public router: Router) {
+
+  }
 
   ngAfterViewInit() {
     const sidebarToggle = document.body.querySelector('#sidebarToggle');

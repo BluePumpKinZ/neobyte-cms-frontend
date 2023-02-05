@@ -152,10 +152,11 @@ body {
   flex-wrap: nowrap;
 }
 .sb-sidenav .sb-sidenav-menu .nav .sb-sidenav-menu-heading {
-  padding: 1.75rem 1rem 0.75rem;
+  padding: 0.75rem 1rem 0;
   font-size: 0.75rem;
-  font-weight: bold;
+  font-weight: lighter;
   text-transform: uppercase;
+  margin-bottom: 0.5rem;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link {
   display: flex;
@@ -164,9 +165,10 @@ body {
   /*padding-top: 0.5rem;*/
   /*padding-bottom: 0.5rem;*/
   position: relative;
+  font-size: 14px;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-nav-link-icon {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 .sb-sidenav .sb-sidenav-menu .nav .nav-link .sb-sidenav-collapse-arrow {
   display: inline-block;
@@ -186,14 +188,14 @@ body {
 }
 
 .sb-sidenav-dark {
-  background-color: #212529;
+  background-color: #2E3235;
   color: rgba(255, 255, 255, 0.5);
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
   color: rgba(255, 255, 255, 0.25);
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: #dddfe1;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link .sb-nav-link-icon {
   color: rgba(255, 255, 255, 0.25);
@@ -205,24 +207,31 @@ body {
   color: #fff;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
+  background-color: #08d;
   color: #fff;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
-  color: #fff;
+  color: #dddfe1;
 }
 .sb-sidenav-dark .sb-sidenav-footer {
-  background-color: #343a40;
+  background-color: #2E3235;
 }
 
 .sb-sidenav-light {
   background-color: #f8f9fa;
-  color: #212529;
+  color: #2E3235;
 }
 .sb-sidenav-light .sb-sidenav-menu .sb-sidenav-menu-heading {
-  color: #adb5bd;
+  font-size: .75rem;
+  color: #707a81;
+  text-transform: uppercase;
+  padding: 0 1.25rem;
+  margin-bottom: 0.5rem;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link {
   color: #212529;
+  padding: 0.5rem 1.25rem 0.5rem 2.75rem;
+  font-size: 14px;
 }
 .sb-sidenav-light .sb-sidenav-menu .nav-link .sb-nav-link-icon {
   color: #adb5bd;
