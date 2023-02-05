@@ -271,6 +271,14 @@ body {
   color: #aaa;
 }
 
+.button-group {
+  margin-top: 1rem;
+  border-top: 1px solid #3a3f43;
+  padding: 2rem 1.5rem 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
 @media (max-width: 992px) {
   .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
     margin-top: 56px;

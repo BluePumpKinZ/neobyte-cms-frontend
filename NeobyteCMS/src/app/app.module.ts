@@ -26,6 +26,8 @@ import { SettingsComponent } from './core/pages/settings/settings.component';
 import { UnsavedChangesModalComponent } from './core/components/unsaved-changes-modal/unsaved-changes-modal.component';
 import { ProfileComponent } from './core/pages/profile/profile.component';
 import { EditSiteComponent } from './core/pages/edit-site/edit-site.component';
+import { ManageFilesModalComponent } from './core/components/manage-files-modal/manage-files-modal.component';
+import {NgSelectModule} from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -48,13 +50,15 @@ import { EditSiteComponent } from './core/pages/edit-site/edit-site.component';
     SettingsComponent,
     UnsavedChangesModalComponent,
     ProfileComponent,
-    EditSiteComponent
+    EditSiteComponent,
+    ManageFilesModalComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgSelectModule
   ],
   providers: [
     AuthService,

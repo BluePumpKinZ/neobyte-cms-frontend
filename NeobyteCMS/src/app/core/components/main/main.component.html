@@ -65,6 +65,57 @@
                 Edit Profile
               </a>
             </ng-template>
+
+            <!-- If admin -->
+            <ng-template [ngIf]="router.url.includes('/sites/')">
+              <div class="sb-sidenav-menu-heading">Admin</div>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa fa-check"></i></div>
+                Enable Pages
+              </a>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
+                Manage Templates
+              </a>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa fa-cube"></i></div>
+                Manage Blocks
+              </a>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa fa-heart-pulse"></i></div>
+                Page Health
+              </a>
+            </ng-template>
+
+            <!-- check if url is /sites/:id -->
+            <ng-template [ngIf]="router.url.includes('/sites/')">
+              <div class="sb-sidenav-menu-heading">Actions</div>
+              <a class="nav-link disabled" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa-regular fa-plus"></i></div>
+                New Page
+              </a>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
+                Manage Files
+              </a>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa fa-chart-line"></i></div>
+                Page Stats
+              </a>
+              <a class="nav-link" href="/profile">
+                <div class="sb-nav-link-icon"><i class="fa fa-external-link"></i></div>
+                View Website
+              </a>
+            </ng-template>
+
+            <ng-template [ngIf]="router.url.includes('/sites/')">
+              <!-- add border border-top:  to top of div and blue button in the middle -->
+              <div class="button-group">
+                <button type="button" class="btn btn-primary w-100 mb-1" >Publish</button>
+                <button type="button" class="btn btn-default w-100" >Cancel</button>
+              </div>
+            </ng-template>
+
           </div>
         </div>
       </nav>
@@ -89,5 +140,9 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manageFilesModal">
+  Launch demo modal
+</button>
 
 <app-unsaved-changes-modal></app-unsaved-changes-modal>
+<app-manage-files-modal></app-manage-files-modal>

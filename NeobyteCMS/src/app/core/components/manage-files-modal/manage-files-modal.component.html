@@ -1,0 +1,41 @@
+<!-- Modal -->
+<div class="modal fade" id="manageFilesModal" tabindex="-1" role="dialog" aria-labelledby="manageFilesModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="manageFilesModalLabel">Manage files</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body d-flex">
+        <i class="fas fa-home fa-2x mr-3"></i>
+        <div class="w-100">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search files">
+          </div>
+          <div class="list-group overflow-auto" style="max-height: 300px;">
+            <a *ngFor="let file of files" class="list-group-item list-group-item-action" (click)="selectFile(file)" [ngClass]="{'bg-light': selectedFile === file}">{{ file }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
+          <i class="fas fa-file-upload"></i> Upload files
+        </button>
+        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
+          <i class="fas fa-folder-plus"></i> Add Folder
+        </button>
+        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
+          <i class="fas fa-edit"></i> Rename
+        </button>
+        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
+          <i class="fas fa-external-link-alt"></i> Open in new window
+        </button>
+        <button type="button" class="btn btn-danger" [disabled]="!selectedFile">
+          <i class="fas fa-trash-alt"></i> Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

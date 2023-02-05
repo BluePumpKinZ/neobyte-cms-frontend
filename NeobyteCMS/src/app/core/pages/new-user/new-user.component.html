@@ -1,1 +1,62 @@
-<p>new-user works!</p>
+<form>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#generalTab">General</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#PermissionsTab">Permissions</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#AdvancedTab">Advanced</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="GeneralTab">
+      <div class="form-group">
+        <label for="NameInput">Name</label>
+        <input type="text" class="form-control" id="NameInput" placeholder="Enter Name">
+      </div>
+      <div class="form-group">
+        <label for="EmailInput">Email</label>
+        <input type="email" class="form-control" id="EmailInput" placeholder="Enter Email">
+        <small class="form-text text-muted">An invitation will be sent to this email address when the user is
+          created.</small>
+      </div>
+    </div>
+    <div class="tab-pane" id="PermissionsTab">
+      <h5>This user will have access to the following sites</h5>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Start typing to add a site">
+      </div>
+    </div>
+    <div class="tab-pane" id="AdvancedTab">
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="MakeAdministratorCheck">
+        <label class="form-check-label" for="MakeAdministratorCheck">Make administrator</label>
+        <small class="form-text text-muted">Give this user administrative privileges.</small>
+      </div>
+      <div class="form-group form-check" id="AdministratorOptions" style="display:none;">
+        <input type="checkbox" class="form-check-input" id="ManageSettingsCheck">
+        <label class="form-check-label" for="ManageSettingsCheck">Manage Settings</label>
+        <small class="form-text text-muted">Allow this user to change the settings for this account.</small><br>
+        <input type="checkbox" class="form-check-input" id="ManageSitesCheck">
+        <label class="form-check-label" for="ManageSitesCheck">Manage Sites</label>
+        <small class="form-text text-muted">Allow this user to create, delete, and update sites.</small><br>
+        <input type="checkbox" class="form-check-input" id="ManageUsersCheck">
+        <label class="form-check-label" for="ManageUsersCheck">Manage Users</label>
+        <small class="form-text text-muted">Allow this user to create, delete, and update users.</small>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+
+<script>
+  document.getElementById("MakeAdministratorCheck").addEventListener("change", function () {
+    if (this.checked) {
+      document.getElementById("AdministratorOptions").style.display = "block";
+    } else {
+      document.getElementById("AdministratorOptions").style.display = "none";
+    }
+  });
+</script>
