@@ -1,0 +1,215 @@
+.CodeMirror {
+  width: 100%;
+  height: 100%;
+  font-family: SF Mono,Monaco,Andale Mono,Lucida Console,Bitstream Vera Sans Mono,Courier New,Courier,monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: #fff
+}
+
+.CodeMirror pre {
+  padding-left: .5rem
+}
+
+.CodeMirror .CodeMirror-selected {
+  background: #cce7f8
+}
+
+.CodeMirror .CodeMirror-line::selection, .CodeMirror .CodeMirror-line>span::selection, .CodeMirror .CodeMirror-line>span>span::selection {
+  background: #cce7f8
+}
+
+.CodeMirror .CodeMirror-gutters {
+  background-color: #fff;
+  border-right: 1px #fff
+}
+
+.CodeMirror .CodeMirror-guttermarker {
+  color: #fff
+}
+
+.CodeMirror .CodeMirror-guttermarker-subtle {
+  color: #a6adb2
+}
+
+.CodeMirror .CodeMirror-linenumber {
+  color: #c1c6c9;
+  -webkit-transform: scale(.8);
+  transform: scale(.8)
+}
+
+.CodeMirror .CodeMirror-cursor {
+  border-left: 2px solid #08d
+}
+
+.CodeMirror .cm-comment {
+  color: #a6adb2
+}
+
+.CodeMirror .cm-atom {
+  color: #9e76e6
+}
+
+.CodeMirror .cm-meta {
+  color: #a6adb2
+}
+
+.CodeMirror .cm-number, .CodeMirror .cm-property {
+  color: #ed5c65
+}
+
+.CodeMirror .cm-attribute {
+  color: #dc7f13
+}
+
+.CodeMirror .cm-keyword {
+  color: #a151d2
+}
+
+.CodeMirror .cm-string {
+  color: #269061
+}
+
+.CodeMirror .cm-string-2 {
+  color: #ed5c65
+}
+
+.CodeMirror .cm-variable, .CodeMirror .cm-variable-2 {
+  color: #2795ee
+}
+
+.CodeMirror .cm-variable-3 {
+  color: #269061
+}
+
+.CodeMirror .cm-def {
+  color: #f18c16
+}
+
+.CodeMirror .cm-bracket {
+  color: #39464e
+}
+
+.CodeMirror .cm-tag {
+  color: #0078c4
+}
+
+.CodeMirror .cm-header {
+  color: #00f
+}
+
+.CodeMirror .cm-link {
+  text-decoration: underline
+}
+
+.CodeMirror .cm-error {
+  background: #ca2d2e!important;
+  color: #fff!important
+}
+
+.CodeMirror .cm-cms-special-comment {
+  color: #a6adb2;
+  font-weight: 700
+}
+
+.CodeMirror .cm-cms-code, .CodeMirror .cm-cms-editable, .CodeMirror .cm-cms-embed, .CodeMirror .cm-cms-gallery, .CodeMirror .cm-cms-include, .CodeMirror .cm-cms-lock, .CodeMirror .cm-cms-repeatable, .CodeMirror .cm-cms-unlock {
+  color: #0078c4;
+  font-weight: 700
+}
+
+.CodeMirror.CodeMirror-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9000;
+  height: auto;
+  border-radius: 0
+}
+
+.CodeMirror .CodeMirror-activeline-background {
+  background: #cce7f8
+}
+
+.CodeMirror .CodeMirror-matchingbracket {
+  color: inherit;
+  background: #e2f2fb
+}
+
+.CodeMirror .CodeMirror-matchingtag {
+  background: #e2f2fb
+}
+
+.has-focus {
+  border-color: #08d
+}
+
+.is-dragging {
+  background-color: #cce7f8;
+  border-color: #08d
+}
+
+.is-dragging .CodeMirror,.is-dragging .CodeMirror-gutter {
+  background-color: #cce7f8
+}
+
+.full-screen-toggle {
+  position: absolute;
+  z-index: 3;
+  top: .5rem;
+  right: .5rem;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: #a6adb2;
+  padding: .25rem;
+  cursor: pointer
+}
+
+.full-screen-toggle:hover {
+  color: #707a81
+}
+
+.is-full-screen .full-screen-toggle {
+  position: fixed;
+  z-index: 9000
+}
+
+.el-form-item.is-error  .CodeMirror {
+  border-color: #fa5555
+}
+.CodeMirror {
+  font-family: MesloLGMDZ,Menlo,Monaco,consolas,monospace;
+  font-size: 14px;
+  line-height: 1.3;
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.CodeMirror .CodeMirror-selected {
+  background-color: #b3d4fd
+}
+
+.CodeMirror .CodeMirror-matchingbracket {
+  border: solid 1px #ddd;
+  color: inherit!important;
+  margin: -1px -1px 0 -1px
+}
+
+.CodeMirror,.CodeMirror-scroll,.CodeMirror-textarea.form-control {
+  min-height: 368px;
+  height: auto
+}
+
+#edit-source-form .CodeMirror,#edit-source-form .CodeMirror-scroll,#edit-styles-form .CodeMirror,#edit-styles-form .CodeMirror-scroll {
+  height: 368px
+}
+
+.CodeMirror:focus {
+  border: none;
+  outline: 0;
+}
+.CodeMirror .CodeMirror-focused {
+  border: none;
+  outline: 0
+}

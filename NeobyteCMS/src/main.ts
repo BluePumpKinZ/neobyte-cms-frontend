@@ -1,5 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+import 'codemirror/mode/htmlmixed/htmlmixed';
+
 import { AppModule } from './app/app.module';
 
 

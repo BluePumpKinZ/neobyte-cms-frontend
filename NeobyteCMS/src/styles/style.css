@@ -1298,47 +1298,6 @@ a[href],button {
   background-size: 64px
 }
 
-.CodeMirror {
-  font-family: MesloLGMDZ,Menlo,Monaco,consolas,monospace;
-  font-size: 14px;
-  line-height: 1.3;
-  border: solid 1px #ddd;
-  border-radius: 4px;
-  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
-}
-
-.CodeMirror:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
-}
-
-.CodeMirror.CodeMirror-focused {
-  border-color: #66afe9;
-  outline: 0
-}
-
-.CodeMirror .CodeMirror-selected {
-  background-color: #b3d4fd
-}
-
-.CodeMirror .CodeMirror-matchingbracket {
-  border: solid 1px #ddd;
-  color: inherit!important;
-  margin: -1px -1px 0 -1px
-}
-
-.CodeMirror,.CodeMirror-scroll,.CodeMirror-textarea.form-control {
-  min-height: 368px;
-  height: auto
-}
-
-#edit-source-form .CodeMirror,#edit-source-form .CodeMirror-scroll,#edit-styles-form .CodeMirror,#edit-styles-form .CodeMirror-scroll {
-  height: 368px
-}
-
 .pika-single {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif
 }
@@ -2147,10 +2106,6 @@ body.abs-toolbar #fixed-toolbar {
 }
 
 @media (max-width: 767px) {
-  .CodeMirror,.CodeMirror-scroll,.CodeMirror-textarea.form-control {
-    min-height:188px
-  }
-
   #main-toolbar-container #main-toolbar {
     font-size: 14px;
     padding: 5px 15px
@@ -2197,10 +2152,6 @@ body.abs-toolbar #fixed-toolbar {
 
   #fixed-toolbar #fixed-toolbar-inner .save-options .btn-group {
     margin-right: 4px
-  }
-
-  #edit-styles-form .CodeMirror,#edit-styles-form .CodeMirror-scroll,#edit-styles-form .CodeMirror-textarea {
-    height: 188px
   }
 
   #create-page-browser {

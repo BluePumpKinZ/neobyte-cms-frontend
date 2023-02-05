@@ -12,6 +12,8 @@ import {NewSiteComponent} from "./core/pages/new-site/new-site.component";
 import {SettingsComponent} from "./core/pages/settings/settings.component";
 import {ProfileComponent} from "./core/pages/profile/profile.component";
 import {EditSiteComponent} from "./core/pages/edit-site/edit-site.component";
+import {EditSourceComponent} from "./core/pages/edit-source/edit-source.component";
+import {EditPageComponent} from "./core/pages/edit-page/edit-page.component";
 
 const routes: Routes = [
   //layout routes
@@ -20,13 +22,23 @@ const routes: Routes = [
       {path: '', pathMatch: 'full', redirectTo: 'sites'},
       {
         path: 'sites', data: {breadcrumb: 'Sites'}, children: [
-          { path : '', pathMatch:'full', component: SitesComponent},
+          {path: '', pathMatch: 'full', component: SitesComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewSiteComponent},
-          {path: ':id', data: {breadcrumb: 'Edit'}, component: EditSiteComponent}]
+          {
+            path: ':siteId', data: {breadcrumb: 'Edit'}, children: [
+              {path: '', pathMatch: 'full', component: EditSiteComponent},
+              {
+                path: 'page/:pageId', data: {breadcrumb: 'Page'}, children: [
+                  {path: '', pathMatch: 'full', component: EditPageComponent},
+                  {path: 'source', data: {breadcrumb: 'Edit Source'}, component: EditSourceComponent},
+                ]
+              },
+            ]
+          }]
       },
       {
         path: 'users', data: {breadcrumb: 'Users'}, children: [
-          { path : '', pathMatch:'full', component: UsersComponent},
+          {path: '', pathMatch: 'full', component: UsersComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent}]
       },
       {path: 'settings', data: {breadcrumb: 'Settings'}, component: SettingsComponent},
