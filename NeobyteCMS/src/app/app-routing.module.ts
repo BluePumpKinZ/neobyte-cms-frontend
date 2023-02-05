@@ -10,6 +10,7 @@ import {UsersComponent} from "./core/pages/users/users.component";
 import {NewUserComponent} from "./core/pages/new-user/new-user.component";
 import {NewSiteComponent} from "./core/pages/new-site/new-site.component";
 import {SettingsComponent} from "./core/pages/settings/settings.component";
+import {ProfileComponent} from "./core/pages/profile/profile.component";
 
 const routes: Routes = [
   //layout routes
@@ -20,6 +21,8 @@ const routes: Routes = [
       { path: 'users', data: {breadcrumb:'Users'}, component: UsersComponent, children: [
           { path: 'new', data: {breadcrumb:'New'}, component: NewUserComponent }]},
       { path: 'settings', data: {breadcrumb:'Settings'}, component: SettingsComponent },
+      { path: 'profile', data: {breadcrumb:'Profile'}, component: ProfileComponent },
+      { path: '**', redirectTo: 'sites'}
     ]},
   //not layout routes
   { path: 'login', component: LoginComponent },

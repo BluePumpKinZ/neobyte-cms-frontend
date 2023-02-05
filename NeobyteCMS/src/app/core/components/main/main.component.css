@@ -40,7 +40,7 @@ body {
   justify-content: space-between;
   min-width: 0;
   flex-grow: 1;
-  min-height: calc(100vh - 56px);
+  min-height: calc(100vh);
   margin-left: -256px;
   background-color: #F8F8F9;
 }
@@ -284,4 +284,8 @@ body {
     width: 100%;
     background-color: #2E3235;
   }
+  #layoutSidenav #layoutSidenav_content {
+    min-height: calc(100vh - 56px);
+  }
+
 }
