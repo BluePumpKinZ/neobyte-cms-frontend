@@ -14,6 +14,7 @@ import {ProfileComponent} from "./core/pages/profile/profile.component";
 import {EditSiteComponent} from "./core/pages/edit-site/edit-site.component";
 import {EditSourceComponent} from "./core/pages/edit-source/edit-source.component";
 import {EditPageComponent} from "./core/pages/edit-page/edit-page.component";
+import {RenderComponent} from "./core/components/render/render.component";
 
 const routes: Routes = [
   //layout routes
@@ -43,13 +44,14 @@ const routes: Routes = [
       },
       {path: 'settings', data: {breadcrumb: 'Settings'}, component: SettingsComponent},
       {path: 'profile', data: {breadcrumb: 'Profile'}, component: ProfileComponent},
-      {path: '**', redirectTo: 'sites'}
     ]
   },
   //not layout routes
-  {path: 'login', component: LoginComponent},
+  {path: 'sites/:siteId/page/:pageId/render', component: RenderComponent},
+  {path: 'login',  pathMatch: 'full', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'lost-password', component: LostpasswordComponent},
+  {path: '**', redirectTo: 'sites'}
 ];
 
 @NgModule({
