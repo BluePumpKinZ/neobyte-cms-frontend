@@ -1,6 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-
-
+import {html_beautify} from "js-beautify";
 
 @Component({
   selector: 'app-edit-source',
@@ -8,8 +7,9 @@ import {Component, ViewChild} from '@angular/core';
   styleUrls: ['./edit-source.component.css']
 })
 export class EditSourceComponent {
-  content: string = `# Hello World`;
+  content: string = `<div><div><p>test</p></div></div>`;
   config = {
+    lineWrapping: true,
     lineNumbers: true,
     mode: 'htmlmixed'
   };
@@ -19,5 +19,13 @@ export class EditSourceComponent {
 
   getText() {
     alert(this.codeEditor.codeMirror.getValue());
+  }
+  //toggle line wrapping
+  toggleLineWrapping() {
+    this.config.lineWrapping = !this.config.lineWrapping;
+  }
+  //beautify code in code editor with js-beautify
+  beautifyCode() {
+    this.content = html_beautify(this.codeEditor.codeMirror.getValue());
   }
 }

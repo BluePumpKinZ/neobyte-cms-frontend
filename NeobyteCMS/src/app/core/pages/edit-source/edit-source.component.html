@@ -2,11 +2,11 @@
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
     <div class="sb-sidenav-menu-heading">Actions</div>
-    <a class="nav-link" href="/profile">
+    <a class="nav-link"  (click)="beautifyCode()" style="cursor: pointer">
       <div class="sb-nav-link-icon"><i class="fa-solid fa-broom"></i></div>
-      Cleanup Code
+      Beautify Code
     </a>
-    <a class="nav-link" href="/profile">
+    <a class="nav-link" (click)="toggleLineWrapping()" style="cursor: pointer">
       <div class="sb-nav-link-icon"><i class="fa-solid fa-arrow-right-to-bracket"></i></div>
       Toggle Line Wrapping
     </a>
