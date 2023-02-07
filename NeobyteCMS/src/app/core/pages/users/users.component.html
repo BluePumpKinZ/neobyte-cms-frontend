@@ -1,34 +1,53 @@
-<div class="container-fluid px-4">
-  <h1 class="mt-4">Users</h1>
-  <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Users</li>
-  </ol>
-
-  <div class="row">
-    <div class="d-flex bd-highlight mb-3">
-
-      <!-- Actual search box -->
-      <div class="form-group has-search">
-        <span class="fa fa-search form-control-feedback"></span>
-        <input type="text" class="form-control" placeholder="Search Users">
-      </div>
-
-      <a type="button" href="users/new" class="btn btn-primary ms-auto">New User</a>
-    </div>
+<app-sidebar>
+  <!-- Sidebar Extra Nav Options -->
+  <div child-header>
+    <div class="sb-sidenav-menu-heading">Admin</div>
+    <a class="nav-link" href="/users/new">
+      <div class="sb-nav-link-icon"><i class="fa fa-plus"></i></div>
+      New User
+    </a>
+    <div class="sb-sidenav-menu-heading">Actions</div>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+      Edit Profile
+    </a>
   </div>
-  <div class="row g-0">
 
-    <div class="user-card"><a href="/users/e533aa6e-7567-4b9b-ad93-3129c3727fad"
-                              class="user-card-avatar"><i class="el-icon-fa-user"></i></a>
-      <div class="user-card-name"><a href="/users/e533aa6e-7567-4b9b-ad93-3129c3727fad" class="">Maxim</a></div>
-      <div class="user-card-role">
-        Owner
-      </div>
-      <div class="user-card-last-seen text-truncate"><span>
+  <!-- Content Regio for that page -->
+  <div id="layoutSidenav_content" child-content>
+    <app-breadcrumb></app-breadcrumb>
+    <main class="p-3 offset-md-1 col-md-10 col-sm-12">
+      <div class="container-fluid px-4">
+        <div class="row">
+          <div class="d-flex bd-highlight mb-3">
+
+            <!-- Actual search box -->
+            <div class="form-group has-search">
+              <span class="fa fa-search form-control-feedback"></span>
+              <input type="text" class="form-control" placeholder="Search Users">
+            </div>
+
+            <a type="button" href="users/new" class="btn btn-primary ms-auto">New User</a>
+          </div>
+        </div>
+        <div class="row g-0">
+
+          <div class="user-card"><a href="/users/e533aa6e-7567-4b9b-ad93-3129c3727fad"
+                                    class="user-card-avatar"><i class="el-icon-fa-user"></i></a>
+            <div class="user-card-name"><a href="/users/e533aa6e-7567-4b9b-ad93-3129c3727fad" class="">Maxim</a></div>
+            <div class="user-card-role">
+              Owner
+            </div>
+            <div class="user-card-last-seen text-truncate"><span>
         Last seen Feb 4, 2023
       </span></div>
-      <div class="user-card-settings"><a href="/profile" class="" title="Edit"><i
-        class="el-icon-fa-cog"></i></a></div>
-    </div>
+            <div class="user-card-settings"><a href="/profile" class="" title="Edit"><i
+              class="el-icon-fa-cog"></i></a></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <app-footer class="mt-auto"></app-footer>
   </div>
-</div>
+</app-sidebar>

@@ -1,1 +1,52 @@
-<p>edit-site works!</p>
+<app-sidebar>
+  <!-- Sidebar Extra Nav Options -->
+  <div child-header>
+    <div class="sb-sidenav-menu-heading">Admin</div>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-check"></i></div>
+      Enable Pages
+    </a>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
+      Manage Templates
+    </a>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-cube"></i></div>
+      Manage Blocks
+    </a>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-heart-pulse"></i></div>
+      Page Health
+    </a>
+    <div class="sb-sidenav-menu-heading">Actions</div>
+    <a class="nav-link disabled" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa-regular fa-plus"></i></div>
+      New Page
+    </a>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
+      Manage Files
+    </a>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-chart-line"></i></div>
+      Page Stats
+    </a>
+    <a class="nav-link" href="/profile">
+      <div class="sb-nav-link-icon"><i class="fa fa-external-link"></i></div>
+      View Website
+    </a>
+    <div class="button-group">
+      <button type="button" class="btn btn-primary w-100 mb-1" >Publish</button>
+      <button type="button" class="btn btn-default w-100" >Cancel</button>
+    </div>
+  </div>
+
+  <!-- Content Regio for that page -->
+  <div id="layoutSidenav_content" child-content>
+    <app-breadcrumb></app-breadcrumb>
+    <main class="p-3 offset-md-1 col-md-10 col-sm-12">
+      <p>Edit Site </p>
+    </main>
+    <app-footer class="mt-auto"></app-footer>
+  </div>
+</app-sidebar>

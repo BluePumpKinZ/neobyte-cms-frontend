@@ -2,7 +2,6 @@
 @import url('~codemirror/theme/zenburn.css');
 @import url('styles/style.css');
 @import url('app/core/pages/edit-source/edit-source.component.css');
-
 .fixed-top, .sb-nav-fixed #layoutSidenav #layoutSidenav_nav, .sb-nav-fixed .sb-topnav {
   position: fixed;
   top: 0;
@@ -302,4 +301,3 @@ body {
   }
 
 }
-

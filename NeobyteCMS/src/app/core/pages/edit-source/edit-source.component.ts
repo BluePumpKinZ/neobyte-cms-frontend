@@ -18,6 +18,6 @@ export class EditSourceComponent {
   constructor() {}
 
   getText() {
-    console.log(this.codeEditor.codeMirror.getValue());
+    alert(this.codeEditor.codeMirror.getValue());
   }
 }
