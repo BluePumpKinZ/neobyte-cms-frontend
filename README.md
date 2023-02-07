@@ -5,8 +5,11 @@ We ontwikkelen ons eigen CMS platform voor Neobyte. Het platform zal ondersteuni
 ### Info
 In deze repo vindt u de bestanden voor het **Frontend** onderdeel van het project.
 ### Uitvoeren
-> npm install
-> npm start
+```sh
+cd NeobyteCMS
+npm install
+npm start
+```
 
 ## Team
 * Cools Arne - IAI3
