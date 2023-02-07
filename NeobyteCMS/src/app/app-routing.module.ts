@@ -15,6 +15,7 @@ import {EditSiteComponent} from "./core/pages/edit-site/edit-site.component";
 import {EditSourceComponent} from "./core/pages/edit-source/edit-source.component";
 import {EditPageComponent} from "./core/pages/edit-page/edit-page.component";
 import {RenderComponent} from "./core/components/render/render.component";
+import {SnippetsComponent} from "./core/pages/snippets/snippets.component";
 
 const routes: Routes = [
   //layout routes
@@ -34,6 +35,7 @@ const routes: Routes = [
                   {path: 'source', data: {breadcrumb: 'Edit Source'}, component: EditSourceComponent},
                 ]
               },
+              { path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent},
             ]
           }]
       },

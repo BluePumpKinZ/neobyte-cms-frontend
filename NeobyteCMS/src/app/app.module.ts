@@ -29,6 +29,7 @@ import {CodemirrorModule} from "@ctrl/ngx-codemirror";
 import { EditSourceComponent } from './core/pages/edit-source/edit-source.component';
 import { EditPageComponent } from './core/pages/edit-page/edit-page.component';
 import { RenderComponent } from './core/components/render/render.component';
+import { SnippetsComponent } from './core/pages/snippets/snippets.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { RenderComponent } from './core/components/render/render.component';
     ManageFilesModalComponent,
     EditSourceComponent,
     EditPageComponent,
-    RenderComponent
+    RenderComponent,
+    SnippetsComponent
   ],
   imports: [
     BrowserModule,
