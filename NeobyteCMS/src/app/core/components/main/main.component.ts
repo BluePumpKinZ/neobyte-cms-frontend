@@ -6,20 +6,5 @@ import {Router} from "@angular/router";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements AfterViewInit {
-
-  constructor(public router: Router) {
-
-  }
-
-  ngAfterViewInit() {
-    const sidebarToggle = document.body.querySelector('#sidebarToggle');
-    if (sidebarToggle) {
-      sidebarToggle.addEventListener('click', event => {
-        event.preventDefault();
-        document.body.querySelector('#content')!.classList.toggle('sb-sidenav-toggled');
-      });
-    }
-  }
-}
+export class MainComponent {}
 

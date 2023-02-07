@@ -2172,3 +2172,8 @@ body.abs-toolbar #fixed-toolbar {
     display: inline
   }
 }
+
+html,
+body {
+  height: 100%;
+}
