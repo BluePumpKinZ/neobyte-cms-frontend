@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-page.component.css']
 })
 export class EditPageComponent {
+  originalURL: string = "https://arnecools.com/";
 
 }
