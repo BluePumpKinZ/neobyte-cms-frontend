@@ -6,70 +6,80 @@
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
     <app-breadcrumb></app-breadcrumb>
-    <main class="p-3 offset-md-1 col-md-10 col-sm-12">
-      <div class="container">
-        <ul class="nav nav-tabs">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#general">General</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#ChangePassword">Change Password</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#Authentication">Authentication</a>
-          </li>
-        </ul>
+    <main class="p-3 offset-md-3 col-md-5 col-sm-12">
+      <form>
+        <div class="form-style">
+          <div class="container">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">General</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#changepassword" type="button" role="tab" aria-controls="changepassword" aria-selected="false">Change Password</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#authentication" type="button" role="tab" aria-controls="authentication" aria-selected="false">Authentication</a>
+              </li>
+            </ul>
 
-        <div class="tab-content">
-          <div id="General" class="tab-pane active">
-            <form>
-              <div class="form-group">
-                <label for="Name">Name</label>
-                <input type="text" class="form-control" id="Name" placeholder="Enter Name">
+            <div class="tab-content">
+              <div class="tab-pane show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                <form>
+                  <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input type="text" class="form-control" id="Name" >
+                  </div>
+                  <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control" id="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="Bio">Bio</label>
+                    <textarea class="form-control" id="Bio" rows="3"></textarea>
+                  </div>
+                </form>
               </div>
-              <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="email" class="form-control" id="Email" placeholder="Enter Email">
+              <div class="tab-pane " id="changepassword" role="tabpanel" aria-labelledby="changepassword-tab">
+                <form>
+                  <div class="form-group">
+                    <label for="CurrentPassword">Current Password</label>
+                    <input type="password" class="form-control" id="CurrentPassword"
+                           placeholder="Enter Current Password">
+                    <i class="fas fa-eye"></i>
+                  </div>
+                  <div class="form-group">
+                    <label for="NewPassword">New Password</label>
+                    <input type="password" class="form-control" id="NewPassword" placeholder="Enter New Password">
+                    <i class="fas fa-eye"></i>
+                  </div>
+                </form>
               </div>
-              <div class="form-group">
-                <label for="Bio">Bio</label>
-                <textarea class="form-control" id="Bio" rows="3"></textarea>
-              </div>
-            </form>
-          </div>
-          <div id="ChangePassword" class="tab-pane">
-            <form>
-              <div class="form-group">
-                <label for="CurrentPassword">Current Password</label>
-                <input type="password" class="form-control" id="CurrentPassword" placeholder="Enter Current Password">
-                <i class="fas fa-eye"></i>
-              </div>
-              <div class="form-group">
-                <label for="NewPassword">New Password</label>
-                <input type="password" class="form-control" id="NewPassword" placeholder="Enter New Password">
-                <i class="fas fa-eye"></i>
-              </div>
-            </form>
-          </div>
-          <div id="Authentication" class="tab-pane">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Two-factor Authentication</h5>
-                <p class="card-text">This adds an extra layer of security to your account by requiring access to a known device (such as a smartphone) before logging into your account.</p>
-                <a href="#" class="btn btn-primary">Enable Two-factor Authentication</a>
-              </div>
-            </div>
-            <br>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">API Access</h5>
-                <p class="card-text">Enable access to programmatically manage sites, users, and more</p>
-                <a href="#" class="card-link">Visit Documentation</a>
+              <div class="tab-pane" id="authentication" role="tabpanel" aria-labelledby="authentication-tab">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Two-factor Authentication</h5>
+                    <p class="card-text">This adds an extra layer of security to your account by requiring access to a
+                      known device (such as a smartphone) before logging into your account.</p>
+                    <a href="#" class="btn btn-primary">Enable Two-factor Authentication</a>
+                  </div>
+                </div>
+                <br>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">API Access</h5>
+                    <p class="card-text">Enable access to programmatically manage sites, users, and more</p>
+                    <a href="#" class="card-link">Visit Documentation</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-secondary me-2">Cancel</button>
+          <button class="btn btn-primary">Save Changes</button>
+        </div>
+      </form>
     </main>
     <app-footer class="mt-auto"></app-footer>
   </div>

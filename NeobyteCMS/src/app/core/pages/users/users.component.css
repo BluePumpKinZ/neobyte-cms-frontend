@@ -14,3 +14,11 @@
   pointer-events: none;
   color: #aaa;
 }
+.user-box {
+  width: calc(50% - 10px);
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+}
