@@ -1,0 +1,28 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+      <div class="form-group">
+        <h3 class="form-title">Metadata</h3>
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3"></textarea>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="image">
+          <label class="custom-file-label" for="image">Choose file</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="indexing">
+          <label class="form-check-label" for="indexing">
+            Prevent Search Engines From Indexing This Page
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Update Metadata</button>
+      </div>
+    </form>
+  </div>
+</div>
