@@ -15,8 +15,8 @@
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| 06/02/2023 | Jwt Identity | #4 |
+| 09/02/2023 | Website hosting connection | #14 |
 | dd/MM/YYYY | to fill in | to fill in |
 ## Project Status
 ### Collaboration
