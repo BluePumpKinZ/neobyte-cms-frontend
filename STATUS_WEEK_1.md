@@ -9,10 +9,10 @@
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| 07/01/2023 | Reformated file and parent/child structure to use the sidebar for extra options | / |
-| 07/01/2023 | Added forms and pages to add new users, edit profile, add site, edit site, manage sites  | #1, #16, #23, #18, #19, #22, #20, #21 |
-| 08/01/2023 | Added support for snippets / building blocks and a sidebar for editing meta data | #26, #15 |
-| 10/01/2023 | Added filemanager | #10, #11, |
+| 07/02/2023 | Reformated file and parent/child structure to use the sidebar for extra options | / |
+| 07/02/2023 | Added forms and pages to add new users, edit profile, add site, edit site, manage sites  | #1, #16, #23, #18, #19, #22, #20, #21 |
+| 08/02/2023 | Added support for snippets / building blocks and a sidebar for editing meta data | #26, #15 |
+| 10/02/2023 | Added filemanager and linked login and users with the backend | #10, #11, #18, #19, #28, #27 |
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|

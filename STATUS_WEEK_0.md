@@ -10,9 +10,9 @@
 |---|---|---|
 | 27/01/2023 | Angular Project Setup, research after project structure & architecture | / |
 | 30/01/2023 | Made use of Guards to make the authentication pages (login and lost password) | #28, #27 |
-| 03/01/2023 - 05/01/2023 | Research after modern frontend lib, made layouts and basic page structure, and refined routing | / |
-| 05/01/2023 | Made Breadcrumbs automatic, using the routing options | / |
-| 05/01/2023 | Added CodeMirror and JS Beautify to edit source code for pages | #29 |
+| 03/02/2023 - 05/02/2023 | Research after modern frontend lib, made layouts and basic page structure, and refined routing | / |
+| 05/02/2023 | Made Breadcrumbs automatic, using the routing options | / |
+| 05/02/2023 | Added CodeMirror and JS Beautify to edit source code for pages | #29 |
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
