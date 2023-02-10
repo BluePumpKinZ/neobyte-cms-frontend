@@ -30,7 +30,7 @@ to fill in
 * When a component is included inside an other one, while rendering the dom, an overarching tag is added.
 #### .NET
 * Applying distributed tracing in an ASP.NET Core project is a lot harder then advertised by the speaker on the TI Conference Days.
-* Jaeger has a better technical fit then Prometheus in our application because of its horzontal scaling and push-based data collection features
+* Jaeger has a better technical fit than Prometheus in our application because of its horzontal scaling and push-based data collection features
 ### Technologies researched
 Distributed tracing with Opentelemetry
 ### Work done
