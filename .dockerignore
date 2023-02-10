@@ -1,0 +1,5 @@
+# Don't use installed NodeJS packages.
+**/node_modules
+
+# Don't use previously build application.
+**/build
