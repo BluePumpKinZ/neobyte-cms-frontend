@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AuthService} from "../services/AuthService";
+import {AuthService} from "../services/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +21,15 @@ export class AuthGuard implements CanActivate {
 
   checkLogin(url: string): true | UrlTree {
     console.log("Checking login: " + url)
-    return true;
     if (this.authService.isLoggedIn()) {
-      if (url == "/login")
-        this.router.parseUrl('/sites');
-      else
+      if (url === '/login') {
+        return this.router.parseUrl('/sites');
+      }
+      return true;
+    } else {
+      if (url === '/login') {
         return true;
+      }
     }
     return this.router.parseUrl('/login');
   }

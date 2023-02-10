@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../../../services/AuthService";
+import {AuthService} from "../../../services/auth.service";
 import {Route, Router} from "@angular/router";
 
 @Component({
@@ -9,29 +9,37 @@ import {Route, Router} from "@angular/router";
   styleUrls: ['../authentication.css']
 })
 export class LoginComponent {
+  loginForm: FormGroup;
 
-  headerValues = {
-    title: 'Login',
-    desc: 'Please enter your credentials to login'
-  }
-  form!: FormGroup;
-
-  constructor(private fb:FormBuilder, private authService: AuthService, private router: Router) {
-    this.form = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+    this.loginForm = this.formBuilder.group({
+      email: ["", [Validators.email, Validators.required,
+        Validators.minLength(5)]],
+      password: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(
+            "(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!#^~%*?&,.<>\"'\\;:{\\}\\[\\]\\|\\+\\-\\=\\_\\)\\(\\)\\`\\/\\\\\\]])[A-Za-z0-9d$@].{7,}"
+          ),
+          Validators.minLength(5)
+        ]
+      ],
+      rememberMe: [false]
     });
   }
 
-  login() {
-    const val = this.form.value;
-    if (val.email && val.password) {
-      this.authService.login(val.email, val.password).subscribe(
+  onLogin(): void {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe)
+        .subscribe(
           () => {
             console.log("User is logged in");
-            this.router.navigateByUrl('/');
+            this.router.navigate(['../sites']);
           }
         );
+    } else {
+      console.log("Form is invalid");
     }
   }
 }

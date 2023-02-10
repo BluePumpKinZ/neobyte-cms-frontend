@@ -1,9 +1,11 @@
 export type Account = {
+  token: string;
   expiresIn: number;
+}
+
+export type AccountDetails = {
   id: number;
-  email: string;
-  password: string;
   firstName: string;
   lastName: string;
-  idToken: string;
+  creationDate: Date;
 }

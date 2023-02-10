@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from "./core/components/authentication/login/login.component";
-import {LogoutComponent} from "./core/components/authentication/logout/logout.component";
 import {MainComponent} from "./core/components/main/main.component";
 import {AuthGuard} from "./core/guards/auth.guard";
 import {LostpasswordComponent} from "./core/components/authentication/lostpassword/lostpassword.component";
@@ -16,6 +15,7 @@ import {EditSourceComponent} from "./core/pages/edit-source/edit-source.componen
 import {EditPageComponent} from "./core/pages/edit-page/edit-page.component";
 import {RenderComponent} from "./core/components/render/render.component";
 import {SnippetsComponent} from "./core/pages/snippets/snippets.component";
+import {LogoutGuard} from "./core/guards/logout.guard";
 
 const routes: Routes = [
   //layout routes
@@ -49,9 +49,9 @@ const routes: Routes = [
     ]
   },
   //not layout routes
-  {path: 'sites/:siteId/page/:pageId/render', component: RenderComponent},
-  {path: 'login',  pathMatch: 'full', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
+  {path: 'sites/:siteId/page/:pageId/render',canActivate: [AuthGuard], component: RenderComponent},
+  {path: 'login',  pathMatch: 'full',canActivate: [AuthGuard], component: LoginComponent},
+  {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: '**', redirectTo: 'sites'}
 ];

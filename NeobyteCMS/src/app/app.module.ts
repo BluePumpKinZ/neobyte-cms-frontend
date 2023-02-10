@@ -6,12 +6,11 @@ import {PageNotFoundComponent} from './core/components/page-not-found/page-not-f
 import {LoginComponent} from './core/components/authentication/login/login.component';
 import {BreadcrumbComponent} from './core/components/breadcrumb/breadcrumb.component';
 import {FooterComponent} from './core/components/footer/footer.component';
-import {LogoutComponent} from './core/components/authentication/logout/logout.component';
 import {SidebarComponent} from './core/components/sidebar/sidebar.component';
 import {MainComponent} from './core/components/main/main.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AuthService} from "./core/services/AuthService";
-import {HttpClientModule} from "@angular/common/http";
+import {AuthService} from "./core/services/auth.service";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import { LostpasswordComponent } from './core/components/authentication/lostpassword/lostpassword.component';
@@ -31,6 +30,8 @@ import { EditPageComponent } from './core/pages/edit-page/edit-page.component';
 import { RenderComponent } from './core/components/render/render.component';
 import { SnippetsComponent } from './core/pages/snippets/snippets.component';
 import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-sidemodal/edit-metadata-sidemodal.component';
+import {environment} from "../environments/environment";
+import {APIInterceptor} from "./core/interceptor/api.interceptor";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,6 @@ import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-
     LoginComponent,
     BreadcrumbComponent,
     FooterComponent,
-    LogoutComponent,
     SidebarComponent,
     MainComponent,
     LostpasswordComponent,
@@ -68,6 +68,14 @@ import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-
     CodemirrorModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: APIInterceptor,
+      multi: true
+    },
+    {
+      provide: "BASE_API_URL", useValue: environment.url
+    },
     AuthService,
   ],
   bootstrap: [AppComponent]
