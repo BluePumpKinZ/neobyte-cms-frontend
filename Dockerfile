@@ -20,7 +20,7 @@ FROM nginx:1.21.0-alpine as production
 ENV NODE_ENV production
 
 # Import previously build static application.
-COPY --from=builder /app/NeobyteCMS/build /usr/share/nginx/html
+COPY --from=builder /app/NeobyteCMS/dist/neobyte-cms /usr/share/nginx/html
 
 # Import Nginx configuration.
 COPY nginx.conf /etc/nginx/conf.d/default.conf
