@@ -1,6 +1,9 @@
-<div class="alert-fixed alert alert-{{type}} alert-dismissible fade show " role="alert">
-  <strong>{{title}}</strong>
-  <br>
-  {{message}}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="message-list">
+  <div *ngFor="let message of messageService.messages"
+       class="alert-fixed alert alert-{{message.type}} alert-dismissible fade show " role="alert">
+    <strong>{{message.title}}</strong>
+    <br>
+    {{message.description}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 </div>

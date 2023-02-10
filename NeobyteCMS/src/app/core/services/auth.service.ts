@@ -3,10 +3,11 @@ import {HttpClient} from "@angular/common/http";
 import {Account} from "../models/Account";
 import {catchError, map, Observable, of, shareReplay, tap} from "rxjs";
 import * as moment from "moment";
+import {MessageService} from "./message.service";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private messageService: MessageService) {
   }
   login(email:string, password:string, rememberMe:boolean): Observable<any> {
     return this.http.post<Account>('identity/authentication/login', {email, password, rememberMe}).pipe(
@@ -16,6 +17,7 @@ export class AuthService {
     )
   }
   private setSession(authResult: Account) {
+    this.messageService.add({type: 'success', title: 'Login', description: 'Login successful'});
     const expiresAt = moment().add(authResult.expiresIn,'second');
     localStorage.setItem('id_token', authResult.token);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
