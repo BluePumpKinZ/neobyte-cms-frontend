@@ -1,16 +1,17 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Account} from "../models/Account";
-import {shareReplay, tap} from "rxjs";
+import {catchError, map, Observable, of, shareReplay, tap} from "rxjs";
 import * as moment from "moment";
 
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {
   }
-  login(email:string, password:string, rememberMe:boolean) {
+  login(email:string, password:string, rememberMe:boolean): Observable<any> {
     return this.http.post<Account>('identity/authentication/login', {email, password, rememberMe}).pipe(
       tap(res => this.setSession(res)),
+      catchError((error) => of({ error })),
       shareReplay()
     )
   }
@@ -42,6 +43,10 @@ export class AuthService {
     }
     return null;
   }
+}
 
-
+export interface LoginState {
+  Account: Account;
+  loading: boolean;
+  error: string;
 }

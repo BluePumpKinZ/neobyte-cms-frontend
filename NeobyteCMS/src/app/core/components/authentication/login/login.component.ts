@@ -10,6 +10,8 @@ import {Route, Router} from "@angular/router";
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  loading = false;
+  error = '';
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
@@ -31,11 +33,19 @@ export class LoginComponent {
 
   onLogin(): void {
     if (this.loginForm.valid) {
+      this.loading = true;
+      this.error = '';
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe)
         .subscribe(
-          () => {
+          (data) => {
+            this.loading = false;
             console.log("User is logged in");
             this.router.navigate(['../sites']);
+          },
+          (error) => {
+            console.log("Error logging in");
+            this.error = error;
+            this.loading = false;
           }
         );
     } else {
