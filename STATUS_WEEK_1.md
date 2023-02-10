@@ -5,7 +5,7 @@
 |---|---|---|
 | 07/02/2023 | Project management: issues, paper setup, portfolio, status reports,... | / |
 | 08/02/2023 | Distributed tracing setup with Opentelemetry | #23 |
-| dd/MM/YYYY | to fill in | to fill in |
+| dd/MM/YYYY | Implemented distributed tracing + technical fit research Prometheus/Jaeger | #23, #29 |
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
@@ -30,6 +30,7 @@ to fill in
 * When a component is included inside an other one, while rendering the dom, an overarching tag is added.
 #### .NET
 * Applying distributed tracing in an ASP.NET Core project is a lot harder then advertised by the speaker on the TI Conference Days.
+* Jaeger has a better technical fit then Prometheus in our application because of its horzontal scaling and push-based data collection features
 ### Technologies researched
 Distributed tracing with Opentelemetry
 ### Work done
