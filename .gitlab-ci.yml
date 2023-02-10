@@ -2,7 +2,6 @@ image: node:latest
 
 stages:
   - install
-  - build
   - run_test
   - deploy
 
@@ -29,18 +28,6 @@ install:
       prefix: nm-$CI_PROJECT_NAME
     paths: ['$APP_DIR/node_modules']
 
-
-build:
-  stage: build
-  dependencies:
-    - install
-  <<: *use_cached_node_modules
-  script:
-    - cd $APP_DIR
-    - CI=false npm run build
-  artifacts:
-    paths: ["$APP_DIR/build"]
-
 run:
   stage: run_test
   dependencies:
@@ -50,8 +37,6 @@ run:
     - cd $APP_DIR
     - CI=false npm run start &
     - cd ..
-  artifacts:
-    paths: ["$APP_DIR/build"]
 
 
 test:
@@ -62,8 +47,6 @@ test:
   script:
     - cd $APP_DIR
     # - CI=false npm run test
-  artifacts:
-    paths: ["$APP_DIR/build"]
 
 deploy:
   stage: deploy
