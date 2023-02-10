@@ -31,6 +31,7 @@ import { EditPageComponent } from './core/pages/edit-page/edit-page.component';
 import { RenderComponent } from './core/components/render/render.component';
 import { SnippetsComponent } from './core/pages/snippets/snippets.component';
 import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-sidemodal/edit-metadata-sidemodal.component';
+import { NotificationComponent } from './core/components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-
     EditPageComponent,
     RenderComponent,
     SnippetsComponent,
-    EditMetadataSidemodalComponent
+    EditMetadataSidemodalComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

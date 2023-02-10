@@ -1,0 +1,7 @@
+.alert-fixed {
+  position:fixed;
+  top: 1vw;
+  right: 1vw;
+  z-index: 9999;
+  min-width: 20vw;
+}

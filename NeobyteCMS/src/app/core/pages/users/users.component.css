@@ -15,10 +15,32 @@
   color: #aaa;
 }
 .user-box {
-  width: calc(50% - 10px);
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .user-icon {
-  width: 50px;
-  height: 50px;
+  font-size: 60px;
+  color: #e9e9e9;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.user-name {
+  font-size: 16px;
+}
+
+.fa-cog {
+  margin-left: auto;
+  color: #a6adb2;
 }

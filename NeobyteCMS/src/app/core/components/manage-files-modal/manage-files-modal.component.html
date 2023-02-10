@@ -3,38 +3,25 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="manageFilesModalLabel">Manage files</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title" style="line-height: 24px; font-size: 18px; color: #303133;">Manage files</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body d-flex">
-        <i class="fas fa-home fa-2x mr-3"></i>
-        <div class="w-100">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search files">
-          </div>
-          <div class="list-group overflow-auto" style="max-height: 300px;">
-            <a *ngFor="let file of files" class="list-group-item list-group-item-action" (click)="selectFile(file)" [ngClass]="{'bg-light': selectedFile === file}">{{ file }}</a>
+      <div class="modal-body">
+        <div class="breadcrumb" style="color: #c1c6c9; pointer-events: none; font-size: 14px; line-height: 1.5; padding: 0.25rem 0; margin-bottom: 0.5rem;">
+          <i class="fa fa-home"></i> / Map Title
+        </div>
+        <div class="file-list" style="border: 1px solid #dddfe1; border-radius: 0.25rem; background: #fff; font-size: 1rem; line-height: 1.4; overflow-y: auto;">
+          <div class="file">
+            <i class="fa fa-file-image"></i> file.PNG <span class="file-size">3MB</span>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
-          <i class="fas fa-file-upload"></i> Upload files
-        </button>
-        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
-          <i class="fas fa-folder-plus"></i> Add Folder
-        </button>
-        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
-          <i class="fas fa-edit"></i> Rename
-        </button>
-        <button type="button" class="btn btn-primary" [disabled]="!selectedFile">
-          <i class="fas fa-external-link-alt"></i> Open in new window
-        </button>
-        <button type="button" class="btn btn-danger" [disabled]="!selectedFile">
-          <i class="fas fa-trash-alt"></i> Delete
-        </button>
+        <div class="btn-group">
+          <button class="btn btn-light" type="button"><i class="fa fa-upload"></i></button>
+          <button class="btn btn-light" type="button"><i class="fa fa-folder-plus"></i></button>
+          <button class="btn btn-light" type="button"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-light" type="button"><i class="fa fa-external-link-alt"></i></button>
+          <button class="btn btn-light" type="button"><i class="fa fa-trash"></i></button>
+        </div>
       </div>
     </div>
   </div>
