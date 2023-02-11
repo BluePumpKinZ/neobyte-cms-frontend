@@ -25,23 +25,26 @@
             <a type="button" href="sites/new" class="btn btn-primary ms-auto">New Site</a>
           </div>
         </div>
-        <div class="row g-0">
-          <div class="card" style="width: 25rem;">
-            <a href="/sites/1">
-              <img class="card-img-top border-bottom"
-                   src="https://files.clientcms.com/files/f701f2c0-e378-4cd5-b947-5a221e15ec4e/screenshots/9e5ebd42-f262-4498-ba69-94cc9725191e/52393a80.jpg"
-                   alt="Card image cap">
-            </a>
-            <div class="card-body">
-              <p class="card-text">
-                <!-- Title as link in blue -->
-                <a href="/sites/1" class="text-decoration-none text-primary">Title</a>
-                <br>
-                <!-- url in grey and oposite site a gear icon -->
-                <a href="https://site.be/" class="text-decoration-none link-secondary">site.be</a>
-                <a href="/sites/1/edit" class="text-decoration-none text-secondary float-end"><i class="fa fa-cog"></i></a>
-
-              </p>
+        <div class="row">
+          <div *ngFor="let site of sites" class="col-md-4 col-sm-12">
+            <div class="card mt-md-0 mt-1">
+              <a href="/sites/{{site.websiteId}}">
+                <img class="card-img-top border-bottom"
+                     src="{{site.screenshot}}"
+                     alt="Card image cap">
+              </a>
+              <div class="card-body">
+                <p class="card-text">
+                  <!-- Title as link in blue -->
+                  <a href="/sites/{{site.websiteId}}" class="text-decoration-none text-primary">{{site.name}}</a>
+                  <br>
+                  <!-- url in grey and oposite site a gear icon -->
+                  <a href="{{site.url}}"
+                     class="text-decoration-none link-secondary">{{site.url.replace('https://', '')}}</a>
+                  <a href="/sites/{{site.websiteId}}/edit" class="text-decoration-none text-secondary float-end"><i
+                    class="fa fa-cog"></i></a>
+                </p>
+              </div>
             </div>
           </div>
         </div>

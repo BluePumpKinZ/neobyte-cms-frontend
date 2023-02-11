@@ -3,7 +3,7 @@ import {AccountDetails} from "../models/Account";
 import {HttpClient} from "@angular/common/http";
 import {MessageService} from "./message.service";
 import {Site, SiteDetails} from "../models/Site";
-import {Observable, tap} from "rxjs";
+import {catchError, Observable, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,10 @@ export class SiteService {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
-  getAllSites(): Observable<any> {
-    return this.http.get<Site[]>('/sites').pipe(
-      tap(res => this.messageService.add({type: 'success', title: 'Sites', description: 'Sites loaded'})),
+  getAllSites(): Observable<Site[]> {
+    return this.http.get<Site[]>('sites').pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Sites', description: 'Sites loaded'})),
+      catchError(this.messageService.handleError<Site[]>('Fetch Sites', [])),
     )
   }
 
