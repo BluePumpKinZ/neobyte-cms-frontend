@@ -9,10 +9,6 @@ export class MessageService {
   add(message: Message) {
     this.messages.push(message);
   }
-
-  clear() {
-    this.messages = [];
-  }
 }
 export type Message = {
   type: 'success' | 'info' | 'warning' | 'danger',
