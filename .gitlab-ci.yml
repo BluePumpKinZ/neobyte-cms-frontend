@@ -30,8 +30,6 @@ install:
 
 run:
   stage: run_test
-  dependencies:
-    - build
   <<: *use_cached_node_modules
   script:
     - cd $APP_DIR
@@ -41,8 +39,6 @@ run:
 
 test:
   stage: run_test
-  dependencies:
-    - build
   <<: *use_cached_node_modules
   script:
     - cd $APP_DIR
