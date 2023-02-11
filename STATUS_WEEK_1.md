@@ -28,9 +28,11 @@ to fill in
 * I do not understand the structure of the styling files very well.
 * When the DOM is created each component gets a custom number, therefor if you use follow up on classnames, they will not match anymore. This happend when I made some layout in one file and tried splitting it up into components.
 * When a component is included inside an other one, while rendering the dom, an overarching tag is added.
-* WRITE ABOut FORMS
+* WRITE ABOut FORMS ( 2 kinds )
 * WRITE ABOUT @INPUT TAG
 * WRITE ABOUT NO HOOKS AND HTTPCLIENT INSTEAD OF AXIOS
+* href and routerlink 
+* Write about difficulat state mgmt with RxJs or Akita but working with Subscriptions and shareReplay
 #### .NET
 * Applying distributed tracing in an ASP.NET Core project is a lot harder then advertised by the speaker on the TI Conference Days.
 * Jaeger has a better technical fit than Prometheus in our application because of its horzontal scaling and push-based data collection features
