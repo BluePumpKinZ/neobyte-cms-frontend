@@ -2,7 +2,7 @@ image: node:latest
 
 stages:
   - install
-  - run_test
+  - build_test
   - deploy
 
 variables:
@@ -28,17 +28,17 @@ install:
       prefix: nm-$CI_PROJECT_NAME
     paths: ['$APP_DIR/node_modules']
 
-run:
-  stage: run_test
+build:
+  stage: build_test
   <<: *use_cached_node_modules
   script:
     - cd $APP_DIR
-    - CI=false npm run start &
+    - CI=false npm run build
     - cd ..
 
 
 test:
-  stage: run_test
+  stage: build_test
   <<: *use_cached_node_modules
   script:
     - cd $APP_DIR
