@@ -30,22 +30,21 @@
             <a type="button" href="users/new" class="btn btn-primary ms-auto">New User</a>
           </div>
         </div>
-        <div class="row g-0">
           <div class="row">
-            <div class="col-sm-12 col-md-6">
-              <div class="user-box">
+            <div *ngFor="let account of accounts" class="col-sm-12 col-md-6">
+              <div class="user-box mt-md-0 mt-1">
                 <!-- Placeholder for the user icon -->
                 <i class="fas fa-user user-icon"></i>
                 <div class="user-info w-100">
                   <h4 class="user-name">
-                    <a href="/name/edit">John Doe</a>
+                    <a href="/{{account.accountId}}/edit">{{account.name}}</a>
                   </h4>
-                  <small class="user-role" style="color: #a6adb2;">Client</small>
+                  <small class="user-role" style="color: #a6adb2;">{{account.role}}</small>
                   <div class="d-flex w-100">
                     <small class="user-last-seen" style="color: #a6adb2; font-style: italic;">
-                      Last seen Feb 8, 2023
+                      Last seen {{toDateString(account.lastSeen)}}
                     </small>
-                    <a href="/name/edit" class="ms-auto">
+                    <a href="/{{account.accountId}}/edit" class="ms-auto">
                       <i class="fas fa-cog"></i>
                     </a>
                   </div>
@@ -53,7 +52,6 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
 
     </main>
