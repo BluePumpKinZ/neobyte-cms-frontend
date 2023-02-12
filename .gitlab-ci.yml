@@ -1,0 +1,58 @@
+image: node:latest
+
+stages:
+  - install
+  - build_test
+  - deploy
+
+variables:
+  APP_DIR: 'NeobyteCMS'
+
+.use_cached_node_modules: &use_cached_node_modules
+  cache:
+    key:
+      files: [$APP_DIR/package-lock.json]
+      prefix: nm-$CI_PROJECT_NAME
+    paths: ['$APP_DIR/node_modules']
+    policy: pull
+
+install:
+  stage: install
+  script:
+    - cd $APP_DIR
+    -  npm ci --legacy-peer-deps;
+    - cd ..
+  cache:
+    key:
+      files: [$APP_DIR/package-lock.json]
+      prefix: nm-$CI_PROJECT_NAME
+    paths: ['$APP_DIR/node_modules']
+
+build:
+  stage: build_test
+  <<: *use_cached_node_modules
+  script:
+    - cd $APP_DIR
+    - CI=false npm run build
+    - cd ..
+
+
+test:
+  stage: build_test
+  <<: *use_cached_node_modules
+  script:
+    - cd $APP_DIR
+    # - CI=false npm run test
+
+deploy:
+  stage: deploy
+  image: docker
+  services:
+    - docker:dind
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CI_REGISTRY_IMAGE/production .
+    - docker push $CI_REGISTRY_IMAGE/production
+  only:
+    refs:
+      - production
