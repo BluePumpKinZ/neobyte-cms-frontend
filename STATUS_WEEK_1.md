@@ -5,7 +5,7 @@
 |---|---|---|
 | 07/02/2023 | Project management: issues, paper setup, portfolio, status reports,... | / |
 | 08/02/2023 | Distributed tracing setup with Opentelemetry | #23 |
-| dd/MM/YYYY | Implemented distributed tracing + technical fit research Prometheus/Jaeger | #23, #29 |
+| 10/02/2023 | Implemented distributed tracing + technical fit research Prometheus/Jaeger | #23, #29 |
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
@@ -42,4 +42,4 @@ to fill in
 ### Technologies researched
 Distributed tracing with Opentelemetry
 ### Work done
-![](https://geps.dev/progress/21) -> Update at the end of Week 1
+![](https://geps.dev/progress/21)
