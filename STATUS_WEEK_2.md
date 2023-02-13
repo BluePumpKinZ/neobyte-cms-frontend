@@ -14,14 +14,11 @@
 | 08/02/2023 | Added support for snippets / building blocks and a sidebar for editing meta data | #26, #15 |
 | 10/02/2023 | Added filemanager and linked login and users with the backend | #10, #11, #18, #19, #28, #27 |
 ### Leijzen Jonas
-| Worksession | Description work done               | Issue references |
-|-------------|-------------------------------------|------------------|
-| 06/02/2023  | Jwt Identity                        | #4               |
-| 09/02/2023  | Website hosting connection          | #14              |
-| 10/02/2023  | Ftp Connection                      | #14              |
-| 11/02/2023  | Cicd / Deployment                   | #25              |
-| 12/02/2023  | Domain/Entities in repos (feedback) |                  |
-| 12/02/2023  | Website creation and editing        | #13, #31          |
+| Worksession | Description work done | Issue references |
+|---|---|---|
+| 06/02/2023 | Jwt Identity | #4 |
+| 09/02/2023 | Website hosting connection | #14 |
+| dd/MM/YYYY | to fill in | to fill in |
 ## Project Status
 ### Collaboration
 to fill in
@@ -31,11 +28,9 @@ to fill in
 * I do not understand the structure of the styling files very well.
 * When the DOM is created each component gets a custom number, therefor if you use follow up on classnames, they will not match anymore. This happend when I made some layout in one file and tried splitting it up into components.
 * When a component is included inside an other one, while rendering the dom, an overarching tag is added.
-* WRITE ABOut FORMS ( 2 kinds )
+* WRITE ABOut FORMS
 * WRITE ABOUT @INPUT TAG
 * WRITE ABOUT NO HOOKS AND HTTPCLIENT INSTEAD OF AXIOS
-* href and routerlink 
-* Write about difficulat state mgmt with RxJs or Akita but working with Subscriptions and shareReplay
 #### .NET
 * Applying distributed tracing in an ASP.NET Core project is a lot harder then advertised by the speaker on the TI Conference Days.
 * Jaeger has a better technical fit than Prometheus in our application because of its horzontal scaling and push-based data collection features
