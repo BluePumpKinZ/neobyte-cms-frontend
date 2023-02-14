@@ -44,5 +44,7 @@ to fill in
 * Third party ftp clients are few and far between and many of them lack support for certain features or are no longer maintained.
 ### Technologies researched
 Distributed tracing with Opentelemetry
+.NET Ftp client
+Ports and Adapters persistence entities
 ### Work done
 ![](https://geps.dev/progress/21)
