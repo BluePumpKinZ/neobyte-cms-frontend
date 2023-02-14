@@ -36,9 +36,12 @@ to fill in
 * WRITE ABOUT NO HOOKS AND HTTPCLIENT INSTEAD OF AXIOS
 * href and routerlink 
 * Write about difficulat state mgmt with RxJs or Akita but working with Subscriptions and shareReplay
-#### .NET
+#### Distributed Tracing
 * Applying distributed tracing in an ASP.NET Core project is a lot harder then advertised by the speaker on the TI Conference Days.
 * Jaeger has a better technical fit than Prometheus in our application because of its horzontal scaling and push-based data collection features
+#### Ftp Hosting Connection
+* Microsoft deprecated their own ftp client.
+* Third party ftp clients are few and far between and many of them lack support for certain features or are no longer maintained.
 ### Technologies researched
 Distributed tracing with Opentelemetry
 ### Work done
