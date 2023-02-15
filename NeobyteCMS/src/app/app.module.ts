@@ -34,6 +34,7 @@ import { NotificationComponent } from './core/components/notification/notificati
 import {environment} from "../environments/environment";
 import {APIInterceptor} from "./core/interceptor/api.interceptor";
 import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
+import { ManageSiteComponent } from './core/pages/manage-site/manage-site.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
     RenderComponent,
     SnippetsComponent,
     EditMetadataSidemodalComponent,
-    NotificationComponent
+    NotificationComponent,
+    ManageSiteComponent
   ],
   imports: [
     BrowserModule,

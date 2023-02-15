@@ -1,37 +1,31 @@
 import {AfterViewInit, Component, ComponentRef, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.css']
 })
-export class EditPageComponent implements AfterViewInit {
-  originalURL = "https://www.google.com"
+export class EditPageComponent implements AfterViewInit, OnInit {
+  @ViewChild('iframe') iframe!: ElementRef<HTMLIFrameElement>;
+  siteId: string | undefined;
+  pageId: string | undefined;
+  pageUrl: string | undefined;
+  constructor(
 
-  // @ViewChild('content_edit', {static: false}) iframe: ElementRef;
-  //
-  // firstInput = 5;
-  // doc;
-  // compRef: ComponentRef<InnerComponent>;
+    private _route: ActivatedRoute,
+  ) { }
+
 
 
   ngAfterViewInit(): void {
 
-    // this.doc = this.iframe!.contentDocument || this.iframe!.contentWindow;
-    //
-    // console.log(iframeContent)
 
-    // const cmsEditableElements = iframe.getElementsByClassName("cms-editable")
-    // console.log(cmsEditableElements)
-    // for (let i = 0; i < cmsEditableElements.length; i++) {
-    //   cmsEditableElements[i].setAttribute("contenteditable", "true")
-    //   cmsEditableElements[i].classList.add("mce-content-body", "cms-initialized")
-    // }
+  }
 
-    // // Add the styles to the head tag
-    // const styleTag = iframeContent.createElement("style");
-    // styleTag.innerHTML = ".home{color:white}";
-    // iframeContent.head.appendChild(styleTag);
+  ngOnInit(): void {
+    this.siteId = this._route.snapshot.paramMap.get('siteId')!;
+    this.pageId = this._route.snapshot.paramMap.get('pageId')!;
   }
 }
 

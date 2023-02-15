@@ -16,6 +16,7 @@ import {EditPageComponent} from "./core/pages/edit-page/edit-page.component";
 import {RenderComponent} from "./core/components/render/render.component";
 import {SnippetsComponent} from "./core/pages/snippets/snippets.component";
 import {LogoutGuard} from "./core/guards/logout.guard";
+import {ManageSiteComponent} from "./core/pages/manage-site/manage-site.component";
 
 const routes: Routes = [
   //layout routes
@@ -29,6 +30,7 @@ const routes: Routes = [
           {
             path: ':siteId', data: {breadcrumb: 'Edit'}, children: [
               {path: '', pathMatch: 'full', component: EditSiteComponent},
+              {path: 'edit', data: {breadcrumb: 'Manage'}, component: ManageSiteComponent},
               {
                 path: 'page/:pageId', data: {breadcrumb: 'Page'}, children: [
                   {path: '', pathMatch: 'full', component: EditPageComponent},

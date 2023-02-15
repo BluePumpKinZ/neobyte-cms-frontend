@@ -19,9 +19,10 @@ export class SiteService {
     )
   }
 
-  getSite(): Observable<any> {
-    return this.http.get<SiteDetails>('/sites/1').pipe(
-      tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Site loaded'})),
+  getSite(id: string): Observable<SiteDetails> {
+    return this.http.get<SiteDetails>(`websites/${id}`).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Site', description: 'Site loaded'})),
+      catchError(this.messageService.handleError<SiteDetails>('Fetch Site', {} as SiteDetails)),
     )
   }
 
@@ -31,9 +32,10 @@ export class SiteService {
     )
   }
 
-  updateSite(site: Site): Observable<any> {
-    return this.http.put<Site>('/sites/1', {site}).pipe(
-      tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Site updated'})),
+  updateSite(site: SiteDetails): Observable<any> {
+    return this.http.put<Site>(`websites/edit`, site).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Site', description: 'Site updated'})),
+      catchError(this.messageService.handleError<Site>('Update Site', site)),
     )
   }
 
