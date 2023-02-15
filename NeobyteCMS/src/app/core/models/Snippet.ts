@@ -1,5 +1,5 @@
 export interface Snippet {
-  snippetId: string;
+  id: string;
   name: string;
   description: string;
   source: string;

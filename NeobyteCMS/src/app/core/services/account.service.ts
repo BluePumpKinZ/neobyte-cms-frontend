@@ -32,13 +32,13 @@ export class AccountService {
   }
 
   updateAccount(account: Account): Observable<any> {
-    return this.http.put<Account>(`/api/v1/accounts/${account.accountId}`, {account}).pipe(
+    return this.http.put<Account>(`/api/v1/accounts/${account.id}`, {account}).pipe(
       tap(res => this.messageService.add({type: 'success', title: 'Account', description: 'Account updated'})),
     )
   }
 
   deleteAccount(account: Account): Observable<any> {
-    return this.http.delete<Account>(`/api/v1/accounts/${account.accountId}`).pipe(
+    return this.http.delete<Account>(`/api/v1/accounts/${account.id}`).pipe(
       tap(res => this.messageService.add({type: 'success', title: 'Account', description: 'Account deleted'})),
     )
   }

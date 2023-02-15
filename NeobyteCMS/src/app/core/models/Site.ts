@@ -1,7 +1,7 @@
 export interface Site {
-  websiteId: string;
+  id: string;
   name: string;
-  url: string;
+  domain: string;
   createdAt: Date;
   screenshot: string;
 }

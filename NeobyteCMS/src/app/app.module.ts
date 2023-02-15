@@ -33,6 +33,7 @@ import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-
 import { NotificationComponent } from './core/components/notification/notification.component';
 import {environment} from "../environments/environment";
 import {APIInterceptor} from "./core/interceptor/api.interceptor";
+import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -73,6 +74,11 @@ import {APIInterceptor} from "./core/interceptor/api.interceptor";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     },
     {

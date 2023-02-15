@@ -1,6 +1,6 @@
 export interface Page {
   createdAt: Date;
-  pageId: string;
+  id: string;
   name: string;
   path: string;
   updatedAt: Date;

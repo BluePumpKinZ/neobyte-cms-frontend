@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../../services/auth.service";
 import {Route, Router} from "@angular/router";
+import {MUID} from "../../../models/Account";
 
 @Component({
   selector: 'app-login',
@@ -37,10 +38,10 @@ export class LoginComponent {
       this.error = '';
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password, this.loginForm.value.rememberMe)
         .subscribe(
-          (data) => {
+          (data: MUID) => {
             this.loading = false;
             console.log("User is logged in");
-            this.router.navigate(['../sites']);
+            this.router.navigate(['../sites'])
           },
           (error) => {
             console.log("Error logging in");

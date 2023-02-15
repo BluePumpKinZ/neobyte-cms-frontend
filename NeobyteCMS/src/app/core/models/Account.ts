@@ -4,7 +4,7 @@ export type MUID = {
 }
 
 export interface Account {
-  accountId: string;
+  id: string;
   name: string;
   role: role;
   lastSeen: Date;

@@ -13,7 +13,7 @@ export class SiteService {
   }
 
   getAllSites(): Observable<Site[]> {
-    return this.http.get<Site[]>('sites').pipe(
+    return this.http.get<Site[]>('websites/all').pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Sites', description: 'Sites loaded'})),
       catchError(this.messageService.handleError<Site[]>('Fetch Sites', [])),
     )
@@ -26,7 +26,7 @@ export class SiteService {
   }
 
   createSite(site: Site): Observable<any> {
-    return this.http.post<Site>('/sites', {site}).pipe(
+    return this.http.post<Site>('websites/create', site).pipe(
       tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Site created'})),
     )
   }
