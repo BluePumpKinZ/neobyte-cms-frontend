@@ -26,7 +26,7 @@ to fill in
 #### Angular
 to fil in
 #### .NET
-Make use of <base> tag is html to make sure urls get redirected at original hosting
+Make use of `<base>` tag in html to make sure additional page requests (css/js/images) get redirected at original hosting
 ### Technologies researched
 to fill in
 ### Work done
