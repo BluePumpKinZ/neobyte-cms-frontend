@@ -15,9 +15,10 @@
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| 14/MM/YYYY | Website editing | #13 |
-| 15/02/2023 | Website transformation and rendering | #3, #49 |
-| dd/MM/YYYY | to fill in | to fill in |
+| 14/02/2023 | Website editing | #13 |
+| 15/02/2023 | Website transformation and rendering | #2, #3, #49 |
+| 15/02/2023 | Page source retreival and publishing | / |
+| 15/02/2023 | Accounts detail retreival | / |
 ## Project Status
 ### Collaboration
 to fill in
@@ -25,7 +26,7 @@ to fill in
 #### Angular
 to fil in
 #### .NET
-to fill in
+Make use of <base> tag is html to make sure urls get redirected at original hosting
 ### Technologies researched
 to fill in
 ### Work done
