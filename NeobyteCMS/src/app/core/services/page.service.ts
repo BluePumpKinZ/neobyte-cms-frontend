@@ -26,7 +26,7 @@ export class PageService {
     )
   }
 
-  publishSource(pageId: string, siteId: string, source: string): Observable<any> {
+  publishSource(siteId: string, pageId: string, source: string): Observable<any> {
     return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/source`, {source: source}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
       catchError(this.messageService.handleError<string>('Fetch Page', "")),

@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {html_beautify} from "js-beautify";
 import {PageService} from "../../services/page.service";
 import {ActivatedRoute} from "@angular/router";
+import {SiteService} from "../../services/site.service";
 
 @Component({
   selector: 'app-edit-source',
@@ -19,10 +20,12 @@ export class EditSourceComponent implements OnInit {
 
   siteId: string | undefined;
   pageId: string | undefined;
+  @Input() websiteURL: string | undefined;
 
   constructor(
     private _pagesService: PageService,
     private _route: ActivatedRoute,
+    private _siteService: SiteService,
   ) {}
 
   loadSourceCode() {
@@ -32,14 +35,9 @@ export class EditSourceComponent implements OnInit {
   }
 
   publishCode() {
-    this._pagesService.publishSource(this.pageId!,this.siteId!,this.codeEditor.codeMirror.getValue()).subscribe();
+    this._pagesService.publishSource(this.siteId!,this.pageId!,this.codeEditor.codeMirror.getValue()).subscribe();
   }
 
-
-
-  getText() {
-    alert(this.codeEditor.codeMirror.getValue());
-  }
   //toggle line wrapping
   toggleLineWrapping() {
     this.config.lineWrapping = !this.config.lineWrapping;
@@ -52,6 +50,9 @@ export class EditSourceComponent implements OnInit {
   ngOnInit(): void {
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
     this.pageId = this._route.snapshot.paramMap.get('pageId')!;
+    this._siteService.getSite(this.siteId!).subscribe(site => {
+        this.websiteURL = site.domain;
+    });
     this.loadSourceCode();
   }
 }
