@@ -15,8 +15,8 @@
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| 14/MM/YYYY | Website editing | #13 |
+| 15/02/2023 | Website transformation and rendering | #3, #49 |
 | dd/MM/YYYY | to fill in | to fill in |
 ## Project Status
 ### Collaboration
