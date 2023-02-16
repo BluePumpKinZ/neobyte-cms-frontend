@@ -26,7 +26,7 @@ export class PageService {
     )
   }
 
-  publishSource(siteId: string, pageId: string, source: string): Observable<any> {
+  updateSource(siteId: string, pageId: string, source: string): Observable<any> {
     return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/source`, {source: source}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
       catchError(this.messageService.handleError<string>('Fetch Page', "")),
@@ -40,7 +40,7 @@ export class PageService {
   }
 
   updatePage(siteId:string, pageId:string, innerHTML: string): Observable<any> {
-    return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/source`, {source: innerHTML}).pipe(
+    return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/render`, {source: innerHTML}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page updated'})),
       catchError(this.messageService.handleError<string>('Fetch Page', "")),
     )

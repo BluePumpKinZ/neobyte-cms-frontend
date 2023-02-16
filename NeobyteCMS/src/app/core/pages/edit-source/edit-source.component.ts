@@ -35,7 +35,7 @@ export class EditSourceComponent implements OnInit {
   }
 
   publishCode() {
-    this._pagesService.publishSource(this.siteId!,this.pageId!,this.codeEditor.codeMirror.getValue()).subscribe();
+    this._pagesService.updateSource(this.siteId!,this.pageId!,this.codeEditor.codeMirror.getValue()).subscribe();
   }
 
   //toggle line wrapping
