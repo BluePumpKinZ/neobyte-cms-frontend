@@ -1,0 +1,113 @@
+{
+  "accounts": [
+    {
+      "accountId": "123456789012",
+      "name": "My Account",
+      "role": "Admin",
+      "lastSeen": "2018-01-01T00:00:00.000Z",
+      "bio": "I am an account",
+      "canManageSites": true,
+      "canManageUsers": true,
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "email": "my.account@mail.be"
+    },
+    {
+      "accountId": "123456789013",
+      "name": "My Account 2",
+      "role": "Client",
+      "lastSeen": "2018-01-01T00:00:00.000Z",
+      "bio": "I am an account",
+      "canManageSites": true,
+      "canManageUsers": true,
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "email": "my.account2@mail.be"
+    }
+  ],
+  "files": [
+    {
+      "lastModified": "2018-01-01T00:00:00.000Z",
+      "name": "file1.jpg",
+      "path": "/file1.jpg",
+      "size": 123456,
+      "isDirectory": false
+    },
+    {
+      "lastModified": "2018-01-01T00:00:00.000Z",
+      "name": "file2.jpg",
+      "path": "/file2.jpg",
+      "size": 123456,
+      "isDirectory": false
+    }
+  ],
+  "pages": [
+    {
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "pageId": "123456789012",
+      "name": "My Page",
+      "path": "/my-page",
+      "updatedAt": "2018-01-01T00:00:00.000Z"
+    },
+    {
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "pageId": "123456789013",
+      "name": "My Page 2",
+      "path": "/my-page-2",
+      "updatedAt": "2018-01-01T00:00:00.000Z"
+    },
+    {
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "pageId": "123456789014",
+      "name": "My Page 3",
+      "path": "/my-page-3",
+      "updatedAt": "2018-01-01T00:00:00.000Z"
+    }
+  ],
+  "sites": [
+    {
+      "websiteId": "123456789012",
+      "name": "My Site",
+      "url": "https://mysite.com",
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "screenshot": "https://mysite.com/screenshot.jpg",
+      "protocol": "FTP",
+      "host": "ftp.mysite.com",
+      "port": 21,
+      "username": "myusername",
+      "password": "mypassword",
+      "homeFolder": "/",
+      "uploadFolder": "/",
+      "isLocked": false,
+      "gaProfileId": "123456789"
+    },
+    {
+      "websiteId": "123456789013",
+      "name": "My Site 2",
+      "url": "https://mysite2.com",
+      "createdAt": "2018-01-01T00:00:00.000Z",
+      "screenshot": "https://mysite2.com/screenshot.jpg",
+      "protocol": "FTP",
+      "host": "ftp.mysite2.com",
+      "port": 21,
+      "username": "myusername",
+      "password": "mypassword",
+      "homeFolder": "/",
+      "uploadFolder": "/",
+      "isLocked": false,
+      "gaProfileId": "123456789"
+    }
+  ],
+  "snippets": [
+    {
+      "snippetId": "123456789012",
+      "name": "My Snippet",
+      "description": "My Snippet Description",
+      "source": "<h1>My Snippet</h1>"
+    },
+    {
+      "snippetId": "123456789013",
+      "name": "My Snippet 2",
+      "description": "My Snippet 2 Description",
+      "source": "<h1>My Snippet 2</h1>"
+    }
+  ]
+}

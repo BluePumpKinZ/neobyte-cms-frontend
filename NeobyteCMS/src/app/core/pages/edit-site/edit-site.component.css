@@ -1,0 +1,32 @@
+/* Style the form labels */
+.form-label {
+  font-weight: bold;
+}
+
+/* Style the "Drag and drop" text */
+.container p {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Align the cancel and create block buttons */
+.container button {
+  width: 120px;
+}
+
+.wrapper {
+  position:relative;
+  z-index: 1;
+  display: block;
+}
+
+.iframeBlocker {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.5);
+}

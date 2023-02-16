@@ -1,4 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Snippet} from "../../models/Snippet";
+import {SnippetService} from "../../services/snippet.service";
+import {ActivatedRoute} from "@angular/router";
+import {MessageService} from "../../services/message.service";
 
 @Component({
   selector: 'app-snippets',
@@ -6,19 +10,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./snippets.component.css']
 })
 export class SnippetsComponent {
-  snippets = [
-    {
-      title: 'Snippet 1',
-      description: 'Description 1',
-    },
-    {
-      title: 'Snippet 2',
-      description: 'Description 2',
-    },
-    {
-      title: 'Snippet 3',
-      description: 'Description 3',
-    }
-  ];
-
 }

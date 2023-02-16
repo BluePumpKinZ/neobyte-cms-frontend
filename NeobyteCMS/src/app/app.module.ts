@@ -33,6 +33,12 @@ import { EditMetadataSidemodalComponent } from './core/components/edit-metadata-
 import { NotificationComponent } from './core/components/notification/notification.component';
 import {environment} from "../environments/environment";
 import {APIInterceptor} from "./core/interceptor/api.interceptor";
+import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
+import { ManageSiteComponent } from './core/pages/manage-site/manage-site.component';
+import { EditSnippetComponent } from './core/components/snippets/edit-snippet/edit-snippet.component';
+import { AddSnippetComponent } from './core/components/snippets/add-snippet/add-snippet.component';
+import { ListSnippetComponent } from './core/components/snippets/list-snippet/list-snippet.component';
+import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +64,12 @@ import {APIInterceptor} from "./core/interceptor/api.interceptor";
     RenderComponent,
     SnippetsComponent,
     EditMetadataSidemodalComponent,
-    NotificationComponent
+    NotificationComponent,
+    ManageSiteComponent,
+    EditSnippetComponent,
+    AddSnippetComponent,
+    ListSnippetComponent,
+    SafeurlPipe
   ],
   imports: [
     BrowserModule,
@@ -67,12 +78,18 @@ import {APIInterceptor} from "./core/interceptor/api.interceptor";
     AppRoutingModule,
     NgSelectModule,
     FormsModule,
-    CodemirrorModule
+    CodemirrorModule,
+    RouterOutlet
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true
     },
     {

@@ -16,6 +16,11 @@ import {EditPageComponent} from "./core/pages/edit-page/edit-page.component";
 import {RenderComponent} from "./core/components/render/render.component";
 import {SnippetsComponent} from "./core/pages/snippets/snippets.component";
 import {LogoutGuard} from "./core/guards/logout.guard";
+import {ManageSiteComponent} from "./core/pages/manage-site/manage-site.component";
+import {EditSnippetComponent} from "./core/components/snippets/edit-snippet/edit-snippet.component";
+import {AddSnippetComponent} from "./core/components/snippets/add-snippet/add-snippet.component";
+import {ListSnippetComponent} from "./core/components/snippets/list-snippet/list-snippet.component";
+import {SiteResolver} from "./core/services/resolvers/site.resolver";
 
 const routes: Routes = [
   //layout routes
@@ -24,24 +29,38 @@ const routes: Routes = [
       {path: '', pathMatch: 'full', redirectTo: 'sites'},
       {
         path: 'sites', data: {breadcrumb: 'Sites'}, children: [
-          {path: '', pathMatch: 'full', component: SitesComponent},
+          {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: SitesComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewSiteComponent},
           {
-            path: ':siteId', data: {breadcrumb: 'Edit'}, children: [
-              {path: '', pathMatch: 'full', component: EditSiteComponent},
+            path: ':siteId', data: {breadcrumb: (data: any) => `${data.site.name}`},
+            resolve: {site: SiteResolver}, children: [
+              {path: '', pathMatch: 'full', data: {breadcrumb: ''}, component: EditSiteComponent},
+              {path: 'edit', data: {breadcrumb: 'Manage'}, component: ManageSiteComponent},
               {
-                path: 'page/:pageId', data: {breadcrumb: 'Page'}, children: [
+                path: 'pages/:pageId', data: {breadcrumb: 'Page'}, children: [
                   {path: '', pathMatch: 'full', component: EditPageComponent},
                   {path: 'source', data: {breadcrumb: 'Edit Source'}, component: EditSourceComponent},
                 ]
               },
-              { path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent},
+              {
+                path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent,
+                children: [
+                  {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: ListSnippetComponent},
+                  {path: 'new', data: {breadcrumb: 'New Snippet'}, component: AddSnippetComponent},
+                  {
+                    path: ':snippetId', data: {breadcrumb: 'Edit Snippet'}, children: [
+                      {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: EditSnippetComponent},
+                      {path: 'edit', data: {breadcrumb: 'Edit Snippet'}, component: EditSnippetComponent},
+                    ]
+                  },
+                ]
+              },
             ]
           }]
       },
       {
         path: 'users', data: {breadcrumb: 'Users'}, children: [
-          {path: '', pathMatch: 'full', component: UsersComponent},
+          {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: UsersComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent}]
       },
       {path: 'settings', data: {breadcrumb: 'Settings'}, component: SettingsComponent},
@@ -49,8 +68,8 @@ const routes: Routes = [
     ]
   },
   //not layout routes
-  {path: 'sites/:siteId/page/:pageId/render',canActivate: [AuthGuard], component: RenderComponent},
-  {path: 'login',  pathMatch: 'full',canActivate: [AuthGuard], component: LoginComponent},
+  {path: 'sites/:siteId/pages/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
+  {path: 'login', pathMatch: 'full', canActivate: [AuthGuard], component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: '**', redirectTo: 'sites'}

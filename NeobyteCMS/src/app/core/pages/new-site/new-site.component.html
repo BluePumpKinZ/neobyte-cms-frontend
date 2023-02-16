@@ -1,13 +1,18 @@
 <app-sidebar>
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
+    <div class="sb-sidenav-menu-heading">Admin</div>
+    <a  type="button" class="nav-link" (click)="testConnection()">
+      <div class="sb-nav-link-icon"><i class="fa fa-wifi"></i></div>
+      Test Connection
+    </a>
   </div>
 
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
     <app-breadcrumb></app-breadcrumb>
     <main class="p-3 offset-md-3 col-md-5 col-sm-12">
-      <form>
+      <form [formGroup]="createSiteForm" (ngSubmit)="onCreateSite()">
         <div class="form-style">
           <div class="container">
             <ul class="nav nav-tabs" role="tablist">
@@ -25,61 +30,83 @@
               <div id="general" role="tabpanel" aria-labelledby="general-tab" class="tab-pane show active">
                 <div class="form-group">
                   <label for="WebsiteName">Name</label>
-                  <input type="text" id="WebsiteName" class="form-control" placeholder="Enter a name for your website">
+                  <input [formControlName]="'name'" type="text" id="WebsiteName" class="form-control" placeholder="Enter a name for your website">
                   <small class="form-text text-muted">Enter your website's name</small>
+                  <p class="text-danger" *ngIf="createSiteForm.get('name')?.hasError('required') && createSiteForm.get('name')?.touched">Name is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('name')?.hasError('minlength') && createSiteForm.get('name')?.touched">Name must be at least 5 characters</p>
                 </div>
                 <div class="form-group">
-                  <label for="WebsiteURL">URL</label>
-                  <input type="text" id="WebsiteURL" class="form-control" placeholder="https://example.com/">
+                  <label for="domain">domain</label>
+                  <input [formControlName]="'domain'" type="text" id="domain" class="form-control" placeholder="https://example.com/">
                   <small class="form-text text-muted">Enter your website's URL</small>
+                  <p class="text-danger" *ngIf="createSiteForm.get('domain')?.hasError('required') && createSiteForm.get('domain')?.touched">URL is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('domain')?.hasError('minlength') && createSiteForm.get('domain')?.touched">URL must be at least 5 characters</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('domain')?.hasError('pattern') && createSiteForm.get('domain')?.touched">URL must be a valid URL</p>
                 </div>
                 <hr>
                 <div class="form-group">
                   <label for="Protocol">Protocol</label>
-                  <select id="Protocol" class="form-control">
+                  <select [formControlName]="'protocol'" id="Protocol" class="form-control">
                     <option>FTP</option>
                     <option>FTP with TLS/SSL</option>
                     <option>SFTP</option>
                     <option>S3</option>
                     <option>WebDAV</option>
                   </select>
+                  <p class="text-danger" *ngIf="createSiteForm.get('protocol')?.hasError('required') && createSiteForm.get('protocol')?.touched">Protocol is required</p>
                 </div>
                 <div class="form-group d-flex">
                   <label for="Host" class="me-2">Host</label>
-                  <input type="text" id="Host" class="form-control me-2" placeholder="ftp.example.com">
+                  <input [formControlName]="'host'" type="text" id="Host" class="form-control me-2" placeholder="ftp.example.com">
                   <label for="Port">Port</label>
-                  <input type="text" id="Port" class="form-control ml-2" placeholder="21">
+                  <input [formControlName]="'port'" type="text" id="Port" class="form-control ml-2" placeholder="21">
+                  <p class="text-danger" *ngIf="createSiteForm.get('host')?.hasError('required') && createSiteForm.get('host')?.touched">Host is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('port')?.hasError('required') && createSiteForm.get('port')?.touched">Port is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('port')?.hasError('min') && createSiteForm.get('port')?.touched">Port must be at least 1</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('port')?.hasError('max') && createSiteForm.get('port')?.touched">Port must be at most 65535</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('port')?.hasError('pattern') && createSiteForm.get('port')?.touched">Port must be a number</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('port')?.hasError('maxlength') && createSiteForm.get('port')?.touched">Port must be at most 5 characters</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('port')?.hasError('minlength') && createSiteForm.get('port')?.touched">Port must be at least 1 character</p>
                 </div>
                 <div class="form-group d-flex">
                   <label for="Username" class="me-2">Username</label>
-                  <input type="text" id="Username" class="form-control me-2">
+                  <input [formControlName]="'username'" type="text" id="Username" class="form-control me-2">
                   <label for="Password">Password</label>
-                  <input type="password" id="Password" class="form-control ml-2">
+                  <input [formControlName]="'password'" type="password" id="Password" class="form-control ml-2">
+                  <p class="text-danger" *ngIf="createSiteForm.get('username')?.hasError('required') && createSiteForm.get('username')?.touched">Username is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('password')?.hasError('required') && createSiteForm.get('password')?.touched">Password is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('password')?.hasError('minlength') && createSiteForm.get('password')?.touched">Password must be at least 5 characters</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('password')?.hasError('minlength') && createSiteForm.get('password')?.touched">Password must be at least 5 characters</p>
                 </div>
                 <hr>
                 <div class="form-group d-flex">
                   <label for="HomeFolder" class="me-2">Home folder</label>
-                  <input type="text" id="HomeFolder" class="form-control me-2">
+                  <input [formControlName]="'homeFolder'" type="text" id="HomeFolder" class="form-control me-2">
                   <button class="btn btn-primary ml-2">Browse</button>
+                  <p class="text-danger" *ngIf="createSiteForm.get('homeFolder')?.hasError('required') && createSiteForm.get('homeFolder')?.touched">Home directory is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('homeFolder')?.hasError('minlength') && createSiteForm.get('homeFolder')?.touched">Home directory must be at least 5 characters</p>
                 </div>
                 <div class="form-group d-flex">
                   <label for="UploadFolder" class="me-2">Upload folder</label>
-                  <input type="text" id="UploadFolder" class="form-control me-2">
+                  <input [formControlName]="'uploadFolder'" type="text" id="UploadFolder" class="form-control me-2">
                   <button class="btn btn-primary ml-2">Browse</button>
+                  <p class="text-danger" *ngIf="createSiteForm.get('uploadFolder')?.hasError('required') && createSiteForm.get('uploadFolder')?.touched">Upload directory is required</p>
+                  <p class="text-danger" *ngIf="createSiteForm.get('uploadFolder')?.hasError('minlength') && createSiteForm.get('uploadFolder')?.touched">Upload directory must be at least 5 characters</p>
                 </div>
                 <small class="form-text text-muted">Select the folder where uploaded files will be stored.</small>
               </div>
               <div  id="services" role="tabpanel" aria-labelledby="services-tab" class="tab-pane">
                 <div class="form-group">
                   <label for="GoogleAnalytics">Connect Google Analytics</label>
-                  <input type="text" id="GoogleAnalytics" class="form-control">
+                  <input [formControlName]="'googleAnalytics'" type="text" id="GoogleAnalytics" class="form-control">
+                  <p class="text-danger" *ngIf="createSiteForm.get('googleAnalytics')?.hasError('minlength') && createSiteForm.get('googleAnalytics')?.touched">Google Analytics must be at least 5 characters</p>
                 </div>
               </div>
               <div  id="advanced" role="tabpanel" aria-labelledby="advanced-tab" class="tab-pane">
                 <div class="form-group">
                   <div class="custom-control custom-switch">
                     <input type="checkbox" class="custom-control-input" id="Lockdown">
-                    <label class="custom-control-label" for="Lockdown">Enable Lockdown</label>
+                    <label [formControlName]="'lockdown'" class="custom-control-label" for="Lockdown">Enable Lockdown</label>
                   </div>
                   <small class="form-text text-muted">When enabled, users won't be able to publish changes to the
                     site.</small>
@@ -90,7 +117,7 @@
         </div>
         <div class="d-flex justify-content-end">
           <button class="btn btn-secondary me-2">Cancel</button>
-          <button class="btn btn-primary">Create Site</button>
+          <button class="btn btn-primary"  [disabled]="!createSiteForm.valid" >Create Site</button>
         </div>
       </form>
     </main>

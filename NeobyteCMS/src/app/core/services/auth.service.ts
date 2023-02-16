@@ -1,20 +1,23 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Account} from "../models/Account";
-import {shareReplay, tap} from "rxjs";
+import {Account, MUID} from "../models/Account";
+import {catchError, map, Observable, of, shareReplay, tap} from "rxjs";
 import * as moment from "moment";
+import {MessageService} from "./message.service";
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private messageService: MessageService) {
   }
-  login(email:string, password:string, rememberMe:boolean) {
-    return this.http.post<Account>('identity/authentication/login', {email, password, rememberMe}).pipe(
+  login(email:string, password:string, rememberMe:boolean): Observable<any> {
+    return this.http.post<MUID>('identity/authentication/login', {email, password, rememberMe}).pipe(
       tap(res => this.setSession(res)),
+      catchError((error) => of({ error })),
       shareReplay()
     )
   }
-  private setSession(authResult: Account) {
+  private setSession(authResult: MUID) {
+    this.messageService.add({type: 'success', title: 'Login', description: 'Login successful'});
     const expiresAt = moment().add(authResult.expiresIn,'second');
     localStorage.setItem('id_token', authResult.token);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
@@ -35,13 +38,16 @@ export class AuthService {
 
   getExpiration() {
     const expiration = localStorage.getItem("expires_at");
-    console.log(expiration);
     if (expiration) {
       const expiresAt = JSON.parse(expiration);
       return moment(expiresAt);
     }
     return null;
   }
+}
 
-
+export interface LoginState {
+  muid: MUID;
+  loading: boolean;
+  error: string;
 }

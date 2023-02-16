@@ -1,7 +1,7 @@
 <!-- Breadcumb Area Start -->
 <div class="breadcrumbs">
   <div class="breadcrumb">
-    <span class="breadcrumb_item" *ngFor="let breadcrumb of breadcrumbs;let last = last;">
+    <span class="breadcrumb_item"  *ngFor="let breadcrumb of (breadcrumbs$ | async) ;let last = last;">
       <a *ngIf="!last" [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
         {{ breadcrumb.label }}
       </a>

@@ -1,0 +1,21 @@
+<div class="container my-5">
+  <div class="d-flex justify-content-end mb-3">
+    <a class="btn btn-primary mr-3" type="button" href="/sites/{{siteId}}/snippets/new">New Snippet</a>
+    <div class="btn-group">
+      <a *ngIf="selectedSnippet" class="btn btn-secondary" type="button" href="/sites/[{{siteId}}/snippets/{{selectedSnippet.id}}/edit">Edit</a>
+      <button *ngIf="!selectedSnippet" disabled="true" class="btn btn-secondary" type="button">Edit</button>
+
+
+      <button class="btn btn-danger" (click)="deleteSnippet()">Delete</button>
+    </div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item d-flex align-items-center" *ngFor="let snippet of snippets" (click)="selectSnippet(snippet)" type="button">
+      <i class="fas fa-cube fa-2x mr-3"></i>
+      <div>
+        <h5>{{snippet.name}}</h5>
+        <p class="text-muted">{{snippet.description}}</p>
+      </div>
+    </li>
+  </ul>
+</div>

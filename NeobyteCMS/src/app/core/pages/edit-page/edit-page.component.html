@@ -2,7 +2,7 @@
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
     <div class="sb-sidenav-menu-heading">Admin</div>
-    <a class="nav-link" href="/sites/1/page/1/source">
+    <a class="nav-link" href="/sites/{{siteId}}/pages/{{pageId}}/source">
       <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
       Edit Source
     </a>
@@ -15,19 +15,19 @@
       <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
       Manage Files
     </a>
-    <a class="nav-link" href="{{originalURL}}">
+    <a class="nav-link" href="x">
       <div class="sb-nav-link-icon"><i class="fa fa-external-link"></i></div>
       View Webpage
     </a>
     <div class="button-group">
-      <button type="button" class="btn btn-primary w-100 mb-1">Publish</button>
+      <button type="button" class="btn btn-primary w-100 mb-1" (click)="onPublishSite()">Publish</button>
       <button type="button" class="btn btn-default w-100">Cancel</button>
     </div>
   </div>
 
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
-    <iframe src="https://arnecools.be/" style="width: 100%; height: 100%"></iframe>
+    <iframe #content_edit style="width: 100%; height: 100%" sandbox="allow-same-origin"></iframe>
   </div>
 </app-sidebar>
 
