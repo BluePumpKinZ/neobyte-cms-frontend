@@ -58,7 +58,7 @@
             <div class="list-group" style="height: 700px; overflow-y: scroll;">
               <a *ngFor="let page of pages" (click)="selectPage(page)"
                  class="list-group-item list-group-item-action">
-                <a href="sites/{{siteId}}/page/{{page.id}}" class="mb-1">{{page.name}}</a>
+                <a href="sites/{{siteId}}/pages/{{page.id}}" class="mb-1">{{page.name}}</a>
                 <p class="mb-0">{{page.path}}</p>
               </a>
             </div>

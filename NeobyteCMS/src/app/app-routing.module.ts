@@ -37,7 +37,7 @@ const routes: Routes = [
               {path: '', pathMatch: 'full', data: {breadcrumb: ''}, component: EditSiteComponent},
               {path: 'edit', data: {breadcrumb: 'Manage'}, component: ManageSiteComponent},
               {
-                path: 'page/:pageId', data: {breadcrumb: 'Page'}, children: [
+                path: 'pages/:pageId', data: {breadcrumb: 'Page'}, children: [
                   {path: '', pathMatch: 'full', component: EditPageComponent},
                   {path: 'source', data: {breadcrumb: 'Edit Source'}, component: EditSourceComponent},
                 ]
@@ -68,7 +68,7 @@ const routes: Routes = [
     ]
   },
   //not layout routes
-  {path: 'sites/:siteId/page/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
+  {path: 'sites/:siteId/pages/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
   {path: 'login', pathMatch: 'full', canActivate: [AuthGuard], component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},

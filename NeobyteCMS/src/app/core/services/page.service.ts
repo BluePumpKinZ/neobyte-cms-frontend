@@ -38,4 +38,11 @@ export class PageService {
       tap(res => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
     )
   }
+
+  updatePage(siteId:string, pageId:string, innerHTML: string): Observable<any> {
+    return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/source`, {source: innerHTML}).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page updated'})),
+      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+    )
+  }
 }
