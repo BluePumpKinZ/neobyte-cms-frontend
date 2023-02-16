@@ -4,8 +4,8 @@
 | Worksession | Description work done | Issue references |
 |---|---|---|
 | 13/02/2023 | Added Jaeger to export traces to | #3 |
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| 14/02/2023 | Research Jaeger/Grafana | #3 |
+| 16/02/2023 | Presentation for sprint review 16/02, Project management | / |
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
@@ -32,4 +32,4 @@ Make use of `<base>` tag in html to make sure additional page requests (css/js/i
 ### Technologies researched
 to fill in
 ### Work done
-![](https://geps.dev/progress/30) -> Update at the end of Week 2
+![](https://geps.dev/progress/30)
