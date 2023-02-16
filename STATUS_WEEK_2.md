@@ -20,6 +20,7 @@
 | 15/02/2023 | Page source retreival and publishing | / |
 | 15/02/2023 | Accounts detail retreival | / |
 | 16/02/2023 | Snippet CRUD | [#19](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/19), [#41](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/41), [#42](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/42)
+| 16/02/2023 | Enabled accounts and authorization | [#8](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/8), [#10](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/10) |
 ## Project Status
 ### Collaboration
 to fill in
