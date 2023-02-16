@@ -38,6 +38,7 @@ import { ManageSiteComponent } from './core/pages/manage-site/manage-site.compon
 import { EditSnippetComponent } from './core/components/snippets/edit-snippet/edit-snippet.component';
 import { AddSnippetComponent } from './core/components/snippets/add-snippet/add-snippet.component';
 import { ListSnippetComponent } from './core/components/snippets/list-snippet/list-snippet.component';
+import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ListSnippetComponent } from './core/components/snippets/list-snippet/li
     ManageSiteComponent,
     EditSnippetComponent,
     AddSnippetComponent,
-    ListSnippetComponent
+    ListSnippetComponent,
+    SafeurlPipe
   ],
   imports: [
     BrowserModule,
