@@ -60,7 +60,7 @@ const routes: Routes = [
       },
       {
         path: 'users', data: {breadcrumb: 'Users'}, children: [
-          {path: '', pathMatch: 'full', component: UsersComponent},
+          {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: UsersComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent}]
       },
       {path: 'settings', data: {breadcrumb: 'Settings'}, component: SettingsComponent},
