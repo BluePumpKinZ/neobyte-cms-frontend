@@ -23,6 +23,12 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   ngAfterViewInit(): void {
   }
 
+  get_doctype(doctype: DocumentType): string {
+    return '<!DOCTYPE ' +
+      doctype.name +
+      (doctype.publicId?' PUBLIC "' + doctype.publicId + '"':'') +
+      (doctype.systemId?' "' + doctype.systemId + '"':'') + '>';
+  }
 
   ngOnInit(): void {
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
@@ -32,7 +38,9 @@ export class EditPageComponent implements AfterViewInit, OnInit {
 
   onPublishSite() {
     //get the content from the iframe and save it with the pageservice
-    this._pageService.updatePage(this.siteId!, this.pageId!, this.iframe.nativeElement.contentDocument!.documentElement.innerHTML).subscribe(
+    let pageDocument = this.iframe.nativeElement.contentDocument!;
+    const content = this.get_doctype(pageDocument.doctype!) + pageDocument.documentElement.outerHTML;
+    this._pageService.updatePage(this.siteId!, this.pageId!, content).subscribe(
       () => {
         //this._messageService.add({type: 'success', title: 'Page', description: 'Page updated'});
       });
