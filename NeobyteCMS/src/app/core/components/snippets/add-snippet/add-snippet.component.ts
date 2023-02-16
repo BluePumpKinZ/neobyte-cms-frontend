@@ -38,10 +38,6 @@ export class AddSnippetComponent implements OnInit {
     });
   }
 
-  saveSnippet(snippet: any) {
-    console.log(snippet);
-  }
-
   onCreateSnippet() {
     if (this.createSnippetForm.valid) {
       this.loading = true;
@@ -50,11 +46,9 @@ export class AddSnippetComponent implements OnInit {
         .subscribe(
           (data: Snippet) => {
             this.loading = false;
-            console.log("Snippet is created");
             this._router.navigate(['/sites', this.siteId, 'snippets'])
           },
           (error) => {
-            console.log("Error creating snippet");
             this.error = error;
             this.loading = false;
           }
@@ -64,7 +58,6 @@ export class AddSnippetComponent implements OnInit {
 
   ngOnInit(): void {
     this.siteId = this._route.parent?.snapshot.paramMap.get('siteId')!;
-    console.log(this.siteId);
   }
 
 

@@ -50,11 +50,9 @@ export class NewSiteComponent {
         .subscribe(
           (data: SiteDetails) => {
             this.loading = false;
-            console.log("Site is created");
             this._router.navigate(['../sites'])
           },
           (error) => {
-            console.log("Error creating site");
             this.error = error;
             this.loading = false;
           }

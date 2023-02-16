@@ -38,7 +38,6 @@ export class AuthService {
 
   getExpiration() {
     const expiration = localStorage.getItem("expires_at");
-    console.log(expiration);
     if (expiration) {
       const expiresAt = JSON.parse(expiration);
       return moment(expiresAt);

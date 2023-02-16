@@ -30,7 +30,6 @@ export class ListSnippetComponent implements OnInit {
   }
 
   selectSnippet(snippet: Snippet) {
-    console.log(snippet);
     this.selectedSnippet = snippet;
   }
 

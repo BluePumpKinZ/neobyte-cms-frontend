@@ -20,6 +20,7 @@ import {ManageSiteComponent} from "./core/pages/manage-site/manage-site.componen
 import {EditSnippetComponent} from "./core/components/snippets/edit-snippet/edit-snippet.component";
 import {AddSnippetComponent} from "./core/components/snippets/add-snippet/add-snippet.component";
 import {ListSnippetComponent} from "./core/components/snippets/list-snippet/list-snippet.component";
+import {SiteResolver} from "./core/services/resolvers/site.resolver";
 
 const routes: Routes = [
   //layout routes
@@ -28,11 +29,12 @@ const routes: Routes = [
       {path: '', pathMatch: 'full', redirectTo: 'sites'},
       {
         path: 'sites', data: {breadcrumb: 'Sites'}, children: [
-          {path: '', pathMatch: 'full', component: SitesComponent},
+          {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: SitesComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewSiteComponent},
           {
-            path: ':siteId', data: {breadcrumb: 'Edit'}, children: [
-              {path: '', pathMatch: 'full', component: EditSiteComponent},
+            path: ':siteId', data: {breadcrumb: (data: any) => `${data.site.name}`},
+            resolve: {site: SiteResolver}, children: [
+              {path: '', pathMatch: 'full', data: {breadcrumb: ''}, component: EditSiteComponent},
               {path: 'edit', data: {breadcrumb: 'Manage'}, component: ManageSiteComponent},
               {
                 path: 'page/:pageId', data: {breadcrumb: 'Page'}, children: [
@@ -43,11 +45,11 @@ const routes: Routes = [
               {
                 path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent,
                 children: [
-                  {path: '', pathMatch: 'full', component: ListSnippetComponent},
+                  {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: ListSnippetComponent},
                   {path: 'new', data: {breadcrumb: 'New Snippet'}, component: AddSnippetComponent},
                   {
                     path: ':snippetId', data: {breadcrumb: 'Edit Snippet'}, children: [
-                      {path: '', pathMatch: 'full', component: EditSnippetComponent},
+                      {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: EditSnippetComponent},
                       {path: 'edit', data: {breadcrumb: 'Edit Snippet'}, component: EditSnippetComponent},
                     ]
                   },

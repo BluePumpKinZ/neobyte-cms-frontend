@@ -40,17 +40,15 @@ export class LoginComponent {
         .subscribe(
           (data: MUID) => {
             this.loading = false;
-            console.log("User is logged in");
             this.router.navigate(['../sites'])
           },
           (error) => {
-            console.log("Error logging in");
             this.error = error;
             this.loading = false;
           }
         );
     } else {
-      console.log("Form is invalid");
+      // console.log("Form is invalid");
     }
   }
 }
