@@ -1,30 +1,9 @@
 <app-sidebar>
-  <!-- Sidebar Extra Nav Options -->
-  <div child-header>
-  </div>
-
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
     <app-breadcrumb></app-breadcrumb>
-    <main class="p-3 offset-md-1 col-md-10 col-sm-12">
-      <div class="container my-5">
-        <div class="d-flex justify-content-end mb-3">
-          <button class="btn btn-primary mr-3">New Snippet</button>
-          <div class="btn-group">
-            <button class="btn btn-secondary">Edit</button>
-            <button class="btn btn-danger">Delete</button>
-          </div>
-        </div>
-        <ul class="list-group">
-          <li class="list-group-item d-flex align-items-center" *ngFor="let snippet of snippets">
-            <i class="fas fa-cube fa-2x mr-3"></i>
-            <div>
-              <h5>{{snippet.title}}</h5>
-              <p class="text-muted">{{snippet.description}}</p>
-            </div>
-          </li>
-        </ul>
-      </div>
+    <main class="offset-md-3 col-md-6 col-sm-12">
+      <router-outlet></router-outlet>
     </main>
     <app-footer class="mt-auto"></app-footer>
   </div>

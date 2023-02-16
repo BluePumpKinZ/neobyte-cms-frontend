@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h1>Create New Snippet</h1>
+  <form [formGroup]="createSnippetForm" (ngSubmit)="onCreateSnippet()">
+    <div class="mb-3">
+      <label for="titleInput" class="form-label">Title</label>
+      <input type="text" class="form-control" id="titleInput" [formControlName]="'name'" name="name">
+      <p class="text-danger" *ngIf="createSnippetForm.get('name')?.hasError('required') && createSnippetForm.get('name')?.touched">Title is required</p>
+      <p class="text-danger" *ngIf="createSnippetForm.get('name')?.hasError('minlength') && createSnippetForm.get('name')?.touched">Title must be at least 3 characters</p>
+    </div>
+    <div class="mb-3">
+      <label for="descriptionInput" class="form-label">Description</label>
+      <textarea class="form-control" id="descriptionInput" rows="3" [formControlName]="'description'" name="description"></textarea>
+      <p class="text-danger" *ngIf="createSnippetForm.get('description')?.hasError('required') && createSnippetForm.get('description')?.touched">Description is required</p>
+      <p class="text-danger" *ngIf="createSnippetForm.get('description')?.hasError('minlength') && createSnippetForm.get('description')?.touched">Description must be at least 5 characters</p>
+    </div>
+    <div class="mb-3">
+      <label for="sourceTextarea" class="form-label">Source</label>
+      <ngx-codemirror
+        id="sourceTextarea"
+        class="form-control"
+        name="source"
+        [formControlName]="'content'"
+        #codeeditor
+        [(ngModel)]="code"
+        [options]="config"
+      ></ngx-codemirror>
+      <p class="text-danger" *ngIf="createSnippetForm.get('content')?.hasError('required') && createSnippetForm.get('content')?.touched">Source is required</p>
+      <p class="text-danger" *ngIf="createSnippetForm.get('content')?.hasError('minlength') && createSnippetForm.get('content')?.touched">Source must be at least 5 characters</p>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary">Cancel</button>
+      <button class="btn btn-primary" type="submit">Create Block</button>
+    </div>
+  </form>
+</div>
+

@@ -17,6 +17,9 @@ import {RenderComponent} from "./core/components/render/render.component";
 import {SnippetsComponent} from "./core/pages/snippets/snippets.component";
 import {LogoutGuard} from "./core/guards/logout.guard";
 import {ManageSiteComponent} from "./core/pages/manage-site/manage-site.component";
+import {EditSnippetComponent} from "./core/components/snippets/edit-snippet/edit-snippet.component";
+import {AddSnippetComponent} from "./core/components/snippets/add-snippet/add-snippet.component";
+import {ListSnippetComponent} from "./core/components/snippets/list-snippet/list-snippet.component";
 
 const routes: Routes = [
   //layout routes
@@ -37,7 +40,19 @@ const routes: Routes = [
                   {path: 'source', data: {breadcrumb: 'Edit Source'}, component: EditSourceComponent},
                 ]
               },
-              { path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent},
+              {
+                path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent,
+                children: [
+                  {path: '', pathMatch: 'full', component: ListSnippetComponent},
+                  {path: 'new', data: {breadcrumb: 'New Snippet'}, component: AddSnippetComponent},
+                  {
+                    path: ':snippetId', data: {breadcrumb: 'Edit Snippet'}, children: [
+                      {path: '', pathMatch: 'full', component: EditSnippetComponent},
+                      {path: 'edit', data: {breadcrumb: 'Edit Snippet'}, component: EditSnippetComponent},
+                    ]
+                  },
+                ]
+              },
             ]
           }]
       },
@@ -51,8 +66,8 @@ const routes: Routes = [
     ]
   },
   //not layout routes
-  {path: 'sites/:siteId/page/:pageId/render',canActivate: [AuthGuard], component: RenderComponent},
-  {path: 'login',  pathMatch: 'full',canActivate: [AuthGuard], component: LoginComponent},
+  {path: 'sites/:siteId/page/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
+  {path: 'login', pathMatch: 'full', canActivate: [AuthGuard], component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: '**', redirectTo: 'sites'}

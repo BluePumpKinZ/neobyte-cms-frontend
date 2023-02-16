@@ -35,6 +35,9 @@ import {environment} from "../environments/environment";
 import {APIInterceptor} from "./core/interceptor/api.interceptor";
 import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 import { ManageSiteComponent } from './core/pages/manage-site/manage-site.component';
+import { EditSnippetComponent } from './core/components/snippets/edit-snippet/edit-snippet.component';
+import { AddSnippetComponent } from './core/components/snippets/add-snippet/add-snippet.component';
+import { ListSnippetComponent } from './core/components/snippets/list-snippet/list-snippet.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,10 @@ import { ManageSiteComponent } from './core/pages/manage-site/manage-site.compon
     SnippetsComponent,
     EditMetadataSidemodalComponent,
     NotificationComponent,
-    ManageSiteComponent
+    ManageSiteComponent,
+    EditSnippetComponent,
+    AddSnippetComponent,
+    ListSnippetComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,8 @@ import { ManageSiteComponent } from './core/pages/manage-site/manage-site.compon
     AppRoutingModule,
     NgSelectModule,
     FormsModule,
-    CodemirrorModule
+    CodemirrorModule,
+    RouterOutlet
   ],
   providers: [
     {

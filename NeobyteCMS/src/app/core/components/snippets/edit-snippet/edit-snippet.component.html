@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h1>Edit Snippet</h1>
+  <form>
+    <div class="mb-3">
+      <label for="titleInput" class="form-label">Title</label>
+      <input type="text" class="form-control" id="titleInput">
+    </div>
+    <div class="mb-3">
+      <label for="descriptionInput" class="form-label">Description</label>
+      <textarea class="form-control" id="descriptionInput" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="sourceTextarea" class="form-label">Source</label>
+      <ngx-codemirror
+        id="sourceTextarea"
+        class="form-control"
+        #codeeditor
+        [(ngModel)]="content"
+        [options]="config"
+      ></ngx-codemirror>
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="button" class="btn btn-secondary">Cancel</button>
+      <button type="button" class="btn btn-primary">Create Block</button>
+    </div>
+  </form>
+</div>
+
