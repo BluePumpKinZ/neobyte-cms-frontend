@@ -15,11 +15,11 @@
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| 14/02/2023 | Website editing | [https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/13](#13) |
-| 15/02/2023 | Website transformation and rendering | #2, [https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/3](#3), [https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/49](#49) |
+| 14/02/2023 | Website editing | [#13](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/13) |
+| 15/02/2023 | Website transformation and rendering | #2, [#3](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/3), [#49](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/49) |
 | 15/02/2023 | Page source retreival and publishing | / |
 | 15/02/2023 | Accounts detail retreival | / |
-| 16/02/2023 | Snippet CRUD | [https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/19](#19), [https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/41](#41), [https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/42](#42)
+| 16/02/2023 | Snippet CRUD | [#19](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/19), [#41](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/41), [#42](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/42)
 ## Project Status
 ### Collaboration
 to fill in
