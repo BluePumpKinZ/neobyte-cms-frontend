@@ -15,7 +15,7 @@
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
+| 21/02/2023 - 23/02/2023 | Public / Home / Upload folders | [#6](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/6), [#43](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/43), [#46](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/46), [#47](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/47) |
 | dd/MM/YYYY | to fill in | to fill in |
 | dd/MM/YYYY | to fill in | to fill in |
 ## Project Status
