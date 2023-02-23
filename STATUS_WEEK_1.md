@@ -5,7 +5,7 @@
 |---|---|---|
 | 07/02/2023 | Project management: issues, paper setup, portfolio, status reports,... | / |
 | 08/02/2023 | Distributed tracing setup with Opentelemetry | #23 |
-| 10/02/2023 | Implemented distributed tracing + technical fit research Prometheus/Jaeger | #23, #29 |
+| 10/02/2023 | Implemented distributed tracing + technical fit research Prometheus/Jaeger | [#23](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/23),  [#29](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/29)|
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
