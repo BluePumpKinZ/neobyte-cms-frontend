@@ -1,4 +1,4 @@
-# Status report Week 4
+# Status report Week 5
 ## Worksheet 
 ### Cools Arne
 | Worksession | Description work done | Issue references |
@@ -9,12 +9,9 @@
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| 28/02/2023 | Test connection (using data from form while it is not submitted to test it) adn connect to backend | #21 |
-| dd/MM/YYYY | Select home and upload folder (^^) | / |
-| dd/MM/YYYY | Added fixes for CRUD users and snippets, filemanager regarding the backend | / |
-| dd/MM/YYYY | Dynamic breadcrumbs on users | / |
-| dd/MM/YYYY | Crud snippets connecten met backend | / |
-| dd/MM/YYYY | Snippet preview | / |
+| dd/MM/YYYY | Website stats with google Analytics | to fill in |
+| dd/MM/YYYY | WYSIWYG editor in the render screen toevoegen | to fill in |
+| dd/MM/YYYY | Publishen van de render afhandelen met regios ipv html page | to fill in |
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
@@ -26,10 +23,10 @@
 to fill in
 ### Findings
 #### Angular
-* -
+to fil in
 #### .NET
 to fill in
 ### Technologies researched
 to fill in
 ### Work done
-![](https://geps.dev/progress/69) -> Update at the end of Week 4
+![](https://geps.dev/progress/69) -> Update at the end of Week 5
