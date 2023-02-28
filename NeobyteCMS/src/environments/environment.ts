@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   // Add the following line:
-  url: 'https://cms.neobyte.net/api/v1'
+  url: '/api/v1/'
 };
