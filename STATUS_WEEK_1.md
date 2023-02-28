@@ -31,11 +31,13 @@ to fill in
 * I do not understand the structure of the styling files very well.
 * When the DOM is created each component gets a custom number, therefor if you use follow up on classnames, they will not match anymore. This happend when I made some layout in one file and tried splitting it up into components.
 * When a component is included inside an other one, while rendering the dom, an overarching tag is added.
-* WRITE ABOut FORMS ( 2 kinds )
-* WRITE ABOUT @INPUT TAG
-* WRITE ABOUT NO HOOKS AND HTTPCLIENT INSTEAD OF AXIOS
-* href and routerlink 
-* Write about difficulat state mgmt with RxJs or Akita but working with Subscriptions and shareReplay
+* Angular has 2 types forms (reactive and template driven). It was difficult to understand the difference.
+* Reactive forms: direct connected to object model, scalable and verified in code
+* template driven: Control in html tags, modifying existing model, simpel
+* Sharing data between components, with react its parameter driven, Angular uses tags (@input & @output) parent <-> child
+* Angular has an own httpclient which you can provide globally through dependency injection
+* href is an static method, angular does provide an extra way with routerlink to create dynamic routing to keep track of to the routing rules and active pages
+* Difficult state mgmt with RxJs or Akita but working with Subscriptions and shareReplay
 #### Distributed Tracing
 * Applying distributed tracing in an ASP.NET Core project is a lot harder then advertised by the speaker on the TI Conference Days.
 * Jaeger has a better technical fit than Prometheus in our application because of its horzontal scaling and push-based data collection features

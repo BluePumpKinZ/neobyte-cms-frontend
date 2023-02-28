@@ -9,9 +9,13 @@
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| 15/02/2023 | Added create site (connect to backend) | #1, #20 |
+| 15/02/2023 | Added source publishing (connect to backend) | #3 |
+| 15/02/2023 | Fixed website links to same as backend | / |
+| 16/02/2023 | CRUD for snippets | #36, #26, #13, #4 |
+| 16/02/2023 | Big changes: Added rendering site to edit inside iframe | #31, #5  |
+| 16/02/2023 | Publishing changes made (live) inside iframe | #5 |
+| 17/02/2023 | Dynamic breadcrumbs with interceptors | / |
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
@@ -28,7 +32,10 @@
 to fill in
 ### Findings
 #### Angular
-to fill in
+* Dynamic routing with options like (pathMatch, data, childeren, working with ids, resolvers, guards)
+* Dynamic breadcrumbs to make use of an resolver, do requests while routing. And pre-use that data
+* Use of @ViewChild decorator to get html template / component inside the view and the scope of it.
+* Using different implementations of the view lifecycle (AfterviewInit, onViewInit)
 #### .NET
 - Make use of `<base>` tag in html to make sure additional page requests (css/js/images) get redirected at original hosting
 - Ftp.dll sometimes either does not send the requests or doesn't throw when something goes wrong. Causing the website publishing to only work intermittenly
