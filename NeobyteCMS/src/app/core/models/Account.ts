@@ -5,16 +5,14 @@ export type MUID = {
 
 export interface Account {
   id: string;
-  name: string;
-  role: role;
-  lastSeen: Date;
+  username: string;
+  role: role[];
+  enabled: boolean;
 }
 
 export interface AccountDetails extends Account{
   bio: string;
-  canManageSites: boolean;
-  canManageUsers: boolean;
-  createdAt: Date;
+  creationDate: Date;
   email: string;
 }
 
