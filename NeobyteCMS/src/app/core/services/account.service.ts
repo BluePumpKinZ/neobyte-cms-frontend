@@ -12,10 +12,10 @@ export class AccountService {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
-  getAllAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>('accounts/list/all').pipe(
+  getAllAccounts(): Observable<AccountDetails[]> {
+    return this.http.get<AccountDetails[]>('accounts/list/all').pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Accounts', description: 'Accounts loaded'})),
-      catchError(this.messageService.handleError<Account[]>('Fetch Accounts', [])),
+      catchError(this.messageService.handleError<AccountDetails[]>('Fetch Accounts', [])),
     )
   }
 
