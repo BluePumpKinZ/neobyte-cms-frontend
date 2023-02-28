@@ -1,4 +1,4 @@
-# Status report Week XXX
+# Status report Week 4
 ## Worksheet 
 ### Cools Arne
 | Worksession | Description work done | Issue references |
@@ -31,4 +31,4 @@ to fill in
 ### Technologies researched
 to fill in
 ### Work done
-![](https://geps.dev/progress/69) -> Update at the end of Week XXX
+![](https://geps.dev/progress/69) -> Update at the end of Week 4
