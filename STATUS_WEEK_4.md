@@ -16,11 +16,11 @@
 | dd/MM/YYYY | Crud snippets connecten met backend | / |
 | dd/MM/YYYY | Snippet preview | / |
 ### Leijzen Jonas
-| Worksession | Description work done | Issue references |
-|---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| Worksession | Description work done | Issue references                                                                           |
+|-------------|-----------------------|--------------------------------------------------------------------------------------------|
+| 28/02/2023  | Tracing dashboard     | [#53](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/53) |
+| dd/MM/YYYY  | to fill in            | to fill in                                                                                 |
+| dd/MM/YYYY  | to fill in            | to fill in                                                                                 |
 ## Project Status
 ### Collaboration
 to fill in
