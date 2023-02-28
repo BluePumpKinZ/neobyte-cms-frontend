@@ -3,7 +3,7 @@
 ### Cools Arne
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
+| 28/02/2023 | Account password set & reset | [#16](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/16), [#20](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/20) |
 | dd/MM/YYYY | to fill in | to fill in |
 | dd/MM/YYYY | to fill in | to fill in |
 ### Derboven Maxim
