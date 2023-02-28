@@ -16,8 +16,8 @@
 | Worksession | Description work done | Issue references |
 |---|---|---|
 | 21/02/2023 - 23/02/2023 | Public / Home / Upload folders | [#6](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/6), [#43](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/43), [#46](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/46), [#47](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/47) |
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| 24/02/2023 | Unit Testing | [#55](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/55) |
+| 25/02/2023 - 26/02/2023 | Unit/Integration Testing | [#55](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/55) |
 ## Project Status
 ### Collaboration
 to fill in
@@ -25,8 +25,8 @@ to fill in
 #### Angular
 to fil in
 #### .NET
-to fill in
+To make testing easier a lot of systems have to be built so that they can be reused in every test. This applies especially to integration test
 ### Technologies researched
-to fill in
+xUnit, Faker
 ### Work done
 ![](https://geps.dev/progress/43)
