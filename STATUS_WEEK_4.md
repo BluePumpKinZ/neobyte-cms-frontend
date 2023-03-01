@@ -3,7 +3,7 @@
 ### Cools Arne
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
+| 28/02/2023 | Account password set & reset | [#16](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/16), [#20](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/20) |
 | dd/MM/YYYY | to fill in | to fill in |
 | dd/MM/YYYY | to fill in | to fill in |
 ### Derboven Maxim
@@ -14,12 +14,13 @@
 | dd/MM/YYYY | Added fixes for CRUD users and snippets, filemanager regarding the backend | / |
 | dd/MM/YYYY | Dynamic breadcrumbs on users | / |
 | dd/MM/YYYY | Crud snippets connecten met backend | / |
+| dd/MM/YYYY | Snippet preview | / |
 ### Leijzen Jonas
-| Worksession | Description work done | Issue references |
-|---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| Worksession | Description work done | Issue references                                                                           |
+|-------------|-----------------------|--------------------------------------------------------------------------------------------|
+| 28/02/2023  | Tracing dashboard     | [#53](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/53) |
+| dd/MM/YYYY  | to fill in            | to fill in                                                                                 |
+| dd/MM/YYYY  | to fill in            | to fill in                                                                                 |
 ## Project Status
 ### Collaboration
 to fill in
