@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return moment().isAfter(this.getExpiration());
+    return moment().isBefore(this.getExpiration());
   }
 
   isLoggedOut() {

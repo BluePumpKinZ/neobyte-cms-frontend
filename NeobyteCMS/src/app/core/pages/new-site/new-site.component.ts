@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MessageService} from "../../services/message.service";
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MUID} from "../../models/Account";
@@ -18,7 +18,7 @@ export class NewSiteComponent {
   constructor(
     private formBuilder: FormBuilder,
     private _messageService: MessageService,
-    private _siteService: SiteService,
+    private _siteService: WebsiteService,
     private _router: Router
   ) {
     this.createSiteForm = this.formBuilder.group({

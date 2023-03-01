@@ -7,20 +7,28 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="breadcrumb" style="color: #c1c6c9; pointer-events: none; font-size: 14px; line-height: 1.5; padding: 0.25rem 0; margin-bottom: 0.5rem;">
-          <i class="fa fa-home"></i> / Map Title
+        <div class="breadcrumb" style="color: #c1c6c9; font-size: 11px; line-height: 1.5; padding: 0.25rem 0; margin-bottom: 0.5rem;">
+          <i class="fa fa-home" style="cursor:pointer;" (click)="loadOtherDir('/uploads',-1)"></i> /
+          <span *ngFor="let dir of breadcrumbs; let i = index" style="cursor:pointer;" (click)="loadOtherDir(dir,i)">
+            {{dir}} /
+          </span>
         </div>
         <div class="file-list" style="border: 1px solid #dddfe1; border-radius: 0.25rem; background: #fff; font-size: 1rem; line-height: 1.4; overflow-y: auto;">
-          <div class="file">
-            <i class="fa fa-file-image"></i> file.PNG <span class="file-size">3MB</span>
+          <div class="file" *ngFor="let fmentry of fmentries" style="padding: 0.2rem 0.5rem;" (click)="selectEntry(fmentry)" [class.active]="fmentry === selectedFile">
+            <i [class.fa-folder]="fmentry.isDirectory" [class.fa-file-image]="!fmentry.isDirectory" class="fa  icon"></i>
+            <span *ngIf="!fmentry.isDirectory">{{fmentry.name}}</span>
+            <a href="javascript:void(0);" *ngIf="fmentry.isDirectory" (click)="loadOtherDir(fmentry.name)">{{fmentry.name}} </a>
+            <span class="file-size" *ngIf="!fmentry.isDirectory">{{getFileSizeinKB(fmentry.size)}} KB</span>
           </div>
         </div>
-        <div class="btn-group">
+        <div class="btn-group mt-4">
           <button class="btn btn-light" type="button"><i class="fa fa-upload"></i></button>
-          <button class="btn btn-light" type="button"><i class="fa fa-folder-plus"></i></button>
-          <button class="btn btn-light" type="button"><i class="fa fa-edit"></i></button>
-          <button class="btn btn-light" type="button"><i class="fa fa-external-link-alt"></i></button>
-          <button class="btn btn-light" type="button"><i class="fa fa-trash"></i></button>
+          <!-- upload file button
+          <input type="file" id="fileInput" (change)="uploadFile($event)" style="display: none;" />-->
+          <button class="btn btn-light" type="button" ><i class="fa fa-folder-plus"></i></button>
+          <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#renameModal"><i class="fa fa-edit"></i></button>
+          <a *ngIf="selectedFile" class="btn btn-light" type="button" href="{{selectedFile.name}}"><i class="fa fa-external-link-alt"></i></a>
+          <button *ngIf="selectedFile" class="btn btn-light" type="button" (click)="deleteEntry(selectedFile)"><i class="fa fa-trash"></i></button>
         </div>
       </div>
     </div>

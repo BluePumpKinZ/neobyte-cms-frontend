@@ -47,9 +47,18 @@
             <input type="text" class="form-control w-75" placeholder="Search site">
           </div>
           <div class="col-4 d-flex justify-content-end align-items-center mb-3">
-            <button class="btn btn-primary me-2">Edit</button>
-            <button class="btn btn-primary me-2">Rename</button>
-            <button class="btn btn-danger me-2">Delete</button>
+            <a type="button" class="btn btn-primary me-2" href="sites/{{siteId}}/pages/{{selectedPage!.id}}" *ngIf="selectedPage" > Edit</a>
+            <button *ngIf="!selectedPage" disabled="true" class="btn btn-primary me-2" type="button">Edit</button>
+
+            <button class="btn btn-primary me-2" *ngIf="!selectedPage" disabled="true">Rename</button>
+
+
+            <button type="button" class="btn btn-primary me-2" *ngIf="selectedPage" data-bs-toggle="modal" data-bs-target="#renameModal">
+              Rename
+            </button>
+
+            <button class="btn btn-danger me-2" *ngIf="selectedPage">Delete</button>
+            <button class="btn btn-danger me-2" *ngIf="!selectedPage" disabled="true">Delete</button>
             <button class="btn btn-success">New Site</button>
           </div>
         </div>
@@ -57,7 +66,7 @@
           <div class="col-4">
             <div class="list-group" style="height: 700px; overflow-y: scroll;">
               <a *ngFor="let page of pages" (click)="selectPage(page)"
-                 class="list-group-item list-group-item-action">
+                 class="list-group-item list-group-item-action" [class.active]="selectedPage?.id === page.id">
                 <a href="sites/{{siteId}}/pages/{{page.id}}" class="mb-1">{{page.name}}</a>
                 <p class="mb-0">{{page.path}}</p>
               </a>
@@ -80,3 +89,5 @@
     <app-footer class="mt-auto"></app-footer>
   </div>
 </app-sidebar>
+
+<app-rename-modal [rename]=""></app-rename-modal>

@@ -8,7 +8,7 @@ import {catchError, Observable, tap} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class SiteService {
+export class WebsiteService {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 

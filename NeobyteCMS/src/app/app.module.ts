@@ -40,6 +40,7 @@ import { ListSnippetComponent } from './core/components/snippets/list-snippet/li
 import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
 import { UserComponent } from './core/pages/user/user.component';
+import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { UserComponent } from './core/pages/user/user.component';
     ListSnippetComponent,
     SafeurlPipe,
     EditUserComponent,
-    UserComponent
+    UserComponent,
+    RenameModalComponent
   ],
   imports: [
     BrowserModule,

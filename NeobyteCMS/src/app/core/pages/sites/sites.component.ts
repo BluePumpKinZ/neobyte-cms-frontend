@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 import {Site} from "../../models/Site";
 
 @Component({
@@ -9,7 +9,7 @@ import {Site} from "../../models/Site";
 })
 export class SitesComponent implements OnInit {
   sites: Site[] | undefined;
-  constructor(private siteService: SiteService) { }
+  constructor(private siteService: WebsiteService) { }
 
   ngOnInit(): void {
     this.siteService.getAllSites().subscribe(sites => {

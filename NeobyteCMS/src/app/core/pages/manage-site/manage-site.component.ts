@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SiteDetails} from "../../models/Site";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "../../services/message.service";
 
@@ -15,7 +15,7 @@ export class ManageSiteComponent implements OnInit {
 
   constructor(
     private _messageService: MessageService,
-    private _siteService: SiteService,
+    private _siteService: WebsiteService,
     private _router: Router,
     private _route: ActivatedRoute,
   ) {
