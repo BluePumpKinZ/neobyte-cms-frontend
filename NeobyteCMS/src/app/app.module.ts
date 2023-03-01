@@ -42,6 +42,7 @@ import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
 import { UserComponent } from './core/pages/user/user.component';
 import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
 import {EditorModule} from "@tinymce/tinymce-angular";
+import {ErrorInterceptor} from "./core/interceptor/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -91,6 +92,11 @@ import {EditorModule} from "@tinymce/tinymce-angular";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     },
     {

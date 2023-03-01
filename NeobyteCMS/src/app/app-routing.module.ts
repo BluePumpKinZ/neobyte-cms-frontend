@@ -78,7 +78,7 @@ const routes: Routes = [
   },
   //not layout routes
   {path: 'sites/:siteId/pages/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
-  {path: 'login', pathMatch: 'full', canActivate: [AuthGuard], component: LoginComponent},
+  {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: '**', redirectTo: 'sites'}

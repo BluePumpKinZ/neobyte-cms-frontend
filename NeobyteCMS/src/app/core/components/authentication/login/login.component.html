@@ -42,7 +42,6 @@
           Remember me
         </label>
       </div>
-      <p class="text-info" *ngIf="loading">Loading...</p>
       <p class="text-danger" *ngIf="error">Error: {{ error }}</p>
     </div>
 
@@ -50,7 +49,10 @@
       <div class="form-actions">
         <input type="hidden" name="redirect" value=""/>
         <input type="hidden" name="cmd" value="login"/>
-        <button id="login-button" class="btn btn-block btn-primary" [disabled]="!loginForm.valid" type="submit"><span data-lang="Login">Login</span>
+        <button id="login-button" class="btn btn-block btn-primary" [disabled]="!loginForm.valid" type="submit"><span data-lang="Login">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Login
+        </span>
         </button>
       </div>
     </div>
