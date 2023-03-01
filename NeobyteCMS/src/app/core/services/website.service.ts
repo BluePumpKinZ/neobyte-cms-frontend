@@ -26,6 +26,13 @@ export class WebsiteService {
     )
   }
 
+  testConnection(protocol: string, host: string, port: number, username: string, password: string): Observable<any> {
+    return this.http.put<any>('remote-hosting/verify',{protocol, host, port, username, password}).pipe(
+      tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Connection in progress'})),
+      catchError(this.messageService.handleError('Error while making connection', [])),
+    )
+  }
+
   createSite(site: Site): Observable<any> {
     return this.http.post<Site>('websites/create', site).pipe(
       tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Site created'})),

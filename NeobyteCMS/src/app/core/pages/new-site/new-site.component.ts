@@ -40,6 +40,14 @@ export class NewSiteComponent {
 
   testConnection() {
     this._messageService.add({type: 'info', title: 'Test Connection', description: 'Testing connection...'});
+    this._siteService.testConnection(this.createSiteForm.value.protocol, this.createSiteForm.value.host, this.createSiteForm.value.port, this.createSiteForm.value.username, this.createSiteForm.value.password).subscribe(
+      (data: any) => {
+        if (data.valid)
+          this._messageService.add({type: 'success', title: 'Test Connection', description: 'Connection successful'});
+        else
+          this._messageService.add({type: 'danger', title: 'Test Connection', description: 'Connection failed'});
+      }
+    );
   }
 
   onCreateSite() {
