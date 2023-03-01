@@ -15,6 +15,13 @@ export class SitesComponent implements OnInit {
     this.siteService.getAllSites().subscribe(sites => {
       this.sites = sites;
     });
+
+    // tinymce.init({
+    //   selector: 'textarea',  // change this value according to your HTML
+    //   toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent'
+    // });
   }
+
+
 
 }

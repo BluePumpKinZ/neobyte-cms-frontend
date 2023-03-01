@@ -41,6 +41,7 @@ import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
 import { UserComponent } from './core/pages/user/user.component';
 import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
+import {EditorModule} from "@tinymce/tinymce-angular";
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { RenameModalComponent } from './core/components/rename-modal/rename-moda
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
