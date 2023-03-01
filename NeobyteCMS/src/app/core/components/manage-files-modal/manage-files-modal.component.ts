@@ -20,10 +20,7 @@ export class ManageFilesModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
       this.getEntriesSorted(this.siteId!, this.currentPath);
-
-    }, 1000);
   }
 
   getEntriesSorted(siteId: string, path: string) {
