@@ -4,7 +4,7 @@
 | Worksession | Description work done | Issue references |
 |---|---|---|
 | 28/02/2023 | Account password set & reset | [#16](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/16), [#20](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/20) |
-| 29/02/2023 | Account password reset, Testing, Research Google Analytics, Bugfixing, MinimalAPIvsControllerAPI | [#20](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/20), [#55](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/55), [#7](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/7), [#1](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/research/-/issues/1) |
+| 01/03/2023 | Account password reset, Testing, Research Google Analytics, Bugfixing, MinimalAPIvsControllerAPI | [#20](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/20), [#55](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/55), [#7](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/7), [#1](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/research/-/issues/1) |
 | dd/MM/YYYY | to fill in | to fill in |
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
