@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {Page} from "../../models/Page";
+import {PageService} from "../../services/page.service";
 
 @Component({
   selector: 'app-rename-modal',
@@ -7,13 +9,17 @@ import {Component, Input} from '@angular/core';
 })
 export class RenameModalComponent {
 
-  @Input() rename: ((args: any) => void) | undefined;
+  @Input() page: Page | undefined;
+  @Input() siteId: string | undefined;
 
-  constructor() { }
-
-  renameFile() {
-    this.rename?.call(this, {name: 'new name'});
+  constructor(
+    private _pagesService: PageService,
+  ) {
   }
 
-
+  onRenamePage() {
+    if (this.page) {
+      this._pagesService.updatePage(this.siteId!, this.page.id, this.page.name, this.page.path).subscribe();
+    }
+  }
 }

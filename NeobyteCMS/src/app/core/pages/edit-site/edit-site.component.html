@@ -19,7 +19,7 @@
       <div class="sb-nav-link-icon"><i class="fa-regular fa-plus"></i></div>
       New Page
     </a>
-    <a class="nav-link" href="/profile">
+    <a class="nav-link" type="button" data-bs-toggle="modal" data-bs-target="#manageFilesModal">
       <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
       Manage Files
     </a>
@@ -90,4 +90,5 @@
   </div>
 </app-sidebar>
 
-<app-rename-modal [rename]=""></app-rename-modal>
+<app-rename-modal siteId="{{siteId}}" [page]="selectedPage"></app-rename-modal>
+<app-manage-files-modal siteId="{{siteId}}"></app-manage-files-modal>
