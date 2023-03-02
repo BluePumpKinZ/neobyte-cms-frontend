@@ -90,16 +90,12 @@ import {
     OpenTelemetryInterceptorModule.forRoot({
       commonConfig: {
         console: false,
-        production: false,
+        production: environment.production,
         serviceName: 'Neobyte.CMS.Frontend',
         probabilitySampler: '1',
       },
       zipkinConfig: {
-        url: 'http://localhost:5110/api/traces',
-        headers: {
-          'Content-Type': 'application/json',
-          'Cache-Control': 'no-cache',
-        }
+        url: environment.url + 'tracing',
       }
     }),
     ZipkinExporterModule,
