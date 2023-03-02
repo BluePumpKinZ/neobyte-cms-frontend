@@ -43,6 +43,11 @@ import { UserComponent } from './core/pages/user/user.component';
 import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
 import {EditorModule} from "@tinymce/tinymce-angular";
 import {ErrorInterceptor} from "./core/interceptor/error.interceptor";
+import {
+  OpenTelemetryInterceptorModule,
+  CompositePropagatorModule,
+  ZipkinExporterModule
+} from '@jufab/opentelemetry-angular-interceptor';
 
 @NgModule({
   declarations: [
@@ -86,7 +91,20 @@ import {ErrorInterceptor} from "./core/interceptor/error.interceptor";
     NgSelectModule,
     FormsModule,
     CodemirrorModule,
-    RouterOutlet
+    RouterOutlet,
+    OpenTelemetryInterceptorModule.forRoot({
+      commonConfig: {
+        console: false,
+        production: environment.production,
+        serviceName: 'Neobyte.CMS.Frontend',
+        probabilitySampler: '1',
+      },
+      zipkinConfig: {
+        url: environment.url + 'tracing',
+      }
+    }),
+    ZipkinExporterModule,
+    CompositePropagatorModule,
   ],
   providers: [
     {
