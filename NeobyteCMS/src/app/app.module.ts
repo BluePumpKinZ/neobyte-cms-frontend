@@ -40,6 +40,11 @@ import { ListSnippetComponent } from './core/components/snippets/list-snippet/li
 import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
 import { UserComponent } from './core/pages/user/user.component';
+import {
+  OpenTelemetryInterceptorModule,
+  CompositePropagatorModule,
+  ZipkinExporterModule
+} from '@jufab/opentelemetry-angular-interceptor';
 
 @NgModule({
   declarations: [
@@ -81,7 +86,24 @@ import { UserComponent } from './core/pages/user/user.component';
     NgSelectModule,
     FormsModule,
     CodemirrorModule,
-    RouterOutlet
+    RouterOutlet,
+    OpenTelemetryInterceptorModule.forRoot({
+      commonConfig: {
+        console: false,
+        production: false,
+        serviceName: 'Neobyte.CMS.Frontend',
+        probabilitySampler: '1',
+      },
+      zipkinConfig: {
+        url: 'http://localhost:5110/api/traces',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
+        }
+      }
+    }),
+    ZipkinExporterModule,
+    CompositePropagatorModule,
   ],
   providers: [
     {
