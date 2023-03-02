@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SiteDetails} from "../../models/Site";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MessageService} from "../../services/message.service";
 
@@ -15,7 +15,7 @@ export class ManageSiteComponent implements OnInit {
 
   constructor(
     private _messageService: MessageService,
-    private _siteService: SiteService,
+    private _siteService: WebsiteService,
     private _router: Router,
     private _route: ActivatedRoute,
   ) {
@@ -23,6 +23,14 @@ export class ManageSiteComponent implements OnInit {
 
   testConnection() {
     this._messageService.add({type: 'info', title: 'Test Connection', description: 'Testing connection...'});
+    this._siteService.testConnection(this.site!.protocol, this.site!.host, this.site!.port, this.site!.username, this.site!.password).subscribe(
+      (data: any) => {
+        if (data.valid)
+          this._messageService.add({type: 'success', title: 'Test Connection', description: 'Connection successful'});
+        else
+          this._messageService.add({type: 'danger', title: 'Test Connection', description: 'Connection failed'});
+      }
+    );
   }
 
   onUpdateSite() {

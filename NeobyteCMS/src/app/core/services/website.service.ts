@@ -8,7 +8,7 @@ import {catchError, Observable, tap} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class SiteService {
+export class WebsiteService {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
@@ -23,6 +23,13 @@ export class SiteService {
     return this.http.get<SiteDetails>(`websites/${id}`).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Site', description: 'Site loaded'})),
       catchError(this.messageService.handleError<SiteDetails>('Fetch Site', {} as SiteDetails)),
+    )
+  }
+
+  testConnection(protocol: string, host: string, port: number, username: string, password: string): Observable<any> {
+    return this.http.post<any>('remote-hosting/verify',{protocol, host, port, username, password}).pipe(
+      tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Connection in progress'})),
+      catchError(this.messageService.handleError('Error while making connection', [])),
     )
   }
 

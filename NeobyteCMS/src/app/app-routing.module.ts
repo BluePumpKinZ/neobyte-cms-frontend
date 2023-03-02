@@ -22,6 +22,7 @@ import {ListSnippetComponent} from "./core/components/snippets/list-snippet/list
 import {SiteResolver} from "./core/services/resolvers/site.resolver";
 import {EditUserComponent} from "./core/pages/edit-user/edit-user.component";
 import {UserComponent} from "./core/pages/user/user.component";
+import {UserResolver} from "./core/services/resolvers/user.resolver";
 
 const routes: Routes = [
   //layout routes
@@ -64,7 +65,7 @@ const routes: Routes = [
           {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: UsersComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent},
           {
-            path: ':userId', data: {breadcrumb: (data: any) => `${data.user.name}`}, children: [
+            path: ':userId', data: {breadcrumb: (data: any) => `${data.user.username}`}, resolve: {user: UserResolver}, children: [
               {path: '', pathMatch: 'full', data: {breadcrumb: ''}, component: UserComponent},
               {path: 'edit', data: {breadcrumb: 'Edit'}, component: EditUserComponent},
             ]
@@ -77,7 +78,7 @@ const routes: Routes = [
   },
   //not layout routes
   {path: 'sites/:siteId/pages/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
-  {path: 'login', pathMatch: 'full', canActivate: [AuthGuard], component: LoginComponent},
+  {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: '**', redirectTo: 'sites'}

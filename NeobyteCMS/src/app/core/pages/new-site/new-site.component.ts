@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {MessageService} from "../../services/message.service";
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MUID} from "../../models/Account";
@@ -18,7 +18,7 @@ export class NewSiteComponent {
   constructor(
     private formBuilder: FormBuilder,
     private _messageService: MessageService,
-    private _siteService: SiteService,
+    private _siteService: WebsiteService,
     private _router: Router
   ) {
     this.createSiteForm = this.formBuilder.group({
@@ -40,6 +40,14 @@ export class NewSiteComponent {
 
   testConnection() {
     this._messageService.add({type: 'info', title: 'Test Connection', description: 'Testing connection...'});
+    this._siteService.testConnection(this.createSiteForm.value.protocol, this.createSiteForm.value.host, this.createSiteForm.value.port, this.createSiteForm.value.username, this.createSiteForm.value.password).subscribe(
+      (data: any) => {
+        if (data.valid)
+          this._messageService.add({type: 'success', title: 'Test Connection', description: 'Connection successful'});
+        else
+          this._messageService.add({type: 'danger', title: 'Test Connection', description: 'Connection failed'});
+      }
+    );
   }
 
   onCreateSite() {

@@ -40,6 +40,9 @@ import { ListSnippetComponent } from './core/components/snippets/list-snippet/li
 import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
 import { UserComponent } from './core/pages/user/user.component';
+import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
+import {EditorModule} from "@tinymce/tinymce-angular";
+import {ErrorInterceptor} from "./core/interceptor/error.interceptor";
 import {
   OpenTelemetryInterceptorModule,
   CompositePropagatorModule,
@@ -76,10 +79,12 @@ import {
     ListSnippetComponent,
     SafeurlPipe,
     EditUserComponent,
-    UserComponent
+    UserComponent,
+    RenameModalComponent
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -105,6 +110,11 @@ import {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     },
     {

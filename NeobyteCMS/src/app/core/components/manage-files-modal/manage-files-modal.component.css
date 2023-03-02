@@ -1,0 +1,24 @@
+.file-size {
+    font-size: 14px;
+    color: #999;
+  float:right;
+}
+
+.icon {
+  color: #c1c6c9;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.active {
+  color: white!important;
+  background-color: #0dbbff;
+}
+
+.active .icon {
+  color: white!important;
+}
+
+.active .file-size {
+  color: white!important;
+}
