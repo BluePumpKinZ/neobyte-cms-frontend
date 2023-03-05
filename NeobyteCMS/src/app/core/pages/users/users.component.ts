@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Site} from "../../models/Site";
-import {Account} from "../../models/Account";
-import {SiteService} from "../../services/site.service";
+import {Account, AccountDetails} from "../../models/Account";
+import {WebsiteService} from "../../services/website.service";
 import {AccountService} from "../../services/account.service";
 
 @Component({
@@ -10,7 +10,7 @@ import {AccountService} from "../../services/account.service";
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  accounts: Account[] | undefined;
+  accounts: AccountDetails[] | undefined;
 
   constructor(private accountService: AccountService) { }
 

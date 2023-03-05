@@ -1,6 +1,6 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {Site} from "../../models/Site";
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 import {Page} from "../../models/Page";
 import {PageService} from "../../services/page.service";
 import {ActivatedRoute} from "@angular/router";
@@ -32,6 +32,22 @@ export class EditSiteComponent  implements OnInit {
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
     this._pagesService.getPages(this.siteId).subscribe(pages => {
       this.pages = pages;
+    });
+  }
+
+  renamePage(page: Page, newName: string) {
+    page.name = newName;
+    this._pagesService.updatePage(this.siteId!, page.id, page.name, page.path).subscribe();
+  }
+
+  deletePage(page: Page) {
+    this.pages = this.pages?.filter(p => p.id !== page.id);
+    this._pagesService.deletePage(this.siteId!, page.id).subscribe();
+  }
+
+  createPage(name: string, path: string) {
+    this._pagesService.createPage(this.siteId!, name, path).subscribe(page => {
+      this.pages?.push(page);
     });
   }
 }

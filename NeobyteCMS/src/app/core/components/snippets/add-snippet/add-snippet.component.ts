@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Snippet} from "../../../models/Snippet";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MessageService} from "../../../services/message.service";
-import {SiteService} from "../../../services/site.service";
+import {WebsiteService} from "../../../services/website.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SnippetService} from "../../../services/snippet.service";
 

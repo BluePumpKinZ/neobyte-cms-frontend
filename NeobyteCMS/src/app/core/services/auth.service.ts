@@ -1,26 +1,29 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Account, MUID} from "../models/Account";
-import {catchError, map, Observable, of, shareReplay, tap} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, of, shareReplay, tap} from "rxjs";
 import * as moment from "moment";
 import {MessageService} from "./message.service";
 
 @Injectable()
 export class AuthService {
+  // private currentUserSubject: BehaviorSubject<MUID>;
+  // public currentUser: Observable<MUID>;
   constructor(private http: HttpClient, private messageService: MessageService) {
+    // this.currentUserSubject = new BehaviorSubject<MUID>(JSON.parse(localStorage.getItem('currentUser')!));
+    // this.currentUser = this.currentUserSubject.asObservable();
   }
-  login(email:string, password:string, rememberMe:boolean): Observable<any> {
+
+  login(email: string, password: string, rememberMe: boolean): Observable<any> {
     return this.http.post<MUID>('identity/authentication/login', {email, password, rememberMe}).pipe(
-      tap(res => this.setSession(res)),
-      catchError((error) => of({ error })),
-      shareReplay()
+      map(res => {
+        this.messageService.add({type: 'success', title: 'Login', description: 'Login successful'});
+        const expiresAt = moment().add(res.expiresIn, 'second');
+        localStorage.setItem('id_token', res.token);
+        localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+      }),
+      catchError(this.messageService.handleError<MUID>('Login', {} as MUID)),
     )
-  }
-  private setSession(authResult: MUID) {
-    this.messageService.add({type: 'success', title: 'Login', description: 'Login successful'});
-    const expiresAt = moment().add(authResult.expiresIn,'second');
-    localStorage.setItem('id_token', authResult.token);
-    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
   }
 
   logout() {
@@ -29,7 +32,16 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return moment().isAfter(this.getExpiration());
+    if (!this.getExpiration()) {
+      return false;
+    }
+    if (localStorage.getItem("expires_at"))
+      return true;
+    if (this.getExpiration() && moment().isBefore(this.getExpiration())) {
+      this.logout()
+      return moment().isBefore(this.getExpiration());
+    }
+    return false;
   }
 
   isLoggedOut() {

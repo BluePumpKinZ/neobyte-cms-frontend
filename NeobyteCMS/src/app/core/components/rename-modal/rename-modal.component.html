@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="renameModal" tabindex="-1" aria-labelledby="renameModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="renameModalLabel">Rename</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form (ngSubmit)="onRenamePage()" *ngIf="page">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="renameInput">New Name:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="renameInput" [(ngModel)]="page.name"
+                     placeholder="Enter new name" name="newName">
+              <span class="input-group-text">{{page.path}}</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" type="submit">Rename</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -12,6 +12,19 @@ export class PageService {
   constructor(private http: HttpClient, private messageService: MessageService) {
   }
 
+  createEmptyPage(siteId: string, name:string, path: string ): Observable<any> {
+    return this.http.post<Page>(`websites/${siteId}/pages/add/empty`, {"name":name,"path":path}).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page created'})),
+      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+    )
+  }
+  createPage(siteId: string, name:string, path: string ): Observable<any> {
+    return this.http.post<Page>(`websites/${siteId}/pages/add/existing`, {"name":name,"path":path}).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page created'})),
+      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+    )
+  }
+
   getPages(id: string): Observable<any> {
     return this.http.get<Page[]>(`websites/${id}/pages`).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Pages', description: 'Pages loaded'})),
@@ -26,6 +39,21 @@ export class PageService {
     )
   }
 
+  updatePage(siteId:string, pageId: string, name:string, path: string): Observable<any> {
+    return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/edit`, {"name":name,"path":path}).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page updated'})),
+      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+    )
+  }
+
+  publishPage(siteId:string, pageId:string, innerHTML: string): Observable<any> {
+    return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/render`, {source: innerHTML}).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page updated'})),
+      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+    )
+  }
+
+
   updateSource(siteId: string, pageId: string, source: string): Observable<any> {
     return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/source`, {source: source}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
@@ -33,15 +61,9 @@ export class PageService {
     )
   }
 
-  getPage(): Observable<any> {
-    return this.http.get<Page>('/pages/1').pipe(
-      tap(res => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
-    )
-  }
-
-  updatePage(siteId:string, pageId:string, innerHTML: string): Observable<any> {
-    return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/render`, {source: innerHTML}).pipe(
-      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page updated'})),
+  deletePage(siteId: string, pageId: string): Observable<any> {
+    return this.http.delete<Page>(`websites/${siteId}/pages/${pageId}/delete`).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page deleted'})),
       catchError(this.messageService.handleError<string>('Fetch Page', "")),
     )
   }

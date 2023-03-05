@@ -8,7 +8,6 @@ import {SitesComponent} from "./core/pages/sites/sites.component";
 import {UsersComponent} from "./core/pages/users/users.component";
 import {NewUserComponent} from "./core/pages/new-user/new-user.component";
 import {NewSiteComponent} from "./core/pages/new-site/new-site.component";
-import {SettingsComponent} from "./core/pages/settings/settings.component";
 import {ProfileComponent} from "./core/pages/profile/profile.component";
 import {EditSiteComponent} from "./core/pages/edit-site/edit-site.component";
 import {EditSourceComponent} from "./core/pages/edit-source/edit-source.component";
@@ -21,6 +20,9 @@ import {EditSnippetComponent} from "./core/components/snippets/edit-snippet/edit
 import {AddSnippetComponent} from "./core/components/snippets/add-snippet/add-snippet.component";
 import {ListSnippetComponent} from "./core/components/snippets/list-snippet/list-snippet.component";
 import {SiteResolver} from "./core/services/resolvers/site.resolver";
+import {EditUserComponent} from "./core/pages/edit-user/edit-user.component";
+import {UserComponent} from "./core/pages/user/user.component";
+import {UserResolver} from "./core/services/resolvers/user.resolver";
 
 const routes: Routes = [
   //layout routes
@@ -61,15 +63,22 @@ const routes: Routes = [
       {
         path: 'users', data: {breadcrumb: 'Users'}, children: [
           {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: UsersComponent},
-          {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent}]
+          {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent},
+          {
+            path: ':userId', data: {breadcrumb: (data: any) => `${data.user.username}`}, resolve: {user: UserResolver}, children: [
+              {path: '', pathMatch: 'full', data: {breadcrumb: ''}, component: UserComponent},
+              {path: 'edit', data: {breadcrumb: 'Edit'}, component: EditUserComponent},
+            ]
+          },
+        ]
       },
-      {path: 'settings', data: {breadcrumb: 'Settings'}, component: SettingsComponent},
+      // {path: 'settings', data: {breadcrumb: 'Settings'}, component: SettingsComponent},
       {path: 'profile', data: {breadcrumb: 'Profile'}, component: ProfileComponent},
     ]
   },
   //not layout routes
   {path: 'sites/:siteId/pages/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
-  {path: 'login', pathMatch: 'full', canActivate: [AuthGuard], component: LoginComponent},
+  {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: '**', redirectTo: 'sites'}

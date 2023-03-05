@@ -40,7 +40,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
     //get the content from the iframe and save it with the pageservice
     let pageDocument = this.iframe.nativeElement.contentDocument!;
     const content = this.get_doctype(pageDocument.doctype!) + pageDocument.documentElement.outerHTML;
-    this._pageService.updatePage(this.siteId!, this.pageId!, content).subscribe(
+    this._pageService.publishPage(this.siteId!, this.pageId!, content).subscribe(
       () => {
         //this._messageService.add({type: 'success', title: 'Page', description: 'Page updated'});
       });

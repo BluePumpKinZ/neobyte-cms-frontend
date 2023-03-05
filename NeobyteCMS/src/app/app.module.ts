@@ -18,7 +18,6 @@ import { SitesComponent } from './core/pages/sites/sites.component';
 import { UsersComponent } from './core/pages/users/users.component';
 import { NewUserComponent } from './core/pages/new-user/new-user.component';
 import { NewSiteComponent } from './core/pages/new-site/new-site.component';
-import { SettingsComponent } from './core/pages/settings/settings.component';
 import { UnsavedChangesModalComponent } from './core/components/unsaved-changes-modal/unsaved-changes-modal.component';
 import { ProfileComponent } from './core/pages/profile/profile.component';
 import { EditSiteComponent } from './core/pages/edit-site/edit-site.component';
@@ -39,6 +38,16 @@ import { EditSnippetComponent } from './core/components/snippets/edit-snippet/ed
 import { AddSnippetComponent } from './core/components/snippets/add-snippet/add-snippet.component';
 import { ListSnippetComponent } from './core/components/snippets/list-snippet/list-snippet.component';
 import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
+import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
+import { UserComponent } from './core/pages/user/user.component';
+import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
+import {EditorModule} from "@tinymce/tinymce-angular";
+import {ErrorInterceptor} from "./core/interceptor/error.interceptor";
+import {
+  OpenTelemetryInterceptorModule,
+  CompositePropagatorModule,
+  ZipkinExporterModule
+} from '@jufab/opentelemetry-angular-interceptor';
 
 @NgModule({
   declarations: [
@@ -54,7 +63,6 @@ import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
     UsersComponent,
     NewUserComponent,
     NewSiteComponent,
-    SettingsComponent,
     UnsavedChangesModalComponent,
     ProfileComponent,
     EditSiteComponent,
@@ -69,22 +77,44 @@ import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
     EditSnippetComponent,
     AddSnippetComponent,
     ListSnippetComponent,
-    SafeurlPipe
+    SafeurlPipe,
+    EditUserComponent,
+    UserComponent,
+    RenameModalComponent
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     NgSelectModule,
     FormsModule,
     CodemirrorModule,
-    RouterOutlet
+    RouterOutlet,
+    OpenTelemetryInterceptorModule.forRoot({
+      commonConfig: {
+        console: false,
+        production: environment.production,
+        serviceName: 'Neobyte.CMS.Frontend',
+        probabilitySampler: '1',
+      },
+      zipkinConfig: {
+        url: environment.url + 'tracing',
+      }
+    }),
+    ZipkinExporterModule,
+    CompositePropagatorModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: APIInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     },
     {

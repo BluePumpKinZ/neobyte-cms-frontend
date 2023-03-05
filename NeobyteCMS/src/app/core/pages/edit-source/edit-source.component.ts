@@ -2,7 +2,7 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {html_beautify} from "js-beautify";
 import {PageService} from "../../services/page.service";
 import {ActivatedRoute} from "@angular/router";
-import {SiteService} from "../../services/site.service";
+import {WebsiteService} from "../../services/website.service";
 
 @Component({
   selector: 'app-edit-source',
@@ -25,7 +25,7 @@ export class EditSourceComponent implements OnInit {
   constructor(
     private _pagesService: PageService,
     private _route: ActivatedRoute,
-    private _siteService: SiteService,
+    private _siteService: WebsiteService,
   ) {}
 
   loadSourceCode() {

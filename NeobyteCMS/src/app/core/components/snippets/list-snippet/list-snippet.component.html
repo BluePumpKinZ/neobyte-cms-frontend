@@ -10,7 +10,7 @@
     </div>
   </div>
   <ul class="list-group">
-    <li class="list-group-item d-flex align-items-center" *ngFor="let snippet of snippets" (click)="selectSnippet(snippet)" type="button">
+    <li class="list-group-item d-flex align-items-center" *ngFor="let snippet of snippets" (click)="selectSnippet(snippet)" type="button" [class.active]="selectedSnippet === snippet">
       <i class="fas fa-cube fa-2x mr-3"></i>
       <div>
         <h5>{{snippet.name}}</h5>
