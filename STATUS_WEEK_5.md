@@ -3,7 +3,7 @@
 ### Cools Arne
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
+| 07/03/2023 | Implemented a basic MinimalAPI and ControllerAPI for load testing | [#1](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/research/-/issues/1) |
 | dd/MM/YYYY | to fill in | to fill in |
 | dd/MM/YYYY | to fill in | to fill in |
 ### Derboven Maxim
