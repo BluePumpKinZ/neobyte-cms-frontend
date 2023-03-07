@@ -24,6 +24,8 @@ to fill in
 ### Findings
 #### Angular
 - loading element callback
+- tinymce can be loaded locally
+- tinymce needs to be init inside the page, can not with .init so I need to add handlers to all classes inside frame
 #### .NET
 to fill in
 ### Technologies researched
