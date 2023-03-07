@@ -7,7 +7,8 @@
       Edit Source
     </a>
     <div class="sb-sidenav-menu-heading">Actions</div>
-    <a class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+    <a class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+       aria-controls="offcanvasRight">
       <div class="sb-nav-link-icon"><i class="fa-solid fa-info"></i></div>
       Edit Metadata
     </a>
@@ -27,7 +28,14 @@
 
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
-    <iframe #content_edit style="width: 100%; height: 100%" sandbox="allow-same-origin"></iframe>
+
+    <div class='demo-dfree'>
+      <h2 class="dfree-header mce-content-body" contenteditable="true" style="position: relative;" spellcheck="false">
+        The latest and greatest from TinyMCE
+      </h2>
+    </div>
+    <iframe #content_edit style="width: 100%; height: 100%" ></iframe>
+    <!-- sandbox="allow-same-origin" -->
   </div>
 </app-sidebar>
 
