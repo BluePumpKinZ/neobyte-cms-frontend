@@ -97,7 +97,7 @@ import {
         console: false,
         production: environment.production,
         serviceName: 'Neobyte.CMS.Frontend',
-        probabilitySampler: '1',
+        probabilitySampler: environment.tracingSamplerProbability,
       },
       zipkinConfig: {
         url: environment.url + 'tracing',
