@@ -31,4 +31,5 @@
     * Closed gaps in the project.
 
 ## Conclusion
--
+* The team successfully made progress by deciding on important features, reducing the scope, and processing feedback. However, the team struggled with overall motivation, coordination, and managing scope.
+* The team received feedback on adjusting the scope, focusing less on repetition, implementing monitoring and dashboard, and exploring some new aspects.
