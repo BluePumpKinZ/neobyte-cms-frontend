@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {WebsiteService} from "../../services/website.service";
 import {Site} from "../../models/Site";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-sites',
@@ -13,6 +14,10 @@ export class SitesComponent implements OnInit {
 
   ngOnInit(): void {
     this.siteService.getAllSites().subscribe(sites => {
+      sites = sites.map(site => {
+        site.screenshot = environment.url + site.screenshot;
+        return site;
+      })
       this.sites = sites;
     });
 
