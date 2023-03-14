@@ -17,10 +17,9 @@
 |---|---|---|
 | 07/03/2023 | Metrics, Prometheus, Grafana | [#57](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/57) |
 | 08/03/2023 | Grafana, Pages endpoints | / |
-| 09/03/2023 - 12/03/2023 | Website Thumbnails, Puppeteer | / |
+| 09/03/2023 - 11/03/2023 | Website Thumbnails, Puppeteer | / |
+| 12/03/2023 | Aggregated logging, Promtail, Grafana Loki | / |
 ## Project Status
-### Collaboration
-to fill in
 ### Findings
 #### Angular
 - loading element callback
@@ -36,6 +35,8 @@ PromQL can be used to do complex queries on the metrics, including mathemtical o
 Setup of docker container very straigthforward
 #### Puppeteer
 while initial setup is relatively easy, getting puppeteer and especially the chromium installation running in a docker environment is not very straigthforward
+#### Grafana Loki
+Docker plugin to get logs from all container can be used to pipe all docker container logs to a single endpoint
 ### Technologies researched
 Kerstrel Metrics server
 Prometheus
