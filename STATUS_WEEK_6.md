@@ -1,4 +1,4 @@
-# Status report Week XXX
+# Status report Week 6
 ## Worksheet 
 ### Cools Arne
 | Worksession | Description work done | Issue references |
