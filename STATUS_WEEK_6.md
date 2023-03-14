@@ -25,7 +25,9 @@ to fill in
 #### Angular
 to fil in
 #### .NET
-to fill in
+Amazon AWS S3 SDK
+* Very good SDK, well documented as well
+* Storage buckets are a bit weird, no directories etc. 
 ### Technologies researched
 to fill in
 ### Work done
