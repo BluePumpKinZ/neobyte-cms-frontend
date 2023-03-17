@@ -48,6 +48,7 @@ import {
   CompositePropagatorModule,
   ZipkinExporterModule
 } from '@jufab/opentelemetry-angular-interceptor';
+import { TracingComponent } from './core/components/tracing/tracing.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import {
     SafeurlPipe,
     EditUserComponent,
     UserComponent,
-    RenameModalComponent
+    RenameModalComponent,
+    TracingComponent
   ],
   imports: [
     BrowserModule,
