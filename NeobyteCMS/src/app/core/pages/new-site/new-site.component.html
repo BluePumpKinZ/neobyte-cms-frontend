@@ -11,7 +11,7 @@
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
     <app-breadcrumb></app-breadcrumb>
-    <main class="p-3 offset-md-3 col-md-5 col-sm-12">
+    <main class="p-3 offset-lg-3 col-12 col-lg-5 col-sm-12">
       <form [formGroup]="createSiteForm" (ngSubmit)="onCreateSite()">
         <div class="form-style">
           <div class="container">
@@ -73,6 +73,27 @@
                     Protocol is required</p>
                 </div>
                 <br>
+                <div class="form-group">
+                  <label for="Port" class="me-2">Region</label>
+                  <input [formControlName]="'region'" type="text" id="Region" class="form-control me-2"
+                         placeholder="us-east-1">
+                  <label for="Bucket">Bucket</label>
+                  <input [formControlName]="'bucket'" type="text" id="Bucket" class="form-control ml-2"
+                         placeholder="21">
+                </div>
+                <div class="form-group d-flex">
+                  <div class="form-group me-2 flex-fill">
+                    <label for="AccessKey" class="me-2">Access Key</label>
+                    <input [formControlName]="'accesskey'" type="text" id="AccessKey" class="form-control">
+                  </div>
+                  <div class="form-group flex-fill">
+                    <label for="SecretAccessKey">
+                      Secret Access Key</label>
+                    <input [formControlName]="'secretaccesskey'" type="password" id="SecretAccessKey" class="form-control">
+                  </div>
+                </div>
+
+
                 <div class="form-group d-flex flex-fill">
                   <div class="form-group flex-grow-1 me-2 ">
                     <label for="Host" class="me-2">Host</label>
@@ -108,12 +129,12 @@
                 <br>
                 <div class="form-group d-flex">
                   <div class="form-group me-2 flex-fill">
-                  <label for="Username" class="me-2">Username</label>
-                  <input [formControlName]="'username'" type="text" id="Username" class="form-control">
+                    <label for="Username" class="me-2">Username</label>
+                    <input [formControlName]="'username'" type="text" id="Username" class="form-control">
                   </div>
                   <div class="form-group flex-fill">
-                  <label for="Password">Password</label>
-                  <input [formControlName]="'password'" type="password" id="Password" class="form-control">
+                    <label for="Password">Password</label>
+                    <input [formControlName]="'password'" type="password" id="Password" class="form-control">
                   </div>
                 </div>
                 <p class="text-danger"
