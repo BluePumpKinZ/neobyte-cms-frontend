@@ -28,16 +28,13 @@
 
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
-
-    <div class='demo-dfree'>
-      <h2 class="dfree-header mce-content-body" contenteditable="true" style="position: relative;" spellcheck="false">
-        The latest and greatest from TinyMCE
-      </h2>
-    </div>
-    <iframe #content_edit style="width: 100%; height: 100%" ></iframe>
+    <iframe #content_edit style="width: 100%; height: 100%"></iframe>
     <!-- sandbox="allow-same-origin" -->
   </div>
+  <!-- tinyMCE -->
+<!--  <editor *ngIf="activeEditor" [init]="activeEditor"></editor>-->
 </app-sidebar>
+
 
 <app-edit-metadata-sidemodal></app-edit-metadata-sidemodal>
 <app-manage-files-modal [siteId]="siteId"></app-manage-files-modal>

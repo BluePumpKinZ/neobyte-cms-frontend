@@ -44,7 +44,7 @@
                     Name must be at least 5 characters</p>
                 </div>
                 <div class="form-group">
-                  <label for="domain">domain</label>
+                  <label for="domain">Domain</label>
                   <input [formControlName]="'domain'" type="text" id="domain" class="form-control"
                          placeholder="https://example.com/">
                   <small class="form-text text-muted">Enter your website's URL</small>
@@ -62,93 +62,119 @@
                 <div class="form-group">
                   <label for="Protocol">Protocol</label>
                   <select [formControlName]="'protocol'" id="Protocol" class="form-control">
-                    <option>FTP</option>
-                    <option>FTP with TLS/SSL</option>
-                    <option>SFTP</option>
-                    <option>S3</option>
-                    <option>WebDAV</option>
+                    <option value="FTP">FTP</option>
+                    <option value="FTP with TLS/SSL">FTP with TLS/SSL</option>
+                    <option value="SFTP">SFTP</option>
+                    <option value="S3">S3</option>
                   </select>
                   <p class="text-danger"
                      *ngIf="createSiteForm.get('protocol')?.hasError('required') && createSiteForm.get('protocol')?.touched">
                     Protocol is required</p>
                 </div>
                 <br>
-                <div class="form-group">
-                  <label for="Port" class="me-2">Region</label>
-                  <input [formControlName]="'region'" type="text" id="Region" class="form-control me-2"
-                         placeholder="us-east-1">
-                  <label for="Bucket">Bucket</label>
-                  <input [formControlName]="'bucket'" type="text" id="Bucket" class="form-control ml-2"
-                         placeholder="21">
-                </div>
-                <div class="form-group d-flex">
-                  <div class="form-group me-2 flex-fill">
-                    <label for="AccessKey" class="me-2">Access Key</label>
-                    <input [formControlName]="'accesskey'" type="text" id="AccessKey" class="form-control">
-                  </div>
-                  <div class="form-group flex-fill">
-                    <label for="SecretAccessKey">
-                      Secret Access Key</label>
-                    <input [formControlName]="'secretaccesskey'" type="password" id="SecretAccessKey" class="form-control">
-                  </div>
-                </div>
-
-
-                <div class="form-group d-flex flex-fill">
-                  <div class="form-group flex-grow-1 me-2 ">
-                    <label for="Host" class="me-2">Host</label>
-                    <input [formControlName]="'host'" type="text" id="Host" class="form-control me-2"
-                           placeholder="ftp.example.com">
-                  </div>
+                <div *ngIf="isS3()">
                   <div class="form-group">
-                    <label for="Port">Port</label>
-                    <input [formControlName]="'port'" type="text" id="Port" class="form-control ml-2" placeholder="21">
+                    <label for="Port" class="me-2">Region</label>
+                    <input [formControlName]="'region'" type="text" id="Region" class="form-control me-2"
+                           placeholder="us-east-1">
+                    <label for="Bucket">Bucket</label>
+                    <input [formControlName]="'bucketName'" type="text" id="Bucket" class="form-control ml-2"
+                           placeholder="bucket-name">
                   </div>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('region')?.hasError('required') && createSiteForm.get('region')?.touched">
+                    Region is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('bucketName')?.hasError('required') && createSiteForm.get('bucketName')?.touched">
+                    Bucket is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('bucketName')?.hasError('minlength') && createSiteForm.get('bucketName')?.touched">
+                    Bucket must be at least 5 characters</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('bucketName')?.hasError('pattern') && createSiteForm.get('bucketName')?.touched">
+                    Bucket must be a valid Bucket name</p>
+                  <div class="form-group d-flex">
+                    <div class="form-group me-2 flex-fill">
+                      <label for="AccessKey" class="me-2">Access Key</label>
+                      <input [formControlName]="'accessKey'" type="text" id="AccessKey" class="form-control">
+                    </div>
+                    <div class="form-group flex-fill">
+                      <label for="SecretAccessKey">
+                        Secret Access Key</label>
+                      <input [formControlName]="'secretKey'" type="password" id="SecretAccessKey" class="form-control">
+                    </div>
+                  </div>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('accessKey')?.hasError('required') && createSiteForm.get('accessKey')?.touched">
+                    Access Key is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('secretKey')?.hasError('required') && createSiteForm.get('secretKey')?.touched">
+                    Secret Access Key is required</p>
                 </div>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('host')?.hasError('required') && createSiteForm.get('host')?.touched">Host
-                  is required</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('port')?.hasError('required') && createSiteForm.get('port')?.touched">Port
-                  is required</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('port')?.hasError('min') && createSiteForm.get('port')?.touched">Port must
-                  be at least 1</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('port')?.hasError('max') && createSiteForm.get('port')?.touched">Port must
-                  be at most 65535</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('port')?.hasError('pattern') && createSiteForm.get('port')?.touched">Port
-                  must be a number</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('port')?.hasError('maxlength') && createSiteForm.get('port')?.touched">Port
-                  must be at most 5 characters</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('port')?.hasError('minlength') && createSiteForm.get('port')?.touched">Port
-                  must be at least 1 character</p>
-                <br>
-                <div class="form-group d-flex">
-                  <div class="form-group me-2 flex-fill">
-                    <label for="Username" class="me-2">Username</label>
-                    <input [formControlName]="'username'" type="text" id="Username" class="form-control">
+                <div *ngIf="!isS3()">
+                  <div class="form-group d-flex flex-fill">
+                    <div class="form-group flex-grow-1 me-2 ">
+                      <label for="Host" class="me-2">Host</label>
+                      <input [formControlName]="'host'" type="text" id="Host" class="form-control me-2"
+                             placeholder="ftp.example.com">
+                    </div>
+                    <div class="form-group">
+                      <label for="Port">Port</label>
+                      <input [formControlName]="'port'" type="text" id="Port" class="form-control ml-2"
+                             placeholder="21">
+                    </div>
                   </div>
-                  <div class="form-group flex-fill">
-                    <label for="Password">Password</label>
-                    <input [formControlName]="'password'" type="password" id="Password" class="form-control">
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('host')?.hasError('required') && createSiteForm.get('host')?.touched">
+                    Host
+                    is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('port')?.hasError('required') && createSiteForm.get('port')?.touched">
+                    Port
+                    is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('port')?.hasError('min') && createSiteForm.get('port')?.touched">Port
+                    must
+                    be at least 1</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('port')?.hasError('max') && createSiteForm.get('port')?.touched">Port
+                    must
+                    be at most 65535</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('port')?.hasError('pattern') && createSiteForm.get('port')?.touched">Port
+                    must be a number</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('port')?.hasError('maxlength') && createSiteForm.get('port')?.touched">
+                    Port
+                    must be at most 5 characters</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('port')?.hasError('minlength') && createSiteForm.get('port')?.touched">
+                    Port
+                    must be at least 1 character</p>
+                  <br>
+                  <div class="form-group d-flex">
+                    <div class="form-group me-2 flex-fill">
+                      <label for="Username" class="me-2">Username</label>
+                      <input [formControlName]="'username'" type="text" id="Username" class="form-control">
+                    </div>
+                    <div class="form-group flex-fill">
+                      <label for="Password">Password</label>
+                      <input [formControlName]="'password'" type="password" id="Password" class="form-control">
+                    </div>
                   </div>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('username')?.hasError('required') && createSiteForm.get('username')?.touched">
+                    Username is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('password')?.hasError('required') && createSiteForm.get('password')?.touched">
+                    Password is required</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('password')?.hasError('minlength') && createSiteForm.get('password')?.touched">
+                    Password must be at least 5 characters</p>
+                  <p class="text-danger"
+                     *ngIf="createSiteForm.get('password')?.hasError('minlength') && createSiteForm.get('password')?.touched">
+                    Password must be at least 5 characters</p>
                 </div>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('username')?.hasError('required') && createSiteForm.get('username')?.touched">
-                  Username is required</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('password')?.hasError('required') && createSiteForm.get('password')?.touched">
-                  Password is required</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('password')?.hasError('minlength') && createSiteForm.get('password')?.touched">
-                  Password must be at least 5 characters</p>
-                <p class="text-danger"
-                   *ngIf="createSiteForm.get('password')?.hasError('minlength') && createSiteForm.get('password')?.touched">
-                  Password must be at least 5 characters</p>
                 <hr>
                 <div class="form-group d-flex mb-4">
                   <label for="HomeFolder" class="me-2">Home folder</label>

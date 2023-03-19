@@ -18,7 +18,7 @@ export class PageService {
       catchError(this.messageService.handleError<string>('Fetch Page', "")),
     )
   }
-  createPage(siteId: string, name:string, path: string ): Observable<any> {
+  createPage(siteId: string, name:string, path: string): Observable<any> {
     return this.http.post<Page>(`websites/${siteId}/pages/add/existing`, {"name":name,"path":path}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page created'})),
       catchError(this.messageService.handleError<string>('Fetch Page', "")),

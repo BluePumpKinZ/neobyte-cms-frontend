@@ -3,7 +3,9 @@ import {ActivatedRoute} from "@angular/router";
 import {IframeHelperService} from "../../services/iframe-helper.service";
 import {PageService} from "../../services/page.service";
 import tinymce from "tinymce";
+import Editor from "../../services/editor/editor";
 import {MessageService} from "../../services/message.service";
+import {getType} from "../../services/editor/region-types";
 
 // import { Editor, EditorSettings } from 'tinymce';
 
@@ -16,6 +18,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   @ViewChild('content_edit') iframe!: ElementRef<HTMLIFrameElement>;
   siteId: string | undefined;
   pageId: string | undefined;
+  activeEditor: Editor | null | undefined;
 
   // settings: EditorSettings = {}
   constructor(
@@ -28,7 +31,6 @@ export class EditPageComponent implements AfterViewInit, OnInit {
 
 
   ngAfterViewInit(): void {
-    this.setupEditor();
     //get iframe and add other _iframeHelper options on it
     // this._iframeHelper.disableInteractions(this.iframe.nativeElement);
     // this._iframeHelper.simulateClicks(this.iframe.nativeElement, window.parent.document);
@@ -39,80 +41,6 @@ export class EditPageComponent implements AfterViewInit, OnInit {
       doctype.name +
       (doctype.publicId ? ' PUBLIC "' + doctype.publicId + '"' : '') +
       (doctype.systemId ? ' "' + doctype.systemId + '"' : '') + '>';
-  }
-
-  setupEditor() {
-    var dfreeHeaderConfig = {
-      base_url: '/tinymce', // Root for resources
-      suffix: '.min',        // Suffix to use when loading resources
-      selector: '.dfree-header',
-      menubar: false,
-      inline: true,
-      toolbar: false,
-      plugins: ['quickbars'],
-      quickbars_insert_toolbar: 'undo redo',
-      quickbars_selection_toolbar: 'italic underline',
-      toolbar_persist: true,
-    };
-
-    var dfreeBodyConfig = {
-      toolbar_persist: true,
-      base_url: '/tinymce', // Root for resources
-      suffix: '.min',        // Suffix to use when loading resources
-      selector: '.dfree-body',
-      menubar: false,
-      inline: true,
-      plugins: [
-        'autolink',
-        'codesample',
-        'link',
-        'lists',
-        'media',
-        'powerpaste',
-        'table',
-        'image',
-        'quickbars',
-        'codesample',
-        'help'
-      ],
-      toolbar: false,
-      quickbars_insert_toolbar: 'quicktable image media codesample',
-      quickbars_selection_toolbar: 'bold italic underline | formatselect | blockquote quicklink',
-      contextmenu: 'undo redo | inserttable | cell row column deletetable | help',
-      powerpaste_word_import: 'clean',
-      powerpaste_html_import: 'clean',
-    };
-
-    tinymce.init(dfreeHeaderConfig);
-    tinymce.init(dfreeBodyConfig);
-
-
-    // tinymce.init({
-    //   selector: 'div.tinymce',
-    //   plugins: [ 'quickbars' ],
-    //   toolbar: false,
-    //   menubar: false,
-    //   inline: true
-    // });
-    // tinymce.init({
-    //   base_url: '/tinymce', // Root for resources
-    //   suffix: '.min',        // Suffix to use when loading resources
-    //   selector: "",
-    //   plugins: "",
-    //   toolbar: "",
-    //   menubar: false,
-    //
-    //   setup: function (editor) {
-    //     editor.ui.registry.addContextToolbar('textalignment', {
-    //       predicate: function (node) {
-    //         return editor.dom.getParent(node, '.myclass') !== null;
-    //       },
-    //       items: 'alignleft aligncenter alignright',
-    //       position: 'selection',
-    //       scope: 'node'
-    //     });
-    //   }
-    // });
   }
 
   ngOnInit(): void {
@@ -170,9 +98,34 @@ export class EditPageComponent implements AfterViewInit, OnInit {
     const script = this.iframe.nativeElement.contentWindow!.document.createElement('script');
     script.src = `${location.protocol}//${location.host}/tinymce/tinymce.min.js`;
     script.onload = () => {
-      this.setupEditor();
       this._messageService.add({type: 'success', title: 'Editor loaded', description: 'Editor (TinyMCE) loaded successfully.'});
-    }
+      [...this.iframe.nativeElement.contentWindow!.document.querySelectorAll('.cms-editable')].map(element => {
+        const hasId = element.hasAttribute('id');
+        const type = getType(element);
+        const doc = this.iframe.nativeElement.contentWindow!.document;
+        const win = this.iframe.nativeElement.contentWindow!;
+        // Enable outline transitions afer a brief delay to prevent flashing
+
+        if (!hasId) {
+          this._messageService.add({
+            type: 'danger',
+            title: 'Duplicate ID',
+            description: 'ID not found on editable element'
+          });
+          return;
+        }
+
+        // Create the editor
+        // const plainText = true;
+        const editor = new Editor(element);
+
+        // Initialize the editor
+        editor
+          // .on('focus', () => (this.activeEditor = editor))
+          // .on('blur', () => (this.activeEditor = null))
+          .initialize();
+      });
+    };
 
     // If TinyMCE fails to load
     script.onerror = (error) => {

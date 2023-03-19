@@ -21,16 +21,17 @@ export class ManageSiteComponent implements OnInit {
   ) {
   }
 
+
   testConnection() {
     this._messageService.add({type: 'info', title: 'Test Connection', description: 'Testing connection...'});
-    this._siteService.testConnection(this.site!.protocol, this.site!.host, this.site!.port, this.site!.username, this.site!.password).subscribe(
-      (data: any) => {
-        if (data.valid)
-          this._messageService.add({type: 'success', title: 'Test Connection', description: 'Connection successful'});
-        else
-          this._messageService.add({type: 'danger', title: 'Test Connection', description: 'Connection failed'});
-      }
-    );
+    // this._siteService.testConnection().subscribe(
+    //   (data: any) => {
+    //     if (data.valid)
+    //       this._messageService.add({type: 'success', title: 'Test Connection', description: 'Connection successful'});
+    //     else
+    //       this._messageService.add({type: 'danger', title: 'Test Connection', description: 'Connection failed'});
+    //   }
+    // );
   }
 
   onUpdateSite() {
@@ -39,6 +40,15 @@ export class ManageSiteComponent implements OnInit {
       this._siteService.updateSite(this.site).subscribe(res => {
         this._router.navigate(['/manage-site']);
       });
+    }
+  }
+
+  onDeleteSite() {
+    this._messageService.add({type: 'info', title: 'Delete Site', description: 'Deleting site...'});
+    if (this.site) {
+      // this._siteService.deleteSite(this.site.id).subscribe(res => {
+      //   this._router.navigate(['/manage-site']);
+      // });
     }
   }
 
