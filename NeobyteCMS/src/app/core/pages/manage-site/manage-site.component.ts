@@ -44,11 +44,11 @@ export class ManageSiteComponent implements OnInit {
   }
 
   onDeleteSite() {
-    this._messageService.add({type: 'info', title: 'Delete Site', description: 'Deleting site...'});
+    const id = this._route.snapshot.paramMap.get('siteId')!;
     if (this.site) {
-      // this._siteService.deleteSite(this.site.id).subscribe(res => {
-      //   this._router.navigate(['/manage-site']);
-      // });
+      this._siteService.deleteSite(id).subscribe(res => {
+        this._router.navigate(['/sites']);
+      });
     }
   }
 

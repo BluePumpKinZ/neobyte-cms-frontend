@@ -46,9 +46,10 @@ export class WebsiteService {
     )
   }
 
-  deleteSite(site: Site): Observable<any> {
-    return this.http.delete<Site>('/sites/1').pipe(
+  deleteSite(siteid: string): Observable<any> {
+    return this.http.delete<Site>(`websites/${siteid}/delete`).pipe(
       tap(res => this.messageService.add({type: 'success', title: 'Site', description: 'Site deleted'})),
+      catchError(this.messageService.handleError<Site>('Delete Site', {} as Site)),
     )
   }
 }
