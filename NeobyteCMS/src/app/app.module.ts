@@ -48,6 +48,9 @@ import {
   CompositePropagatorModule,
   ZipkinExporterModule
 } from '@jufab/opentelemetry-angular-interceptor';
+import { TracingComponent } from './core/components/tracing/tracing.component';
+import { EnableNewPagemodalComponent } from './core/components/enable-new-pagemodal/enable-new-pagemodal.component';
+import {AddNewPagemodalComponent} from "./core/components/add-new-pagemodal/add-new-pagemodal.component";
 
 @NgModule({
   declarations: [
@@ -80,7 +83,10 @@ import {
     SafeurlPipe,
     EditUserComponent,
     UserComponent,
-    RenameModalComponent
+    RenameModalComponent,
+    TracingComponent,
+    EnableNewPagemodalComponent,
+    AddNewPagemodalComponent,
   ],
   imports: [
     BrowserModule,

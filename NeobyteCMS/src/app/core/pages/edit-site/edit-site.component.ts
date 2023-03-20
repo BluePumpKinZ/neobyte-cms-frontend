@@ -42,7 +42,15 @@ export class EditSiteComponent  implements OnInit {
 
   deletePage(page: Page) {
     this.pages = this.pages?.filter(p => p.id !== page.id);
-    this._pagesService.deletePage(this.siteId!, page.id).subscribe();
+    this._pagesService.deletePage(this.siteId!, page.id).subscribe(
+      () => {
+        if (this.selectedPage?.id === page.id) {
+          this.selectedPage = undefined;
+        }
+        //clear iframe
+        this.iframe.nativeElement.src = '';
+      }
+    );
   }
 
   createPage(name: string, path: string) {

@@ -32,6 +32,6 @@ to fill in
 #### .NET
 - FluentFtp Client is not thread safe, so we need to either create a new connection for a new request, or use a lock to prevent multiple requests at the same time.
 ### Technologies researched
-to fill in
+Zipkin collector and exporters
 ### Work done
 ![](https://geps.dev/progress/69) -> Update at the end of Week 4

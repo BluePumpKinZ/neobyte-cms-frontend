@@ -1,6 +1,3 @@
-//
-// TinyMCE controls for working with repeatable regions.
-//
 
 export function moveRepeatableUp(editor) {
   return () => {
