@@ -82,7 +82,7 @@ const routes: Routes = [
   {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
-  {path: 'tracing', component: TracingComponent},
+  {path: 'tracing',canActivate: [AuthGuard], component: TracingComponent},
   {path: '**', redirectTo: 'sites'}
 ];
 
