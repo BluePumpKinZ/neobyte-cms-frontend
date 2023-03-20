@@ -58,12 +58,19 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   }
 
   onPublishSite() {
+    //add loading class to element #loading at parent window
+    window.parent.document.getElementById('loading')!.classList.add('loading');
     //get the content from the iframe and save it with the pageservice
     let pageDocument = this.iframe.nativeElement.contentDocument!;
     const content = this.get_doctype(pageDocument.doctype!) + pageDocument.documentElement.outerHTML;
     this._pageService.publishPage(this.siteId!, this.pageId!, content).subscribe(
       () => {
-        //this._messageService.add({type: 'success', title: 'Page', description: 'Page updated'});
+        //remove loading class to element #loading at parent window
+        //add timeout to prevent flashing
+        setTimeout(() => {
+          window.parent.document.getElementById('loading')!.classList.remove('loading');
+          this._messageService.add({type: 'success', title: 'Publish', description: 'Page published successfully'});
+        }, 1000);
       });
   }
 
@@ -98,7 +105,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
     //create a element with custom tag <TINYMCE-INJECT>
     this.iframe.nativeElement.contentWindow!.document.getElementsByTagName('body')[0].appendChild(this.iframe.nativeElement.contentWindow!.document.createElement('TINYMCE-INJECT-FIRST'));
 
-      // Inject TinyMCE
+    // Inject TinyMCE
     const script = this.iframe.nativeElement.contentWindow!.document.createElement('script');
     script.src = `${location.protocol}//${location.host}/tinymce/tinymce.min.js`;
     script.onload = () => {
@@ -134,7 +141,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
           console.log(error);
         });
       });
-      };
+    };
 
     // If TinyMCE fails to load
     script.onerror = (error) => {
