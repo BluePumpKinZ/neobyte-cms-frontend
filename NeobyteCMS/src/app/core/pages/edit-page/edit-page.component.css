@@ -73,3 +73,29 @@
   border: 1px solid #696969;
 }
 
+
+.loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  color: white;
+  text-align: center;
+  /*line-height: 100vh;*/
+  font-size: 60px;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 1000ms ease;
+  z-index: 99999999999;
+}
+
+.spinner-grow {
+  display: block;
+  position: fixed;
+  top: calc(50% - (58px / 2));
+  right: calc(50% - (58px / 2));
+  color: white;
+  width: 58px;
+  height: 58px;
+}
+

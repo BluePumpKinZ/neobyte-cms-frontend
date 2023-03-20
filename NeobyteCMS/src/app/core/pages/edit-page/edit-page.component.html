@@ -1,3 +1,9 @@
+<div id="loading">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-grow" role="status">
+    </div>
+  </div>
+</div>
 <app-sidebar>
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
@@ -32,9 +38,8 @@
     <!-- sandbox="allow-same-origin" -->
   </div>
   <!-- tinyMCE -->
-<!--  <editor *ngIf="activeEditor" [init]="activeEditor"></editor>-->
+  <!--  <editor *ngIf="activeEditor" [init]="activeEditor"></editor>-->
 </app-sidebar>
-
 
 <app-edit-metadata-sidemodal></app-edit-metadata-sidemodal>
 <app-manage-files-modal [siteId]="siteId"></app-manage-files-modal>
