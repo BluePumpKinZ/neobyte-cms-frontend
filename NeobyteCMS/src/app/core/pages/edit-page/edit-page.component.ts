@@ -94,17 +94,26 @@ export class EditPageComponent implements AfterViewInit, OnInit {
       }
     });
 
-    // Inject TinyMCE
+
+    //create a element with custom tag <TINYMCE-INJECT>
+    this.iframe.nativeElement.contentWindow!.document.getElementsByTagName('body')[0].appendChild(this.iframe.nativeElement.contentWindow!.document.createElement('TINYMCE-INJECT-FIRST'));
+
+      // Inject TinyMCE
     const script = this.iframe.nativeElement.contentWindow!.document.createElement('script');
     script.src = `${location.protocol}//${location.host}/tinymce/tinymce.min.js`;
     script.onload = () => {
-      this._messageService.add({type: 'success', title: 'Editor loaded', description: 'Editor (TinyMCE) loaded successfully.'});
+      this._messageService.add({
+        type: 'success',
+        title: 'Editor loaded',
+        description: 'Editor (TinyMCE) loaded successfully.'
+      });
       [...this.iframe.nativeElement.contentWindow!.document.querySelectorAll('.cms-editable')].map(element => {
         const hasId = element.hasAttribute('id');
         const type = getType(element);
         const doc = this.iframe.nativeElement.contentWindow!.document;
         const win = this.iframe.nativeElement.contentWindow!;
         // Enable outline transitions afer a brief delay to prevent flashing
+        console.log(element);
 
         if (!hasId) {
           this._messageService.add({
@@ -116,20 +125,24 @@ export class EditPageComponent implements AfterViewInit, OnInit {
         }
 
         // Create the editor
-        // const plainText = true;
-        const editor = new Editor(element);
+        const editor = new Editor(element, {}, (win as any).tinymce);
 
-        // Initialize the editor
         editor
-          // .on('focus', () => (this.activeEditor = editor))
-          // .on('blur', () => (this.activeEditor = null))
-          .initialize();
+          .initialize().then(() => {
+          console.log('editor initialized');
+        }).catch((error) => {
+          console.log(error);
+        });
       });
-    };
+      };
 
     // If TinyMCE fails to load
     script.onerror = (error) => {
-      this._messageService.add({type: 'danger', title: 'Editor failed', description: 'Editor (TinyMCE) failed to load. Please try again later.'});
+      this._messageService.add({
+        type: 'danger',
+        title: 'Editor failed',
+        description: 'Editor (TinyMCE) failed to load. Please try again later.'
+      });
     };
 
     this.iframe.nativeElement.contentWindow!.document.body.appendChild(script);
