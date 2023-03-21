@@ -111,6 +111,7 @@ import {AddNewPagemodalComponent} from "./core/components/add-new-pagemodal/add-
     }),
     ZipkinExporterModule,
     CompositePropagatorModule,
+    FormsModule,
   ],
   providers: [
     {
