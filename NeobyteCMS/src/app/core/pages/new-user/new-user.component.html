@@ -7,22 +7,17 @@
   <div id="layoutSidenav_content" child-content>
     <app-breadcrumb></app-breadcrumb>
     <main class="p-3 offset-md-3 col-md-5 col-sm-12">
-      <form>
+      <form [formGroup]="createUserForm" (ngSubmit)="onCreateUser()">
         <div class="form-style">
           <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general"
-                      type="button" role="tab" aria-controls="general" aria-selected="true">General
+                type="button" role="tab" aria-controls="general" aria-selected="true">General
               </button>
             </li>
             <li class="nav-item" role="presentation">
               <button class="nav-link" id="permissions-tab" data-bs-toggle="tab" data-bs-target="#permissions"
-                      type="button" role="tab" aria-controls="permissions" aria-selected="false">Permissions
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced" type="button"
-                      role="tab" aria-controls="advanced" aria-selected="false">Advanced
+                type="button" role="tab" aria-controls="permissions" aria-selected="false">Permissions
               </button>
             </li>
           </ul>
@@ -30,50 +25,46 @@
             <div class="tab-pane show active" id="general" role="tabpanel" aria-labelledby="general-tab">
               <div class="form-group">
                 <label for="NameInput">Name</label>
-                <input type="text" class="form-control" id="NameInput">
+                <input [formControlName]="'name'" type="text" class="form-control" id="NameInput">
               </div>
               <div class="form-group">
                 <label for="EmailInput">Email</label>
-                <input type="email" class="form-control" id="EmailInput">
+                <input [formControlName]="'email'" type="email" class="form-control" id="EmailInput">
                 <small class="form-text text-muted">An invitation will be sent to this email address when the user is
                   created.</small>
               </div>
               <div class="form-group">
                 <label for="BioInput">Bio</label>
-                <textarea class="form-control" id="BioInput" rows="3"></textarea>
+                <textarea [formControlName]="'bio'" class="form-control" id="BioInput" rows="3"></textarea>
                 <small class="form-text text-muted">Type a few sentences about this user.</small>
               </div>
             </div>
             <div class="tab-pane" id="permissions" role="tabpanel" aria-labelledby="permissions-tab">
 
               <div class="form-group">
-                <label for="BioInput">This user will have access to the following sites</label>
-                <input type="text" class="form-control" placeholder="Start typing to add a site">
+                <small class="form-text text-muted">Give this user administrative privileges.</small>
+                <div class="form-group form-check mb-3">
+                  <input [formControlName]="'makeAdministrator'" type="checkbox" class="form-check-input" id="MakeAdministratorCheck">
+                  <label class="form-check-label" for="MakeAdministratorCheck">Make administrator</label>
+                </div>
+                <label for="BioInput">This user will have access to the following sites. <small>Note that admin users have access to all sites.</small></label>
+                <ul class="list-group">
+                  <div *ngFor="let site of sites; let i=index">
+                    <li class="list-group-item border">
+                      <input [formControlName]="'selectedSites'" [checked]="site.selected" [disabled]="!site.enabled" class="form-check-input me-1 site-checkbox" type="checkbox" value="{{site.id}}" id="checkbox{{i}}">
+                      <label class="form-check-label me-1" for="checkbox{{i}}">{{site.name}} - Created at {{site.createdDate | date: 'dd/MM/yyyy HH:mm'}}</label>
+                    </li>
+                  </div>
+                </ul>
               </div>
-            </div>
-            <div class="tab-pane" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="MakeAdministratorCheck">
-                <label class="form-check-label" for="MakeAdministratorCheck">Make administrator</label>
-              </div>
-              <small class="form-text text-muted">Give this user administrative privileges.</small>
-              <div class="form-group form-check" id="AdministratorOptions" style="display:none;">
-                <input type="checkbox" class="form-check-input" id="ManageSettingsCheck">
-                <label class="form-check-label" for="ManageSettingsCheck">Manage Settings</label>
-                <small class="form-text text-muted">Allow this user to change the settings for this account.</small><br>
-                <input type="checkbox" class="form-check-input" id="ManageSitesCheck">
-                <label class="form-check-label" for="ManageSitesCheck">Manage Sites</label>
-                <small class="form-text text-muted">Allow this user to create, delete, and update sites.</small><br>
-                <input type="checkbox" class="form-check-input" id="ManageUsersCheck">
-                <label class="form-check-label" for="ManageUsersCheck">Manage Users</label>
-                <small class="form-text text-muted">Allow this user to create, delete, and update users.</small>
-              </div>
+
+
             </div>
           </div>
         </div>
         <div class="d-flex justify-content-end">
           <button class="btn btn-secondary me-2">Cancel</button>
-          <button class="btn btn-primary">Create Site</button>
+          <button class="btn btn-primary" [disabled]="!createUserForm">Create User</button>
         </div>
       </form>
 

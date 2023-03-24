@@ -24,6 +24,8 @@ import {EditUserComponent} from "./core/pages/edit-user/edit-user.component";
 import {UserComponent} from "./core/pages/user/user.component";
 import {UserResolver} from "./core/services/resolvers/user.resolver";
 import {TracingComponent} from "./core/components/tracing/tracing.component";
+import {SetPasswordComponent} from './core/components/authentication/set-password/set-password.component';
+
 
 const routes: Routes = [
   //layout routes
@@ -82,6 +84,7 @@ const routes: Routes = [
   {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
+  {path: 'set-password', component: SetPasswordComponent},
   {path: 'tracing',canActivate: [AuthGuard], component: TracingComponent},
   {path: '**', redirectTo: 'sites'}
 ];

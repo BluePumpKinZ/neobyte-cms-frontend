@@ -6,7 +6,7 @@ export type MUID = {
 export interface Account {
   id: string;
   username: string;
-  role: role[];
+  role: role;
   enabled: boolean;
 }
 
