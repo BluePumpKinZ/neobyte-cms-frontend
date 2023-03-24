@@ -51,6 +51,7 @@ import {
 import { TracingComponent } from './core/components/tracing/tracing.component';
 import { EnableNewPagemodalComponent } from './core/components/enable-new-pagemodal/enable-new-pagemodal.component';
 import {AddNewPagemodalComponent} from "./core/components/add-new-pagemodal/add-new-pagemodal.component";
+import { SetPasswordComponent } from './core/components/authentication/set-password/set-password.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import {AddNewPagemodalComponent} from "./core/components/add-new-pagemodal/add-
     TracingComponent,
     EnableNewPagemodalComponent,
     AddNewPagemodalComponent,
+    SetPasswordComponent,
   ],
   imports: [
     BrowserModule,

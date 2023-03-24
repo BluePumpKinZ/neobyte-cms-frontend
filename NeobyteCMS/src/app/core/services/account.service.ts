@@ -27,7 +27,7 @@ export class AccountService {
   }
 
   addWebsiteToAccount(accountId: string, siteId: string): Observable<any> {
-    return this.http.post<AccountDetails>(`websites/${siteId}/users/${accountId}/add`, {siteId, accountId}).pipe(
+    return this.http.post<AccountDetails>(`websites/${siteId}/users/${accountId}/add`, {}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Account', description: 'Website added to account'})),
       catchError(this.messageService.handleError<AccountDetails>('Add Website to Account', {} as AccountDetails)),
     )
@@ -99,6 +99,13 @@ export class AccountService {
     return this.http.post('accounts/me/request-password-reset', {email: email}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Password', description: 'Password reset request sent'})),
       catchError(this.messageService.handleError<Account>('Request Password Reset', {} as Account)),
+    )
+  }
+
+  setPassword(token: string, email: string, password: string, confirmPassword: string): Observable<any> {
+    return this.http.put<any>('accounts/me/public/reset-password', {email, token, password, confirmPassword}).pipe(
+      tap(_ => this.messageService.add({type: 'success', title: 'Password', description: 'Password set'})),
+      catchError(this.messageService.handleError('Set Password', [])),
     )
   }
 }

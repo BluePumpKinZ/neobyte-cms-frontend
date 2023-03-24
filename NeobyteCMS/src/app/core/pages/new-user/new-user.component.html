@@ -51,7 +51,7 @@
                 <ul class="list-group">
                   <div *ngFor="let site of sites; let i=index">
                     <li class="list-group-item border">
-                      <input [checked]="site.selected" [disabled]="!site.enabled" class="form-check-input me-1" type="checkbox" value="{{site.id}}" id="checkbox{{i}}">
+                      <input [formControlName]="'selectedSites'" [checked]="site.selected" [disabled]="!site.enabled" class="form-check-input me-1 site-checkbox" type="checkbox" value="{{site.id}}" id="checkbox{{i}}">
                       <label class="form-check-label me-1" for="checkbox{{i}}">{{site.name}} - Created at {{site.createdDate | date: 'dd/MM/yyyy HH:mm'}}</label>
                     </li>
                   </div>
