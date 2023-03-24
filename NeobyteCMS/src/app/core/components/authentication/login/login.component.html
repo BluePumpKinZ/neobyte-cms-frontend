@@ -1,67 +1,71 @@
 <body class="auth layoutAuthentication_content">
-<div id="main-container">
-  <div id="logo" class="text-center">
-    <img src="https://neobyte.net/billing/assets/img/logo.png" width="300" height="auto">
-  </div>
-  <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <div class="form-group">
-      <label class="control-label" for="email" data-lang="Email">Email</label>
-      <input name="email" id="email" type="email" class="form-control" [formControlName]="'email'">
-      <p class="text-danger" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('required')">
-        Email is a required field
-      </p>
-      <p class="text-danger" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('email')">
-        Email is not valid
-      </p>
-      <p class="text-danger" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('minlength')">
-        Email must be at least 5 characters long
-      </p>
+  <div id="main-container">
+    <div id="logo" class="text-center">
+      <img src="https://neobyte.net/billing/assets/img/logo.png" width="300" height="auto">
     </div>
+    <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <label class="control-label" for="email" data-lang="Email">Email</label>
+        <input name="email" id="email" type="email" class="form-control" [formControlName]="'email'">
+        <p class="text-danger" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('required')">
+          Email is a required field
+        </p>
+        <p class="text-danger" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('email')">
+          Email is not valid
+        </p>
+        <p class="text-danger" *ngIf="loginForm.get('email')?.dirty && loginForm.get('email')?.hasError('minlength')">
+          Email must be at least 5 characters long
+        </p>
+      </div>
 
-    <div class="form-group">
-      <label class="control-label" for="password" data-lang="Password">Password</label>
-      <div class="password-container">
-        <input name="password" id="password" type="password" class="form-control" [formControlName]="'password'">
-        <a class="forgot-password" href="/password" data-lang="Forgot your password?" data-toggle="tooltip"
-           title="Forgot your password?">
-          <i class="fa fa-question-circle"></i>
+      <div class="form-group">
+        <label class="control-label" for="password" data-lang="Password">Password</label>
+        <div class="password-container">
+          <input name="password" id="password" type="password" class="form-control" [formControlName]="'password'">
+          <a class="forgot-password" href="/password" data-lang="Forgot your password?" data-toggle="tooltip"
+            title="Forgot your password?">
+            <i class="fa fa-question-circle"></i>
+          </a>
+        </div>
+        <p class="text-danger"
+          *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('required')">
+          Password is a required field
+        </p>
+        <p class="text-danger"
+          *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('minlength')">
+          Password must be at least 5 characters long
+        </p>
+      </div>
+
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="remember-login" checked
+            [formControlName]="'rememberMe'">
+          <label class="form-check-label" for="remember-login">
+            Remember me
+          </label>
+        </div>
+        <p class="text-danger" *ngIf="error">Error: {{ error }}</p>
+      </div>
+
+      <div class="form-group">
+        <div class="form-actions">
+          <input type="hidden" name="redirect" value="" />
+          <input type="hidden" name="cmd" value="login" />
+          <button id="login-button" class="btn btn-block btn-primary" [disabled]="!loginForm.valid" type="submit"><span
+              data-lang="Login">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Login
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="form-actions text-center">
+        <a href="/lost-password"><small data-lang="Forgot Password">Forgot Password ?</small>
         </a>
       </div>
-      <p class="text-danger" *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('required')">
-        Password is a required field
-      </p>
-      <p class="text-danger" *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.hasError('minlength')">
-        Password must be at least 5 characters long
-      </p>
-    </div>
+    </form>
 
-    <div class="form-group">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="remember-login" checked [formControlName]="'rememberMe'">
-        <label class="form-check-label" for="remember-login">
-          Remember me
-        </label>
-      </div>
-      <p class="text-danger" *ngIf="error">Error: {{ error }}</p>
-    </div>
-
-    <div class="form-group">
-      <div class="form-actions">
-        <input type="hidden" name="redirect" value=""/>
-        <input type="hidden" name="cmd" value="login"/>
-        <button id="login-button" class="btn btn-block btn-primary" [disabled]="!loginForm.valid" type="submit"><span data-lang="Login">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Login
-        </span>
-        </button>
-      </div>
-    </div>
-
-    <div class="form-actions text-center">
-      <a href="/lost-password"><small data-lang="Forgot Password">Forgot Password ?</small>
-      </a>
-    </div>
-  </form>
-
-</div>
+  </div>
 </body>

@@ -1,11 +1,11 @@
-# Status report Week 6
+# Status report Week XXX
 ## Worksheet 
 ### Cools Arne
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| 14/03/2023 | S3 hosting connection | [#21](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/21) |
-| 16/03/2023 | S3 hosting connection | [#21](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/21) |
-| 18/03/2023 | Backend Article | / |
+| 20/03/2023 | S3 completion, Articles + Paper | [#21](https://gitlab.com/kdg-ti/the-lab/teams-22-23/team7/neobyte-cms-backend/-/issues/21) |
+| dd/MM/YYYY | to fill in | to fill in |
+| dd/MM/YYYY | to fill in | to fill in |
 ### Derboven Maxim
 | Worksession | Description work done | Issue references |
 |---|---|---|
@@ -25,10 +25,8 @@ to fill in
 #### Angular
 to fil in
 #### .NET
-Amazon AWS S3 SDK
-* Very good SDK, well documented as well
-* Storage buckets are a bit weird, no directories etc. 
+to fill in
 ### Technologies researched
 to fill in
 ### Work done
-![](https://geps.dev/progress/87) -> Update at the end of Week
+![](https://geps.dev/progress/100) -> Update at the end of Week XXX
