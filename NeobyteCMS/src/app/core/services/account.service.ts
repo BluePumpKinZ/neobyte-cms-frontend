@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Account, AccountDetails} from "../models/Account";
-import {catchError, Observable, shareReplay, tap} from "rxjs";
+import {catchError, Observable, of, shareReplay, tap, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {MessageService} from "./message.service";
 import {Site} from "../models/Site";
@@ -39,7 +39,7 @@ export class AccountService {
     )
   }
 
-  
+
 
   getAllAccounts(): Observable<AccountDetails[]> {
     return this.http.get<AccountDetails[]>('accounts/list/all').pipe(
@@ -105,7 +105,31 @@ export class AccountService {
   setPassword(token: string, email: string, password: string, confirmPassword: string): Observable<any> {
     return this.http.put<any>('accounts/me/public/reset-password', {email, token, password, confirmPassword}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Password', description: 'Password set'})),
-      catchError(this.messageService.handleError('Set Password', [])),
+      catchError(err => {
+        for (let error of err.errors) {
+          this.messageService.add({type: 'danger', title: 'Password', description: error.message});
+        }
+        return throwError(err);
+      })
     )
+
+
+    //   .subscribe(
+    //   res => {
+    //     this.messageService.add({type: 'success', title: 'Password', description: 'Password set'});
+    //     return of(res);
+    //   },
+    //   error => {
+    //     this.messageService.add({type: 'danger', title: 'Password', description: 'Password not set'});
+    //     return throwError(error);
+    //   }
+    // );
+    //throw errors to be handled by the component
+
+
+    //   .pipe(
+    //   tap(_ => this.messageService.add({type: 'success', title: 'Password', description: 'Password set'})),
+    //   catchError(this.messageService.handleError('Set Password', [])),
+    // )
   }
 }

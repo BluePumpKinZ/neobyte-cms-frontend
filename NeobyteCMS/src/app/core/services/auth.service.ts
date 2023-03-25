@@ -56,6 +56,29 @@ export class AuthService {
     }
     return null;
   }
+
+  hasAnyAuthority(authorities: any) {
+    if (!this.isLoggedIn()) {
+      return false;
+    }
+    return authorities.includes(this.getRole().toUpperCase());
+  }
+
+  private getRole() {
+    const token = localStorage.getItem('id_token');
+    if (!token) {
+      return null;
+    }
+    const decoded = this.decodeToken(token);
+    return decoded.role;
+  }
+
+  private decodeToken(token: string) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    console.log(JSON.parse(window.atob(base64)));
+    return JSON.parse(window.atob(base64));
+  }
 }
 
 export interface LoginState {
