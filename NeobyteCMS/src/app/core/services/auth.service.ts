@@ -68,7 +68,7 @@ export class AuthService {
     return authorities.includes(this.getRole().toUpperCase());
   }
 
-  private getRole() {
+  getRole() {
     const token = localStorage.getItem('id_token');
     if (!token) {
       return null;

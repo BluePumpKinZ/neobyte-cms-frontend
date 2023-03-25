@@ -59,8 +59,8 @@
 
             <button class="btn btn-danger me-2" *ngIf="selectedPage && userRole == 'OWNER'" (click)="deletePage(selectedPage)" >Delete</button>
             <button class="btn btn-danger me-2" *ngIf="!selectedPage && userRole == 'OWNER'" disabled="true">Delete</button>
-            <button *ngIf="userRole == 'OWNER'" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#enablePage" >Enable New Page</button>
-            <button *ngIf="userRole == 'OWNER'" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addPage" >Add New Empty Page</button>
+            <button *ngIf="userRole == 'OWNER'" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#enablePage" >Enable</button>
+            <button *ngIf="userRole == 'OWNER'" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addPage" >Add New</button>
           </div>
         </div>
         <div class="row">

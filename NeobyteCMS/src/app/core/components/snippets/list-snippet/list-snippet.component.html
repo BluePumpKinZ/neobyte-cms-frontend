@@ -1,9 +1,9 @@
 <div class="container my-5">
   <div class="d-flex justify-content-end mb-3">
-    <a class="btn btn-primary mr-3" type="button" href="/sites/{{siteId}}/snippets/new">New Snippet</a>
+    <a class="btn btn-primary mr-3 me-2" type="button" href="/sites/{{siteId}}/snippets/new">New Snippet</a>
     <div class="btn-group">
-      <a *ngIf="selectedSnippet" class="btn btn-secondary" type="button" href="/sites/{{siteId}}/snippets/{{selectedSnippet.id}}/edit">Edit</a>
-      <button *ngIf="!selectedSnippet" disabled="true" class="btn btn-secondary" type="button">Edit</button>
+      <a *ngIf="selectedSnippet" class="btn btn-secondary me-2" type="button" href="/sites/{{siteId}}/snippets/{{selectedSnippet.id}}/edit">Edit</a>
+      <button *ngIf="!selectedSnippet" disabled="true" class="btn btn-secondary me-2 " type="button">Edit</button>
 
 
       <button class="btn btn-danger" (click)="deleteSnippet()">Delete</button>
