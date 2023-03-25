@@ -7,11 +7,12 @@
 <app-sidebar>
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
-    <div class="sb-sidenav-menu-heading">Admin</div>
-    <a class="nav-link" href="/sites/{{siteId}}/pages/{{pageId}}/source">
-      <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
-      Edit Source
-    </a>
+    <div *ngIf="userRole == 'OWNER'" class="sb-sidenav-menu-heading">Admin</div>
+      <a *ngIf="userRole == 'OWNER'" class="nav-link" href="/sites/{{siteId}}/pages/{{pageId}}/source">
+        <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
+        Edit Source
+      </a>
+
     <div class="sb-sidenav-menu-heading">Actions</div>
     <a class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
        aria-controls="offcanvasRight">

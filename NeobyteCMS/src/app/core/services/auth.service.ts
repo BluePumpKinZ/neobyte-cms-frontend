@@ -9,6 +9,7 @@ import {MessageService} from "./message.service";
 export class AuthService {
   // private currentUserSubject: BehaviorSubject<MUID>;
   // public currentUser: Observable<MUID>;
+  userRole: BehaviorSubject<string> = new BehaviorSubject<string>(this.getRole());
   constructor(private http: HttpClient, private messageService: MessageService) {
     // this.currentUserSubject = new BehaviorSubject<MUID>(JSON.parse(localStorage.getItem('currentUser')!));
     // this.currentUser = this.currentUserSubject.asObservable();
@@ -21,6 +22,8 @@ export class AuthService {
         const expiresAt = moment().add(res.expiresIn, 'second');
         localStorage.setItem('id_token', res.token);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
+        localStorage.setItem('userRole', this.getRole());
+        this.userRole.next(this.getRole());
       }),
       catchError(this.messageService.handleError<MUID>('Login', {} as MUID)),
     )
@@ -29,6 +32,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
+    localStorage.removeItem('userRole');
   }
 
   public isLoggedIn() {
@@ -70,7 +74,7 @@ export class AuthService {
       return null;
     }
     const decoded = this.decodeToken(token);
-    return decoded.role;
+    return decoded.role.toUpperCase();
   }
 
   private decodeToken(token: string) {

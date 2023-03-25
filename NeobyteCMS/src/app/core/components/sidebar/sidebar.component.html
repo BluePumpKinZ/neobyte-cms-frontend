@@ -33,17 +33,17 @@
             <div class="sb-nav-link-icon"><i class="fa fa-window-maximize"></i></div>
             Sites
           </a>
-          <a [routerLinkActive]="['active']" [routerLink]="['/users']" class="nav-link" href="/users">
+          <a *ngIf="userRole === 'OWNER'" [routerLinkActive]="['active']" [routerLink]="['/users']" class="nav-link" href="/users">
             <div class="sb-nav-link-icon"><i class="fa-regular fa-user"></i></div>
             Users
           </a>
 
-          <div class="sb-sidenav-menu-heading">Monitoring</div>
-          <a [routerLinkActive]="['active']" [routerLink]="['/tracing']" class="nav-link " href="/tracing">
+          <div *ngIf="userRole === 'OWNER'" class="sb-sidenav-menu-heading">Monitoring</div>
+          <a *ngIf="userRole === 'OWNER'" [routerLinkActive]="['active']" [routerLink]="['/tracing']" class="nav-link " href="/tracing">
             <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-gantt"></i></div>
             Tracing
           </a>
-          <a class="nav-link" href="/grafana">
+          <a *ngIf="userRole === 'OWNER'" class="nav-link" href="/grafana">
             <div class="sb-nav-link-icon"><i class="fa-solid fa-thermometer"></i></div>
             Metrics & Logging
           </a>

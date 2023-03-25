@@ -1,12 +1,12 @@
 <app-sidebar>
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
-    <div class="sb-sidenav-menu-heading">Admin</div>
+    <div *ngIf="userRole == 'OWNER'"  class="sb-sidenav-menu-heading">Admin</div>
     <!--    <a class="nav-link" href="/profile">-->
     <!--      <div class="sb-nav-link-icon"><i class="fa fa-check"></i></div>-->
     <!--      Enable Pages-->
     <!--    </a>-->
-    <a class="nav-link" href="/sites/{{siteId}}/snippets">
+    <a *ngIf="userRole == 'OWNER'"  class="nav-link" href="/sites/{{siteId}}/snippets">
       <div class="sb-nav-link-icon"><i class="fa fa-cube"></i></div>
       Manage Snippets
     </a>
@@ -15,7 +15,7 @@
     <!--      Page Health-->
     <!--    </a>-->
     <div class="sb-sidenav-menu-heading">Actions</div>
-    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#enablePage" >
+    <a *ngIf="userRole == 'OWNER'"  class="nav-link" data-bs-toggle="modal" data-bs-target="#enablePage" >
       <div class="sb-nav-link-icon"><i class="fa-regular fa-plus"></i></div>
       New Page
     </a>
@@ -50,17 +50,17 @@
             <a type="button" class="btn btn-primary me-2" href="sites/{{siteId}}/pages/{{selectedPage!.id}}" *ngIf="selectedPage" > Edit</a>
             <button *ngIf="!selectedPage" disabled="true" class="btn btn-primary me-2" type="button">Edit</button>
 
-            <button class="btn btn-primary me-2" *ngIf="!selectedPage" disabled="true">Rename</button>
+            <button class="btn btn-primary me-2" *ngIf="!selectedPage && userRole == 'OWNER'" disabled="true">Rename</button>
 
 
-            <button type="button" class="btn btn-primary me-2" *ngIf="selectedPage" data-bs-toggle="modal" data-bs-target="#renameModal">
+            <button type="button" class="btn btn-primary me-2" *ngIf="selectedPage && userRole == 'OWNER'" data-bs-toggle="modal" data-bs-target="#renameModal">
               Rename
             </button>
 
-            <button class="btn btn-danger me-2" *ngIf="selectedPage" (click)="deletePage(selectedPage)" >Delete</button>
-            <button class="btn btn-danger me-2" *ngIf="!selectedPage" disabled="true">Delete</button>
-            <button class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#enablePage" >Enable New Page</button>
-            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addPage" >Add New Empty Page</button>
+            <button class="btn btn-danger me-2" *ngIf="selectedPage && userRole == 'OWNER'" (click)="deletePage(selectedPage)" >Delete</button>
+            <button class="btn btn-danger me-2" *ngIf="!selectedPage && userRole == 'OWNER'" disabled="true">Delete</button>
+            <button *ngIf="userRole == 'OWNER'" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#enablePage" >Enable New Page</button>
+            <button *ngIf="userRole == 'OWNER'" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addPage" >Add New Empty Page</button>
           </div>
         </div>
         <div class="row">
@@ -91,7 +91,7 @@
   </div>
 </app-sidebar>
 
-<app-rename-modal siteId="{{siteId}}" [page]="selectedPage"></app-rename-modal>
+<app-rename-modal siteId="{{siteId}}" [page]="selectedPage" *ngIf="userRole == 'OWNER'"></app-rename-modal>
 <app-manage-files-modal siteId="{{siteId}}"></app-manage-files-modal>
-<app-enable-new-pagemodal></app-enable-new-pagemodal>
-<app-add-new-pagemodal></app-add-new-pagemodal>
+<app-enable-new-pagemodal *ngIf="userRole == 'OWNER'"></app-enable-new-pagemodal>
+<app-add-new-pagemodal *ngIf="userRole == 'OWNER'"></app-add-new-pagemodal>

@@ -6,6 +6,7 @@ import tinymce from "tinymce";
 import Editor from "../../services/editor/editor";
 import {MessageService} from "../../services/message.service";
 import {getType} from "../../services/editor/region-types";
+import {AuthService} from "../../services/auth.service";
 
 // import { Editor, EditorSettings } from 'tinymce';
 
@@ -18,6 +19,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   @ViewChild('content_edit') iframe!: ElementRef<HTMLIFrameElement>;
   siteId: string | undefined;
   pageId: string | undefined;
+  userRole: string = '';
   activeEditor: Editor | null | undefined;
 
   // settings: EditorSettings = {}
@@ -26,6 +28,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
     private _messageService: MessageService,
     private _iframeHelper: IframeHelperService,
     private _pageService: PageService,
+    private authService: AuthService,
   ) {
   }
 
@@ -44,6 +47,10 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.userRole.subscribe(role => {
+      console.log(role);
+      this.userRole = role;
+    })
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
     this.pageId = this._route.snapshot.paramMap.get('pageId')!;
     this._iframeHelper.get(`websites/${this.siteId}/pages/${this.pageId}/render`).subscribe(blob => {
