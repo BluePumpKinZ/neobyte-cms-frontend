@@ -99,6 +99,11 @@ export class EditPageComponent implements AfterViewInit, OnInit {
       (this.iframe.nativeElement.contentWindow!.document.activeElement as HTMLElement).blur();
     }
 
+    // check if website has <!DOCTYPE HTML> tag
+    if (!this.iframe.nativeElement.contentWindow!.document.doctype) {
+      this._messageService.add({type: 'danger', title: 'No doctype', description: 'No doctype found'});
+    }
+
     // Show no regions notice
     if (![...this.iframe.nativeElement.contentWindow!.document.querySelectorAll('.cms-editable')].length) {
       //show message that there are no regions
