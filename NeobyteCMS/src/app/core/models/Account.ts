@@ -3,6 +3,10 @@ export type MUID = {
   expiresIn: number;
 }
 
+export interface AccountDetailsRoles extends AccountDetails {
+  roles: role[];
+}
+
 export interface Account {
   id: string;
   username: string;

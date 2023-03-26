@@ -78,6 +78,7 @@ onCreateUser() {
 
   //only get the selected sites where selected is true
   const selectedSiteIds = this.sites!.filter((site, index) => selectedSites[index]).map(site => site.id);
+  console.log(selectedSiteIds)
 
   const accountDetails: AccountDetails = {
     bio: this.createUserForm.get('bio')!.value,
@@ -91,24 +92,27 @@ onCreateUser() {
 
   // assuming your list of sites is stored in a variable called "sites"
   const checkedIndexes = this.sites!.filter(site => site.selected).map(site => this.sites!.indexOf(site));
+  console.log(checkedIndexes)
+  console.log(selectedSites)
+  console.log(this.createUserForm)
 
 
-  this._accountService.addAccount(accountDetails).subscribe(
-    (account: AccountDetails) => {
-      if (selectedSiteIds.length === 0 || this.createUserForm.get('makeAdministrator')!.value) {
-        return;
-      }
-      selectedSiteIds.forEach((siteId: string) => {
-        this._accountService.addWebsiteToAccount(account.id, siteId).subscribe(
-          (data) => {
-          },
-        );
-      });
-      this._router.navigate(['/users']);
-    }, (error) => {
-      console.log(error)
-    }
-  );
+  // this._accountService.addAccount(accountDetails).subscribe(
+  //   (account: AccountDetails) => {
+  //     if (selectedSiteIds.length === 0 || this.createUserForm.get('makeAdministrator')!.value) {
+  //       return;
+  //     }
+  //     selectedSiteIds.forEach((siteId: string) => {
+  //       this._accountService.addWebsiteToAccount(account.id, siteId).subscribe(
+  //         (data) => {
+  //         },
+  //       );
+  //     });
+  //     this._router.navigate(['/users']);
+  //   }, (error) => {
+  //     console.log(error)
+  //   }
+  // );
 
 }
 
