@@ -41,13 +41,17 @@ import { SafeurlPipe } from './core/services/pipes/safeurl.pipe';
 import { EditUserComponent } from './core/pages/edit-user/edit-user.component';
 import { UserComponent } from './core/pages/user/user.component';
 import { RenameModalComponent } from './core/components/rename-modal/rename-modal.component';
-import {EditorModule} from "@tinymce/tinymce-angular";
+import {EditorModule, TINYMCE_SCRIPT_SRC} from "@tinymce/tinymce-angular";
 import {ErrorInterceptor} from "./core/interceptor/error.interceptor";
 import {
   OpenTelemetryInterceptorModule,
   CompositePropagatorModule,
   ZipkinExporterModule
 } from '@jufab/opentelemetry-angular-interceptor';
+import { TracingComponent } from './core/components/tracing/tracing.component';
+import { EnableNewPagemodalComponent } from './core/components/enable-new-pagemodal/enable-new-pagemodal.component';
+import {AddNewPagemodalComponent} from "./core/components/add-new-pagemodal/add-new-pagemodal.component";
+import { SetPasswordComponent } from './core/components/authentication/set-password/set-password.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +84,11 @@ import {
     SafeurlPipe,
     EditUserComponent,
     UserComponent,
-    RenameModalComponent
+    RenameModalComponent,
+    TracingComponent,
+    EnableNewPagemodalComponent,
+    AddNewPagemodalComponent,
+    SetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,7 +105,7 @@ import {
         console: false,
         production: environment.production,
         serviceName: 'Neobyte.CMS.Frontend',
-        probabilitySampler: '1',
+        probabilitySampler: environment.tracingSamplerProbability,
       },
       zipkinConfig: {
         url: environment.url + 'tracing',
@@ -105,6 +113,7 @@ import {
     }),
     ZipkinExporterModule,
     CompositePropagatorModule,
+    FormsModule,
   ],
   providers: [
     {
@@ -122,6 +131,7 @@ import {
       useClass: AuthInterceptor,
       multi: true
     },
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
     {
       provide: "BASE_API_URL", useValue: environment.url
     },

@@ -6,6 +6,7 @@ import {PageService} from "../../services/page.service";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 import {IframeHelperService} from "../../services/iframe-helper.service";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-edit-site',
@@ -16,10 +17,14 @@ export class EditSiteComponent  implements OnInit {
   pages: Page[] | undefined;
   siteId: string | undefined;
   selectedPage: Page | undefined;
+  userRole: string = '';
+  data: any;
   @ViewChild('previewIframe') iframe!: ElementRef<HTMLIFrameElement>;
   constructor(
     private _pagesService: PageService,
     private _route: ActivatedRoute,
+    private authService: AuthService,
+
     private _iframeHelper: IframeHelperService,
               ) { }
 
@@ -29,7 +34,12 @@ export class EditSiteComponent  implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.userRole.subscribe(role => {
+      console.log(role);
+      this.userRole = role;
+    })
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
+    this.data = this._route.snapshot.data;
     this._pagesService.getPages(this.siteId).subscribe(pages => {
       this.pages = pages;
     });
@@ -42,7 +52,15 @@ export class EditSiteComponent  implements OnInit {
 
   deletePage(page: Page) {
     this.pages = this.pages?.filter(p => p.id !== page.id);
-    this._pagesService.deletePage(this.siteId!, page.id).subscribe();
+    this._pagesService.deletePage(this.siteId!, page.id).subscribe(
+      () => {
+        if (this.selectedPage?.id === page.id) {
+          this.selectedPage = undefined;
+        }
+        //clear iframe
+        this.iframe.nativeElement.src = '';
+      }
+    );
   }
 
   createPage(name: string, path: string) {

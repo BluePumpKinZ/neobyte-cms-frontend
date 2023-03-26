@@ -10,7 +10,7 @@ import {FileSystemItem} from "../../models/File";
 })
 export class ManageFilesModalComponent implements OnInit {
   selectedFile: FileSystemItem | undefined;
-  currentPath: string = "/uploads";
+  currentPath: string = "/";
   breadcrumbs: string[] = [];
   fmentries: FileSystemItem[] = [];
 
@@ -109,7 +109,7 @@ export class ManageFilesModalComponent implements OnInit {
       this.currentPath = this.breadcrumbs.join("/");
     }
     console.log(this.currentPath);
-    this.getEntriesSorted(this.siteId!, "/uploads/"+this.currentPath);
+    this.getEntriesSorted(this.siteId!, "/"+this.currentPath);
 
 
     // this.breadcrumbs = this.breadcrumbs.slice(0, index + 1);

@@ -18,7 +18,7 @@ export class PageService {
       catchError(this.messageService.handleError<string>('Fetch Page', "")),
     )
   }
-  createPage(siteId: string, name:string, path: string ): Observable<any> {
+  createPage(siteId: string, name:string, path: string): Observable<any> {
     return this.http.post<Page>(`websites/${siteId}/pages/add/existing`, {"name":name,"path":path}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page created'})),
       catchError(this.messageService.handleError<string>('Fetch Page', "")),
@@ -34,8 +34,8 @@ export class PageService {
 
   getSource(pageId: string, siteId: string): Observable<any> {
     return this.http.get<Page>(`websites/${siteId}/pages/${pageId}/source`).pipe(
-      tap(res => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
-      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+      tap(res => this.messageService.add({type: 'success', title: 'Source', description: 'Source loaded'})),
+      catchError(this.messageService.handleError<string>('Error fethcing Source code', "")),
     )
   }
 
@@ -56,8 +56,8 @@ export class PageService {
 
   updateSource(siteId: string, pageId: string, source: string): Observable<any> {
     return this.http.put<Page>(`websites/${siteId}/pages/${pageId}/publish/source`, {source: source}).pipe(
-      tap(_ => this.messageService.add({type: 'success', title: 'Page', description: 'Page loaded'})),
-      catchError(this.messageService.handleError<string>('Fetch Page', "")),
+      tap(_ => this.messageService.add({type: 'success', title: 'Source Code', description: 'Source updated'})),
+      catchError(this.messageService.handleError<string>('Error updating source', "")),
     )
   }
 

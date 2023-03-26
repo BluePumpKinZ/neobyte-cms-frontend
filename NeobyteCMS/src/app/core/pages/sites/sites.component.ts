@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {WebsiteService} from "../../services/website.service";
 import {Site} from "../../models/Site";
+import {environment} from "../../../../environments/environment";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-sites',
@@ -9,10 +11,21 @@ import {Site} from "../../models/Site";
 })
 export class SitesComponent implements OnInit {
   sites: Site[] | undefined;
-  constructor(private siteService: WebsiteService) { }
+  userRole: string = '';
+
+  constructor(private siteService: WebsiteService, private authService: AuthService) {
+  }
 
   ngOnInit(): void {
+    this.authService.userRole.subscribe(role => {
+      console.log(role);
+      this.userRole = role;
+    })
     this.siteService.getAllSites().subscribe(sites => {
+      sites = sites.map(site => {
+        site.screenshot = environment.url + site.screenshot;
+        return site;
+      })
       this.sites = sites;
     });
 
@@ -21,7 +34,6 @@ export class SitesComponent implements OnInit {
     //   toolbar: 'undo redo styles bold italic alignleft aligncenter alignright alignjustify | bullist numlist outdent indent'
     // });
   }
-
 
 
 }

@@ -1,5 +1,6 @@
 import {AfterViewInit, Component} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -8,8 +9,17 @@ import {Router} from "@angular/router";
 })
 export class SidebarComponent implements AfterViewInit {
 
-  constructor(public router: Router) {
+  userRole: string = '';
 
+  constructor(public router: Router, private authService: AuthService) {
+
+  }
+
+  ngOnInit() {
+    this.authService.userRole.subscribe(role => {
+      console.log(role);
+      this.userRole = role;
+    })
   }
 
   ngAfterViewInit() {

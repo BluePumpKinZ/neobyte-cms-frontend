@@ -1,13 +1,21 @@
+<div id="loading">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-grow" role="status">
+    </div>
+  </div>
+</div>
 <app-sidebar>
   <!-- Sidebar Extra Nav Options -->
   <div child-header>
-    <div class="sb-sidenav-menu-heading">Admin</div>
-    <a class="nav-link" href="/sites/{{siteId}}/pages/{{pageId}}/source">
-      <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
-      Edit Source
-    </a>
+    <div *ngIf="userRole == 'OWNER'" class="sb-sidenav-menu-heading">Admin</div>
+      <a *ngIf="userRole == 'OWNER'" class="nav-link" href="/sites/{{siteId}}/pages/{{pageId}}/source">
+        <div class="sb-nav-link-icon"><i class="fa fa-code"></i></div>
+        Edit Source
+      </a>
+
     <div class="sb-sidenav-menu-heading">Actions</div>
-    <a class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+    <a class="nav-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+       aria-controls="offcanvasRight">
       <div class="sb-nav-link-icon"><i class="fa-solid fa-info"></i></div>
       Edit Metadata
     </a>
@@ -15,7 +23,7 @@
       <div class="sb-nav-link-icon"><i class="fa-regular fa-folder"></i></div>
       Manage Files
     </a>
-    <a class="nav-link" href="x">
+    <a class="nav-link" href="{{this.data.site.domain}}">
       <div class="sb-nav-link-icon"><i class="fa fa-external-link"></i></div>
       View Webpage
     </a>
@@ -27,8 +35,11 @@
 
   <!-- Content Regio for that page -->
   <div id="layoutSidenav_content" child-content>
-    <iframe #content_edit style="width: 100%; height: 100%" sandbox="allow-same-origin"></iframe>
+    <iframe #content_edit style="width: 100%; height: 100%"></iframe>
+    <!-- sandbox="allow-same-origin" -->
   </div>
+  <!-- tinyMCE -->
+  <!--  <editor *ngIf="activeEditor" [init]="activeEditor"></editor>-->
 </app-sidebar>
 
 <app-edit-metadata-sidemodal></app-edit-metadata-sidemodal>

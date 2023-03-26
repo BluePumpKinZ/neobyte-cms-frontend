@@ -11,7 +11,7 @@
           <div class="form-group">
             <label for="renameInput">New Name:</label>
             <div class="input-group">
-              <input type="text" class="form-control" id="renameInput" [(ngModel)]="page.name"
+              <input type="text" class="form-control" id="renameInput" minlength="1" [(ngModel)]="page.name"
                      placeholder="Enter new name" name="newName">
               <span class="input-group-text">{{page.path}}</span>
             </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" type="submit">Rename</button>
+          <button  data-bs-dismiss="modal"   class="btn btn-primary" type="submit">Rename</button>
         </div>
       </form>
     </div>

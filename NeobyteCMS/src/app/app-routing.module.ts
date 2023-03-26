@@ -23,29 +23,34 @@ import {SiteResolver} from "./core/services/resolvers/site.resolver";
 import {EditUserComponent} from "./core/pages/edit-user/edit-user.component";
 import {UserComponent} from "./core/pages/user/user.component";
 import {UserResolver} from "./core/services/resolvers/user.resolver";
+import {TracingComponent} from "./core/components/tracing/tracing.component";
+import {SetPasswordComponent} from './core/components/authentication/set-password/set-password.component';
+
 
 const routes: Routes = [
   //layout routes
   {
-    path: '', component: MainComponent, canActivate: [AuthGuard], children: [
+    path: '', component: MainComponent, canActivate: [AuthGuard], data: {
+      authorities: ['OWNER','CLIENT'],
+    }, children: [
       {path: '', pathMatch: 'full', redirectTo: 'sites'},
       {
         path: 'sites', data: {breadcrumb: 'Sites'}, children: [
           {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: SitesComponent},
-          {path: 'new', data: {breadcrumb: 'New'}, component: NewSiteComponent},
+          {path: 'new', data: {breadcrumb: 'New', authorities: ['OWNER']}, canActivate: [AuthGuard], component: NewSiteComponent},
           {
             path: ':siteId', data: {breadcrumb: (data: any) => `${data.site.name}`},
             resolve: {site: SiteResolver}, children: [
               {path: '', pathMatch: 'full', data: {breadcrumb: ''}, component: EditSiteComponent},
-              {path: 'edit', data: {breadcrumb: 'Manage'}, component: ManageSiteComponent},
+              {path: 'edit', data: {breadcrumb: 'Manage', authorities: ['OWNER']}, canActivate: [AuthGuard], component: ManageSiteComponent},
               {
                 path: 'pages/:pageId', data: {breadcrumb: 'Page'}, children: [
                   {path: '', pathMatch: 'full', component: EditPageComponent},
-                  {path: 'source', data: {breadcrumb: 'Edit Source'}, component: EditSourceComponent},
+                  {path: 'source', data: {breadcrumb: 'Edit Source', authorities: ['OWNER']}, canActivate: [AuthGuard], component: EditSourceComponent},
                 ]
               },
               {
-                path: 'snippets', data: {breadcrumb: 'Snippets'}, component: SnippetsComponent,
+                path: 'snippets', data: {breadcrumb: 'Snippets', authorities: ['OWNER']}, canActivate: [AuthGuard], component: SnippetsComponent,
                 children: [
                   {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: ListSnippetComponent},
                   {path: 'new', data: {breadcrumb: 'New Snippet'}, component: AddSnippetComponent},
@@ -61,7 +66,7 @@ const routes: Routes = [
           }]
       },
       {
-        path: 'users', data: {breadcrumb: 'Users'}, children: [
+        path: 'users', data: {breadcrumb: 'Users', authorities: ['OWNER']}, canActivate: [AuthGuard], children: [
           {path: '', data: {breadcrumb: ''}, pathMatch: 'full', component: UsersComponent},
           {path: 'new', data: {breadcrumb: 'New'}, component: NewUserComponent},
           {
@@ -81,6 +86,8 @@ const routes: Routes = [
   {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
+  {path: 'set-password', component: SetPasswordComponent},
+  {path: 'tracing',canActivate: [AuthGuard], component: TracingComponent},
   {path: '**', redirectTo: 'sites'}
 ];
 
