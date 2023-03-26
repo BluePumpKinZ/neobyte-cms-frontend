@@ -82,12 +82,12 @@ const routes: Routes = [
     ]
   },
   //not layout routes
-  {path: 'sites/:siteId/pages/:pageId/render', canActivate: [AuthGuard], component: RenderComponent},
+  {path: 'sites/:siteId/pages/:pageId/render', data: {authorities: ['OWNER','CLIENT']}, canActivate: [AuthGuard], component: RenderComponent},
   {path: 'login', pathMatch: 'full', component: LoginComponent},
   {path: 'logout', canActivate: [LogoutGuard], component: LoginComponent},
   {path: 'lost-password', component: LostpasswordComponent},
   {path: 'set-password', component: SetPasswordComponent},
-  {path: 'tracing',canActivate: [AuthGuard], component: TracingComponent},
+  {path: 'tracing', data: {authorities: ['OWNER']}, canActivate: [AuthGuard], component: TracingComponent},
   {path: '**', redirectTo: 'sites'}
 ];
 
