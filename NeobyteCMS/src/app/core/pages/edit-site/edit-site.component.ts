@@ -18,6 +18,7 @@ export class EditSiteComponent  implements OnInit {
   siteId: string | undefined;
   selectedPage: Page | undefined;
   userRole: string = '';
+  data: any;
   @ViewChild('previewIframe') iframe!: ElementRef<HTMLIFrameElement>;
   constructor(
     private _pagesService: PageService,
@@ -38,6 +39,7 @@ export class EditSiteComponent  implements OnInit {
       this.userRole = role;
     })
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
+    this.data = this._route.snapshot.data;
     this._pagesService.getPages(this.siteId).subscribe(pages => {
       this.pages = pages;
     });

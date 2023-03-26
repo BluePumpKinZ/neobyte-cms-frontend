@@ -21,6 +21,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   pageId: string | undefined;
   userRole: string = '';
   activeEditor: Editor | null | undefined;
+  data: any;
 
   // settings: EditorSettings = {}
   constructor(
@@ -53,6 +54,8 @@ export class EditPageComponent implements AfterViewInit, OnInit {
     })
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
     this.pageId = this._route.snapshot.paramMap.get('pageId')!;
+    this.data = this._route.snapshot.data;
+    console.error(this.data);
     this._iframeHelper.get(`websites/${this.siteId}/pages/${this.pageId}/render`).subscribe(blob => {
       this.iframe.nativeElement.src = blob;
       //wait until iframe is loaded
