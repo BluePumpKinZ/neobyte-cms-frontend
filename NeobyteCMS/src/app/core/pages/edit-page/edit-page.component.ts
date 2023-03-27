@@ -6,6 +6,7 @@ import tinymce from "tinymce";
 import Editor from "../../services/editor/editor";
 import {MessageService} from "../../services/message.service";
 import {getType} from "../../services/editor/region-types";
+import {AuthService} from "../../services/auth.service";
 
 // import { Editor, EditorSettings } from 'tinymce';
 
@@ -18,7 +19,9 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   @ViewChild('content_edit') iframe!: ElementRef<HTMLIFrameElement>;
   siteId: string | undefined;
   pageId: string | undefined;
+  userRole: string = '';
   activeEditor: Editor | null | undefined;
+  data: any;
 
   // settings: EditorSettings = {}
   constructor(
@@ -26,6 +29,7 @@ export class EditPageComponent implements AfterViewInit, OnInit {
     private _messageService: MessageService,
     private _iframeHelper: IframeHelperService,
     private _pageService: PageService,
+    private authService: AuthService,
   ) {
   }
 
@@ -44,8 +48,14 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.userRole.subscribe(role => {
+      console.log(role);
+      this.userRole = role;
+    })
     this.siteId = this._route.snapshot.paramMap.get('siteId')!;
     this.pageId = this._route.snapshot.paramMap.get('pageId')!;
+    this.data = this._route.snapshot.data;
+    console.error(this.data);
     this._iframeHelper.get(`websites/${this.siteId}/pages/${this.pageId}/render`).subscribe(blob => {
       this.iframe.nativeElement.src = blob;
       //wait until iframe is loaded
@@ -83,9 +93,15 @@ export class EditPageComponent implements AfterViewInit, OnInit {
   }
 
   private loadSite() {
+    // this._messageService.add({type: 'info', title: 'Loading', description: 'Loading page...'});
     // Blur anything that was autofocused
     if (this.iframe.nativeElement.contentWindow!.document.activeElement) {
       (this.iframe.nativeElement.contentWindow!.document.activeElement as HTMLElement).blur();
+    }
+
+    // check if website has <!DOCTYPE HTML> tag
+    if (!this.iframe.nativeElement.contentWindow!.document.doctype) {
+      this._messageService.add({type: 'danger', title: 'No doctype', description: 'No doctype found'});
     }
 
     // Show no regions notice
@@ -114,45 +130,45 @@ export class EditPageComponent implements AfterViewInit, OnInit {
         title: 'Editor loaded',
         description: 'Editor (TinyMCE) loaded successfully.'
       });
-      [...this.iframe.nativeElement.contentWindow!.document.querySelectorAll('.cms-editable')].map(element => {
-        const hasId = element.hasAttribute('id');
-        const type = getType(element);
-        const doc = this.iframe.nativeElement.contentWindow!.document;
-        const win = this.iframe.nativeElement.contentWindow!;
-        // Enable outline transitions afer a brief delay to prevent flashing
-        console.log(element);
+      // [...this.iframe.nativeElement.contentWindow!.document.querySelectorAll('.cms-editable')].map(element => {
+      //   const hasId = element.hasAttribute('id');
+      //   const type = getType(element);
+      //   const doc = this.iframe.nativeElement.contentWindow!.document;
+      const win = this.iframe.nativeElement.contentWindow!;
+      //   // Enable outline transitions afer a brief delay to prevent flashing
+      //   console.log(element);
+      //
+      //   if (!hasId) {
+      //     this._messageService.add({
+      //       type: 'danger',
+      //       title: 'Duplicate ID',
+      //       description: 'ID not found on editable element'
+      //     });
+      //     return;
+      //   }
 
-        if (!hasId) {
-          this._messageService.add({
-            type: 'danger',
-            title: 'Duplicate ID',
-            description: 'ID not found on editable element'
-          });
-          return;
-        }
+      // Create the editor
+      const editor = new Editor(null, {}, (win as any).tinymce);
 
-        // Create the editor
-        const editor = new Editor(element, {}, (win as any).tinymce);
+      editor.initialize().then(() => {
+        console.log('editor initialized');
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+      // });
+      // };
 
-        editor
-          .initialize().then(() => {
-          console.log('editor initialized');
-        }).catch((error) => {
-          console.log(error);
+      // If TinyMCE fails to load
+      script.onerror = (error) => {
+        this._messageService.add({
+          type: 'danger',
+          title: 'Editor failed',
+          description: 'Editor (TinyMCE) failed to load. Please try again later.'
         });
-      });
-    };
+      };
 
-    // If TinyMCE fails to load
-    script.onerror = (error) => {
-      this._messageService.add({
-        type: 'danger',
-        title: 'Editor failed',
-        description: 'Editor (TinyMCE) failed to load. Please try again later.'
-      });
-    };
-
-    this.iframe.nativeElement.contentWindow!.document.body.appendChild(script);
-  }
+      this.iframe.nativeElement.contentWindow!.document.body.appendChild(script);
+    }
 }
 

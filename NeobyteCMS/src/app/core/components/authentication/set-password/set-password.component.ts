@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AccountService } from 'src/app/core/services/account.service';
-import { MessageService } from 'src/app/core/services/message.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AccountService} from 'src/app/core/services/account.service';
+import {MessageService} from 'src/app/core/services/message.service';
+import {catchError, tap} from "rxjs";
 
 @Component({
   selector: 'app-set-password',
   templateUrl: './set-password.component.html',
-  styleUrls: ['./set-password.component.css']
+  styleUrls: ['../authentication.css']
 })
 export class SetPasswordComponent implements OnInit {
   setPasswordForm: FormGroup;
@@ -41,17 +42,44 @@ export class SetPasswordComponent implements OnInit {
       const password = this.setPasswordForm.get('password')!.value;
       const confirmPassword = this.setPasswordForm.get('confirmPassword')!.value;
       if (password !== confirmPassword) {
-        this.setPasswordForm.get('confirmPassword')!.setErrors({ 'passwordsDontMatch': true });
+        this.setPasswordForm.get('confirmPassword')!.setErrors({'passwordsDontMatch': true});
         return;
       }
 
-      this._accountService.setPassword(this.token, this.email, password, confirmPassword)
-        .subscribe((data: any) => {
-          if (data.valid){
+      this._accountService.setPassword(this.token, this.email, password, confirmPassword).subscribe(
+        (data: any) => {
+          if (data.valid) {
             this.passwordSet = true;
-          } 
+            this._messageService.add({type: 'success', title: 'Password', description: 'Password set'});
+          }
         }
-        )
+      )
+
+        // .pipe(
+        //   tap(_ => {
+        //     this._messageService.add({type: 'success', title: 'Password', description: 'Password set'});
+        //     this.passwordSet = true
+        //   }),
+        //   catchError(err => {
+        //     for (const error of err.errors) {
+        //       this._messageService.add({type: 'danger', title: 'Error', description: error});
+        //   }
+        //   return err;
+        //   }))
+        // .subscribe((data: any) => {
+        //     if (data.valid) {
+        //       this.passwordSet = true;
+        //       this._messageService.add({type: 'success', title: 'Password', description: 'Password set'});
+        //     }
+        //     },
+        //     error => {
+        //       this._messageService.add({
+        //         type: 'danger',
+        //         title: 'Error',
+        //         description: error.errors[0]
+        //       });
+        //   }
+        // )
     }
   }
 }
