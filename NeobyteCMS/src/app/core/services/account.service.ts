@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Account, AccountDetails} from "../models/Account";
+import {Account, AccountDetails, AccountDetailsRoles} from "../models/Account";
 import {catchError, Observable, of, shareReplay, tap, throwError} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {MessageService} from "./message.service";
@@ -56,9 +56,9 @@ export class AccountService {
   }
 
   getAccountDetails(id: string): Observable<any> {
-    return this.http.get<AccountDetails>(`accounts/list/${id}/details`).pipe(
+    return this.http.get<AccountDetailsRoles>(`accounts/list/${id}/details`).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Account', description: 'Account loaded'})),
-      catchError(this.messageService.handleError<AccountDetails>('Fetch Account', {} as AccountDetails)),
+      catchError(this.messageService.handleError<AccountDetailsRoles>('Fetch Account', {} as AccountDetailsRoles)),
     )
   }
 

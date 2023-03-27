@@ -49,10 +49,10 @@
                 </div>
                 <label for="BioInput">This user will have access to the following sites. <small>Note that admin users have access to all sites.</small></label>
                 <ul class="list-group">
-                  <div *ngFor="let site of sites; let i=index">
+                  <div [formArrayName]="'selectedSites'" *ngFor="let site of selectedSitesFormArray.controls; let i=index">
                     <li class="list-group-item border">
-                      <input [formControlName]="'selectedSites'" [checked]="site.selected" [disabled]="!site.enabled" class="form-check-input me-1 site-checkbox" type="checkbox" value="{{site.id}}" id="checkbox{{i}}">
-                      <label class="form-check-label me-1" for="checkbox{{i}}">{{site.name}} - Created at {{site.createdDate | date: 'dd/MM/yyyy HH:mm'}}</label>
+                      <input [formControlName]="i" [checked]="sites![i].selected" [disabled]="!sites![i].enabled" class="form-check-input me-1 site-checkbox" type="checkbox" value="{{sites![i].id}}" id="checkbox{{i}}">
+                      <label class="form-check-label me-1" for="checkbox{{i}}">{{sites![i].name}} - Created at {{sites![i].createdDate | date: 'dd/MM/yyyy HH:mm'}}</label>
                     </li>
                   </div>
                 </ul>
