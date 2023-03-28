@@ -1,6 +1,6 @@
 <app-sidebar>
   <!-- Sidebar Extra Nav Options -->
-  <div child-header>
+  <div *ngIf="userRole == 'OWNER'" child-header>
     <div class="sb-sidenav-menu-heading">Admin</div>
     <a class="nav-link" href="/sites/new">
       <div class="sb-nav-link-icon"><i class="fa-regular fa-plus"></i></div>
@@ -22,7 +22,7 @@
               <input type="text" class="form-control" placeholder="Search Sites">
             </div>
 
-            <a type="button" href="sites/new" class="btn btn-primary ms-auto">New Site</a>
+            <a *ngIf="userRole == 'OWNER'" type="button" href="sites/new" class="btn btn-primary ms-auto">New Site</a>
           </div>
         </div>
         <div class="row">
@@ -41,7 +41,7 @@
                   <!-- url in grey and oposite site a gear icon -->
                   <a href="{{site.domain}}"
                      class="text-decoration-none link-secondary">{{site.domain.replace('https://', '')}}</a>
-                  <a href="/sites/{{site.id}}/edit" class="text-decoration-none text-secondary float-end"><i
+                  <a *ngIf="userRole == 'OWNER'" href="/sites/{{site.id}}/edit" class="text-decoration-none text-secondary float-end"><i
                     class="fa fa-cog"></i></a>
                 </p>
               </div>

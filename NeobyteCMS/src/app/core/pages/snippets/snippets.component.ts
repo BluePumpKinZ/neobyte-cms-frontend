@@ -10,4 +10,12 @@ import {MessageService} from "../../services/message.service";
   styleUrls: ['./snippets.component.css']
 })
 export class SnippetsComponent {
+  siteId: string;
+
+  constructor(
+    private _route: ActivatedRoute,
+    private _messageService: MessageService
+  ) {
+    this.siteId = this._route.snapshot.paramMap.get('siteId')!;
+  }
 }
