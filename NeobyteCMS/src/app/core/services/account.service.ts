@@ -49,9 +49,9 @@ export class AccountService {
   }
 
   getOwnAccountDetails(): Observable<any> {
-    return this.http.get<AccountDetails>('accounts/me/details').pipe(
+    return this.http.get<AccountDetailsRoles>('accounts/me/details').pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Account', description: 'Account loaded'})),
-      catchError(this.messageService.handleError<AccountDetails>('Fetch Account', {} as AccountDetails)),
+      catchError(this.messageService.handleError<AccountDetailsRoles>('Fetch Account', {} as AccountDetailsRoles)),
     )
   }
 
@@ -62,8 +62,8 @@ export class AccountService {
     )
   }
 
-  updateAccountDetails(account: AccountDetails): Observable<any> {
-    return this.http.put<Account>(`accounts/list/${account.id}/edit`, {account}).pipe(
+  updateAccountDetails(account: AccountDetailsRoles): Observable<any> {
+    return this.http.put<AccountDetailsRoles>(`accounts/list/${account.id}/edit`, {account}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Account', description: 'Account updated'})),
       catchError(this.messageService.handleError<Account>('Update Account', account)),
     )
@@ -71,7 +71,7 @@ export class AccountService {
 
 
   changePassword(oldPassword: string, password: string): Observable<any> {
-    return this.http.post('accounts/me/change-password', {
+    return this.http.put<any>('accounts/me/change-password', {
       "oldPassword": oldPassword,
       "newPassword": password,
       "confirmPassword": password
@@ -82,9 +82,9 @@ export class AccountService {
   }
 
   updateOwnAccountDetails(account: AccountDetails): Observable<any> {
-    return this.http.put<Account>(`accounts/me/change-details`, {account}).pipe(
+    return this.http.put<any>(`accounts/me/change-details`, {email: account.email, username: account.username, bio: account.bio}).pipe(
       tap(_ => this.messageService.add({type: 'success', title: 'Account', description: 'Account updated'})),
-      catchError(this.messageService.handleError<Account>('Update Account', account)),
+      catchError(this.messageService.handleError<any>('Update Account', account)),
     )
   }
 
