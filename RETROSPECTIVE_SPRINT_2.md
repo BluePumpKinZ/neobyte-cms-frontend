@@ -1,6 +1,6 @@
 # Retrospective Sprint 2
 
-[Parabol.co CSV](#https://drive.google.com/drive/u/1/folders/1DZnYZ9nBZ)
+[Parabol.co CSV](#https://drive.google.com/file/d/1TuhMVXfkaaw7nMV84ESW2oeqyuO8OQDf/view?usp=sharing)
 
 ## Reflection Items
 1. What went well
