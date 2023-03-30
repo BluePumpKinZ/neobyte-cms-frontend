@@ -16,6 +16,7 @@
 | Worksession | Description work done | Issue references |
 |---|---|---|
 | 20/03/2023 - 25/03/2023 | Video | / |
+| 22/03/2023 | Monitoring article | / |
 | 24/03/2023 | Demo bug fixes | / |
 ## Project Status
 ### Collaboration
