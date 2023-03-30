@@ -1,4 +1,4 @@
-# Status report Week XXX
+# Status report Week 7
 ## Worksheet 
 ### Cools Arne
 | Worksession | Description work done | Issue references |
@@ -15,9 +15,8 @@
 ### Leijzen Jonas
 | Worksession | Description work done | Issue references |
 |---|---|---|
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
-| dd/MM/YYYY | to fill in | to fill in |
+| 20/03/2023 - 25/03/2023 | Video | / |
+| 24/03/2023 | Demo bug fixes | / |
 ## Project Status
 ### Collaboration
 to fill in
@@ -29,4 +28,4 @@ to fill in
 ### Technologies researched
 to fill in
 ### Work done
-![](https://geps.dev/progress/100) -> Update at the end of Week XXX
+![](https://geps.dev/progress/100)
