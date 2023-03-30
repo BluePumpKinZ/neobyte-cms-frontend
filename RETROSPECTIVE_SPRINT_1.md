@@ -1,6 +1,6 @@
 # Retrospective Sprint 1
 
-[Parabol.co CSV](https://drive.google.com/drive/u/1/folders/1RoVHauWvmi5nIRbO4mJDuonbJ1XXH4Ba)
+[Parabol.co CSV](https://drive.google.com/file/d/16Gxb-_Vq6mvDxyFydlyk6vGQ__v2b-kc/view?usp=share_link)
 
 ## Reflection Items
 1. Attend the lab hours more frequently
